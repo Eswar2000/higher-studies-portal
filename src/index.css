@@ -1,13 +1,60 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.loginLeftDiv {
+  float: left;
+  display: flex;
+  width: 60vw;
+  height: 100vh;
 }
+
+.loginRightDiv {
+  width: 40vw;
+  float: right;
+  display: flex;
+}
+
+.centerDiv {
+  margin: auto;
+  width: 80%;
+}
+
+.heading {
+  font-size: 37px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.setFont {
+  font-family: 'Quicksand';
+}
+
+.subHeading {
+  font-size: 27px;
+  font-weight: bold;
+  color: #0277bd;
+}
+
+#longInput {
+  width: 70%;
+  height: 30px;
+  border-radius: 7.5px;
+  margin: 10px 0px 10px 0px;
+}
+
+.loginButton {
+  background-color: #4fc3f7;
+  color: white;
+  font-weight: bolder;
+  border: 1px solid #4fc3f7;
+}
+
+#loginRightDivSubCol {
+  margin-top: 25vh;
+  margin-bottom: 25vh;
+}
+
