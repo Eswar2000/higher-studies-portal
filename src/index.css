@@ -72,3 +72,11 @@
   margin-bottom: 25vh;
 }
 
+#homeLayoutAppBar{
+  background-color: #0277bd;
+}
+
+#homeLayoutAppBarText{
+  font-family: 'Quicksand';
+}
+
