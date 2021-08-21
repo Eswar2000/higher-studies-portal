@@ -80,3 +80,52 @@
   font-family: 'Quicksand';
 }
 
+#profileScreenCard {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 50px;
+}
+
+#shareProfileText {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.profileEditCategory {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.profileEditResponse {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+.profileRowCard {
+  width: 80vw;
+}
+
+#profileAvatar {
+  width: 100px;
+  height: 100px;
+}
+
+.profileListSecondary {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#profileListPrimary {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.centerElements {
+  display:inline-block;      
+  margin:0 auto;
+  width: 40vw;
+}

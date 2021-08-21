@@ -12,10 +12,12 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
+
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
 import clsx from "clsx";
+import ProfileScreen from "../subScreens/ProfileScreen";
 
 
 const sidebarWidth=240;
@@ -104,6 +106,7 @@ export default function HomeLayout(){
             </Drawer>
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
+                <ProfileScreen/>
             </div>
         </div>
     );
