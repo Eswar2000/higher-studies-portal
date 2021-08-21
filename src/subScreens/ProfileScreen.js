@@ -1,6 +1,5 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Divider from '@material-ui/core/Divider';
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
@@ -10,9 +9,58 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Button from "@material-ui/core/Button";
 import RoomIcon from '@material-ui/icons/Room';
 import SchoolIcon from '@material-ui/icons/School';
+import ProfileInfoRow from "../components/ProfileInfoRow";
+import {useState} from "react";
+import {
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    TextField,
+    Typography
+} from "@material-ui/core";
 
 
 export default function ProfileScreen() {
+
+    const [name,setName]=useState("Eswar Raman");
+    const [university,setUniversity]=useState("Amrita Vishwa Vidyapeetham");
+    const [city, setCity]=useState("Hosur");
+    const [email,setEmail]=useState("v.eswarraman2000@gmail.com");
+    const [phoneNumber,setPhoneNumber]=useState("1234567890");
+    const [securityQuestion, setSecurityQuestion]=useState("What is your favourite novel");
+    const [securityAnswer,setSecurityAnswer]=useState("Harry Potter and the Sorcerer's Stone");
+
+
+    const handleNameChange=(e)=>{
+        setName(e.target.value);
+    }
+    const handleUniversityChange=(e)=>{
+        setUniversity(e.target.value);
+    }
+    const handleCityChange=(e)=>{
+        setCity(e.target.value);
+    }
+    const handleEmail=(e)=>{
+        setEmail(e.target.value);
+    }
+    const handlePhoneNumberChange=(e)=>{
+        setPhoneNumber(e.target.value);
+    }
+    const handleSecurityQuestionChange=(e)=>{
+        setSecurityQuestion(e.target.value);
+    }
+    const handleSecurityAnswerChange=(e)=>{
+        setSecurityAnswer(e.target.value);
+    }
+
+
+
+
+
+
+
     return (
         <div id="profileScreenCard">
             <Card className='profileRowCard' variant="outlined">
@@ -28,7 +76,7 @@ export default function ProfileScreen() {
                                 </ListItem>
                                 <ListItem key="Profile">
                                     <ListItemIcon>{<SchoolIcon/>}</ListItemIcon>
-                                    <span className="profileListSecondary">Amrita Viswa Vidyapeetham, Coimbatore</span>
+                                    <span className="profileListSecondary">Amrita Vishwa Vidyapeetham, Coimbatore</span>
                                 </ListItem>
                                 <ListItem>
                                     <ListItemIcon>{<RoomIcon/>}</ListItemIcon>
@@ -50,77 +98,19 @@ export default function ProfileScreen() {
             <Box height={16}/>
             <Card className='profileRowCard' variant="outlined">
                 <CardContent>
-                    <Grid container>
-                        <Box item flex={1}>
-                            <span className="profileEditCategory">Username</span>
-                        </Box>
-                        <Box item flex={2}>
-                            <span className="profileEditResponse">Eswar Raman</span>
-                        </Box>
-                        <Box item flex={1}>
-                            <Button variant="contained" size="small" color="secondary">Edit</Button>
-                        </Box>
-                    </Grid>
+                    <ProfileInfoRow fieldName={"Name"} fieldValue={name} editAlertOnChange={handleNameChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <Grid container>
-                        <Box item flex={1}>
-                            <span className="profileEditCategory">University / College</span>
-                        </Box>
-                        <Box item flex={2}>
-                            <span className="profileEditResponse">Amrita School of Engineering, Coimbatore</span>
-                        </Box>
-                        <Box item flex={1}>
-                            <Button variant="contained" size="small" color="secondary">Edit</Button>
-                        </Box>
-                    </Grid>
+                    <ProfileInfoRow fieldName={"University"} fieldValue={university} editAlertOnChange={handleUniversityChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <Grid container>
-                        <Box item flex={1}>
-                            <span className="profileEditCategory">City</span>
-                        </Box>
-                        <Box item flex={2}>
-                            <span className="profileEditResponse">Hosur</span>
-                        </Box>
-                        <Box item flex={1}>
-                            <Button variant="contained" size="small" color="secondary">Edit</Button>
-                        </Box>
-                    </Grid>
+                    <ProfileInfoRow fieldName={"City"} fieldValue={city} editAlertOnChange={handleCityChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <Grid container>
-                        <Box item flex={1}>
-                            <span className="profileEditCategory">Date of Birth</span>
-                        </Box>
-                        <Box item flex={2}>
-                            <span className="profileEditResponse">16 October, 2000</span>
-                        </Box>
-                        <Box item flex={1}>
-                            <Button variant="contained" size="small" color="secondary">Edit</Button>
-                        </Box>
-                    </Grid>
+                    <ProfileInfoRow fieldName={"Email"} fieldValue={email} editAlertOnChange={handleEmail} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <Grid container>
-                        <Box item flex={1}>
-                            <span className="profileEditCategory">Security Question</span>
-                        </Box>
-                        <Box item flex={2}>
-                            <span className="profileEditResponse">What is your favorite story book?</span>
-                        </Box>
-                        <Box item flex={1}>
-                            <Button variant="contained" size="small" color="secondary">Edit</Button>
-                        </Box>
-                    </Grid>
+                    <ProfileInfoRow fieldName={"Phone Number"} fieldValue={phoneNumber} editAlertOnChange={handlePhoneNumberChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <Grid container>
-                        <Box item flex={1}>
-                            <span className="profileEditCategory">Security Answer</span>
-                        </Box>
-                        <Box item flex={2}>
-                            <span className="profileEditResponse">Harry Potter and Sorceror's Stone</span>
-                        </Box>
-                        <Box item flex={1}>
-                            <Button variant="contained" size="small" color="secondary">Edit</Button>
-                        </Box>
-                    </Grid>
+                    <ProfileInfoRow fieldName={"Security Question"} fieldValue={securityQuestion} editAlertOnChange={handleSecurityQuestionChange} onSubmit={()=>{}}/>
+                    <Box height={16}/>
+                    <ProfileInfoRow fieldName={"Security Answer"} fieldValue={securityAnswer} editAlertOnChange={handleSecurityAnswerChange} onSubmit={()=>{}}/>
                 </CardContent>
             </Card>
             <Box height={16}/>
