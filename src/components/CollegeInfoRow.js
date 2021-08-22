@@ -30,9 +30,9 @@ export default function CollegeInfoRow ({clgName, clgLocation, clgFee, clgAccept
                     <dt><ThumbUpIcon className="listIcon"/></dt>
                     <dd>{clgAcceptance}% Acceptance</dd>
                     <dt><ScoreIcon className="listIcon"/></dt>
-                    <dd>Minimum GRE {clgMinMarks} Marks</dd>
+                    <dd>Minimum GRE Marks - {clgMinMarks}</dd>
                     <dt><TranslateIcon className="listIcon"/></dt>
-                    <dd>Minimum TOEFL {languageMarks} Marks</dd>
+                    <dd>Minimum TOEFL Marks - {languageMarks}</dd>
                 </dl>
             </div>
             <div id="collegeRoutingRow">

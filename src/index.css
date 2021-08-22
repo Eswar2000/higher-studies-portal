@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -130,8 +129,9 @@
 
 #cpScoreCard {
   display: flex;
+  font-family: 'Quicksand';
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  border-radius: 5px;
+  border-radius: 7.5px;
   height: 100px;
   width: 80vw;
 }
@@ -151,7 +151,8 @@
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 10px;
+  height: 7.5px;
+  margin-top: 15px;
   border-radius: 5px;  
   background: #d3d3d3;
   outline: none;
@@ -162,26 +163,33 @@
 .markSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 15px;
-  height: 15px;
+  width: 17.5px;
+  height: 17.5px;
   border-radius: 50%; 
-  background: #04AA6D;
+  background: #2EC866;
   cursor: pointer;
 }
 
 .markSlider::-moz-range-thumb {
   width: 15px;
   height: 15px;
-  background: #04AA6D;
+  background: #2EC866;
   cursor: pointer;
 }
 
 /* -------------Start Of College Card Page------------- */
 
+#examinationType {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Impact';
+  letter-spacing: 1.5px;
+}
+
 #collegeRow {
   display: flex;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  border-radius: 5px;
+  border-radius: 7.5px;
   height: 120px;
   width: 80vw;
 }
@@ -196,7 +204,6 @@
   margin: 20px;
   width: 30%;
 }
-
 
 #collegeAvatar {
   height: 80px;
@@ -222,7 +229,8 @@
   grid-column-start: 2;
   margin-left: 10px;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
+  font-family: 'Quicksand';
 }
 
 #collegeAcceptanceRow {

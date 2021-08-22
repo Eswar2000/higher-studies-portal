@@ -10,11 +10,11 @@ export default function CollegePredictorScreen() {
             <div  id="cpScoreCard">
                 <div class="cpScoreCol">
                     <h2>Your Examination</h2>
-                    <span>GRE</span>
+                    <span id="examinationType">GRE</span>
                 </div>
                 <div class="cpScoreCol">
                     <h2>Your GRE Marks is {examMarks}</h2>
-                    <input type="range" min="260" max="340" defaultValue={examMarks} onChange={e => setExamMarks(e.target.value)} class="markSlider" id="markInput"/>
+                    <input type="range" min="260" max="340" defaultValue={examMarks} onChange={e => setExamMarks(e.target.value)} class="markSlider"/>
                 </div>
             </div>
             <Box height={8}/>
