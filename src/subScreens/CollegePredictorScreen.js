@@ -1,6 +1,8 @@
 import {useState} from "react";
 import CollegeInfoRow from "../components/CollegeInfoRow";
 import Box from "@material-ui/core/Box";
+import Avatar from "@material-ui/core/Avatar";
+
 export default function CollegePredictorScreen() {
 
     const [examMarks,setExamMarks]=useState(290);
@@ -9,8 +11,7 @@ export default function CollegePredictorScreen() {
         <div id="subScreenCard">
             <div  id="cpScoreCard">
                 <div class="cpScoreCol">
-                    <h2>Your Examination</h2>
-                    <span id="examinationType">GRE</span>
+                    <Avatar id="examAvatar" variant="rounded"><b>GRE</b></Avatar>
                 </div>
                 <div class="cpScoreCol">
                     <h2>Your GRE Marks is {examMarks}</h2>

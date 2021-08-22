@@ -5,7 +5,6 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import TranslateIcon from '@material-ui/icons/Translate';
 import ScoreIcon from '@material-ui/icons/Score';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 

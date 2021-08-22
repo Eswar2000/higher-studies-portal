@@ -127,6 +127,11 @@
 
 /* -------------Start Of College Predictor Page------------- */
 
+#examAvatar {
+  width: 60px;
+  height: 60px;
+}
+
 #cpScoreCard {
   display: flex;
   font-family: 'Quicksand';
@@ -137,7 +142,7 @@
 }
 
 .cpScoreCol:nth-child(1) {
-  width: 40%;
+  width: 20%;
   text-align: center;
   margin: 20px;
 }
@@ -178,13 +183,6 @@
 }
 
 /* -------------Start Of College Card Page------------- */
-
-#examinationType {
-  font-size: 40px;
-  font-weight: bold;
-  font-family: 'Impact';
-  letter-spacing: 1.5px;
-}
 
 #collegeRow {
   display: flex;
