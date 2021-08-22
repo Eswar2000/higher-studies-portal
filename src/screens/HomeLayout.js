@@ -18,7 +18,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
 import clsx from "clsx";
 import ProfileScreen from "../subScreens/ProfileScreen";
-
+import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
 
 const sidebarWidth=240;
 
@@ -106,7 +106,8 @@ export default function HomeLayout(){
             </Drawer>
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
-                <ProfileScreen/>
+                <CollegePredictorScreen/>
+                {/* <ProfileScreen/> */}
             </div>
         </div>
     );

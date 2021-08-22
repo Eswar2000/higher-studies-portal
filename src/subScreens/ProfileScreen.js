@@ -11,15 +11,15 @@ import RoomIcon from '@material-ui/icons/Room';
 import SchoolIcon from '@material-ui/icons/School';
 import ProfileInfoRow from "../components/ProfileInfoRow";
 import {useState} from "react";
-import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    TextField,
-    Typography
-} from "@material-ui/core";
+// import {
+//     Dialog,
+//     DialogActions,
+//     DialogContent,
+//     DialogContentText,
+//     DialogTitle,
+//     TextField,
+//     Typography
+// } from "@material-ui/core";
 
 
 export default function ProfileScreen() {
@@ -62,7 +62,7 @@ export default function ProfileScreen() {
 
 
     return (
-        <div id="profileScreenCard">
+        <div id="subScreenCard">
             <Card className='profileRowCard' variant="outlined">
                 <CardContent>
                     <Grid container>

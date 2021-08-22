@@ -80,10 +80,12 @@
   font-family: 'Quicksand';
 }
 
-#profileScreenCard {
+/* -------------Start Of Profile Page------------- */
+
+#subScreenCard {
   margin-left: 10vw;
   margin-right: 10vw;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 #shareProfileText {
@@ -124,8 +126,110 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.centerElements {
-  display:inline-block;      
-  margin:0 auto;
-  width: 40vw;
+/* -------------Start Of College Predictor Page------------- */
+
+#cpScoreCard {
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+  height: 100px;
+  width: 80vw;
+}
+
+.cpScoreCol:nth-child(1) {
+  width: 40%;
+  text-align: center;
+  margin: 20px;
+}
+
+.cpScoreCol:nth-child(2) {
+  width: 100%;
+  margin: 20px;
+}
+
+.markSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.markSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.markSlider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+/* -------------Start Of College Card Page------------- */
+
+#collegeRow {
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+  height: 120px;
+  width: 80vw;
+}
+
+#collegeAvatarRow {
+  width: 20%;
+  text-align: center;
+  margin: 20px;
+}
+
+#collegeInfoRow {
+  margin: 20px;
+  width: 30%;
+}
+
+
+#collegeAvatar {
+  height: 80px;
+  width: 80px;
+}
+
+.listIcon {
+  padding: 0;
+  margin: 0;
+  transform: scale(1.05);
+}
+
+#collegeInfoRow dl, #collegeAcceptanceRow dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+#collegeInfoRow dl dt, #collegeAcceptanceRow dl dt {
+  grid-column-start: 1;
+}
+
+#collegeInfoRow dl dd, #collegeAcceptanceRow dl dd {
+  grid-column-start: 2;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#collegeAcceptanceRow {
+  margin: 20px;
+  width: 30%;
+}
+
+#collegeRoutingRow {
+  margin: 50px;
 }
