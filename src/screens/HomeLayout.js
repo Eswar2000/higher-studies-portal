@@ -12,12 +12,13 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-
+import BookIcon from "@material-ui/icons/Book"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
 import clsx from "clsx";
 import ProfileScreen from "../subScreens/ProfileScreen";
+import RespositoryScreen from "./RepositoryScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
 
 const sidebarWidth=240;
@@ -71,7 +72,7 @@ export default function HomeLayout(){
                         <IconButton edge="start" color="inherit" onClick={()=>setSidebarOpen(!sidebarOpen)}>
                             <MenuIcon/>
                             <Box width={8}/>
-                            <Typography variant={"h4"} id={"homeLayoutAppBarText"}>Home</Typography>
+                            <Typography variant={"h5"} id={"homeLayoutAppBarText"}>Menu</Typography>
                         </IconButton>
                     </Box>
                 </Toolbar>
@@ -97,6 +98,10 @@ export default function HomeLayout(){
                         <ListItemIcon>{<AccountCircleIcon/>}</ListItemIcon>
                         <ListItemText primary="Profile"/>
                     </ListItem>
+                    <ListItem button key="Repository" id="dashboardRepositoryBtn" onClick={()=>{}}>
+                        <ListItemIcon>{<BookIcon/>}</ListItemIcon>
+                        <ListItemText primary="Repository"/>
+                    </ListItem>
 
                     <ListItem button onClick={()=>setSidebarOpen(false)}>
                         <ListItemIcon>{<CloseIcon/>}</ListItemIcon>
@@ -106,7 +111,7 @@ export default function HomeLayout(){
             </Drawer>
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
-                <CollegePredictorScreen/>
+                <RespositoryScreen/>
                 {/* <ProfileScreen/> */}
             </div>
         </div>
