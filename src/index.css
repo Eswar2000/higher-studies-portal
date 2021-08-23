@@ -240,3 +240,54 @@
 #collegeRoutingRow {
   margin: 50px;
 }
+
+/* ---------- University Tip Screen ----------*/
+
+.universityTipCard{
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  width: 40vw;
+  padding: 10px;
+  margin-left: 8vw;
+  margin-bottom: 1.25vh;
+  margin-top: 1.25vh;
+
+
+
+}
+
+
+.tipAuthorRow{
+  display: flex;
+  padding: 10px 10px 0px 10px;
+}
+
+.tipAuthorText{
+  font-family: Quicksand;
+  font-weight: bold;
+  font-size: x-large;
+  padding-top: 3px;
+  padding-left: 5px;
+  text-align: center;
+  width: 15vw;
+}
+
+.tipAuthorUniversity{
+  font-family: Quicksand;
+  padding-left: 60px;
+  color: grey;
+}
+
+.universityTip{
+  font-family: Quicksand;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
+.voteReaction{
+  text-align: right;
+}
+
+.tipScreenGrid{
+  display: inline-grid;
+}
