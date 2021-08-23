@@ -8,9 +8,12 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
+
+
 export default function CollegeInfoRow ({clgName, clgLocation, clgFee, clgAcceptance, clgMinMarks, languageMarks}) {
     return (
         <div id="collegeRow">
+            <a href="#">News <span className="badge">5</span></a>
             <div id="collegeAvatarRow">
                 <Avatar id="collegeAvatar"><b>{clgName[0]}</b></Avatar>
             </div>
