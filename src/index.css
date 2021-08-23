@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
@@ -74,7 +73,7 @@
 }
 
 #homeLayoutAppBar{
-  background-color: #0277bd;
+  background-color: #e72585ff;
 }
 
 #homeLayoutAppBarText{
