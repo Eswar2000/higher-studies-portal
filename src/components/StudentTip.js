@@ -1,8 +1,11 @@
-import {Avatar, Chip} from "@material-ui/core";
+import {Avatar, Chip, makeStyles} from "@material-ui/core";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
+
 
 export default function StudentTip({authorName,authorUniversity,tipText,upVotes,downVotes,onVoteCallback}){
+
 
 
     const getUpvoteButtonVariant=()=>{
@@ -27,7 +30,7 @@ export default function StudentTip({authorName,authorUniversity,tipText,upVotes,
     return (
         <div className={"universityTipCard"}>
             <div className={'tipAuthorRow'}>
-                <Avatar sizes={'small'}><b>A</b></Avatar>
+                <Avatar className={GetRandomAvatarColor('random')} sizes={'small'}><b>A</b></Avatar>
                 <p className={'tipAuthorText'}>{authorName}</p>
             </div>
             <p className={'tipAuthorUniversity'}>{authorUniversity}</p>

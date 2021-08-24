@@ -1,8 +1,24 @@
 import BookRead from '../assets/BookRead.svg';
+import {useState} from "react";
+import CustomInput from "../components/CustomInput";
 
 
 
 export default function LoginScreen() {
+
+    const [username,setUsername]=useState("");
+    const [password,setPassword]=useState("");
+
+    const handleUsernameChange=(e)=>{
+        setUsername(e.target.value);
+        console.log(e.target.value);
+    }
+    const handlePasswordChange=(e)=>{
+        setPassword(e.target.value);
+    }
+
+
+
     return (
         <div>
             <div className="loginLeftDiv">
@@ -14,8 +30,8 @@ export default function LoginScreen() {
                     <h1 className="heading setFont">Higher Studies Portal</h1>
                     <h2 className="setFont subHeading">Login</h2>
                     <form>
-                        <input id="longInput" type="text" name="username" placeholder="Username"/><br/>
-                        <input id="longInput" type="password" name="password" placeholder="Password"/><br/>
+                        <CustomInput id="longInput" type="text" name="username" placeholder="Username" onChange={handleUsernameChange}/><br/>
+                        <CustomInput id="longInput" type="password" name="password" placeholder="Password" onChange={handlePasswordChange}/><br/>
                         <button id="longInput" className="loginButton" type="submit">Login</button>
                     </form>
                 </div>

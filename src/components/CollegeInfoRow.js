@@ -6,6 +6,8 @@ import TranslateIcon from '@material-ui/icons/Translate';
 import ScoreIcon from '@material-ui/icons/Score';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
+import {IconButton} from "@material-ui/core";
 
 
 
@@ -14,7 +16,7 @@ export default function CollegeInfoRow ({clgName, clgLocation, clgFee, clgAccept
     return (
         <div id="collegeRow">
             <div id="collegeAvatarRow">
-                <Avatar id="collegeAvatar"><b>{clgName[0]}</b></Avatar>
+                <Avatar className={GetRandomAvatarColor('ascii',clgName)} id="collegeAvatar"><b>{clgName[0]}</b></Avatar>
             </div>
             <div id="collegeInfoRow">
                 <dl>
@@ -37,7 +39,9 @@ export default function CollegeInfoRow ({clgName, clgLocation, clgFee, clgAccept
                 </dl>
             </div>
             <div id="collegeRoutingRow">
-                <ArrowForwardIcon/>
+                <IconButton size={'small'}>
+                    <ArrowForwardIcon color={'secondary'}/>
+                </IconButton>
             </div>
         </div>
     );

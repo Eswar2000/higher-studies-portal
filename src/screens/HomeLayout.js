@@ -108,7 +108,8 @@ export default function HomeLayout(){
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
                 <UniversityTipScreen/>
-                {/* <ProfileScreen/> */}
+                {/*<CollegePredictorScreen/>*/}
+                {/* <ProfileScreen/>*/}
             </div>
         </div>
     );
