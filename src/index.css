@@ -69,7 +69,7 @@
 }
 
 #loginRightDivSubCol {
-  margin-left: 75px;
+  margin-left: 25px;
 }
 
 /* ------------Start of Temporary Sign In Page------------- */
@@ -331,7 +331,7 @@
 .universityTipCard{
   box-shadow: 0 1px 5px rgb(0 0 0 / 0.2);
   border-radius: 7.5px;
-  width: 40vw;
+  width: 75vw;
   padding: 10px;
   margin-left: 8vw;
   margin-bottom: 1.25vh;
@@ -343,6 +343,14 @@
 .tipAuthorRow{
   display: flex;
   padding: 10px 10px 0px 10px;
+}
+
+.tipAuthorAddressing{
+  font-family: Quicksand;
+  font-size: x-large;
+  padding-top: 3px;
+  padding-left: 8px;
+  text-align: start;
 }
 
 .tipAuthorText{
@@ -378,6 +386,8 @@
 
 .tipScreenColumn{
   display: flex;
+  width: 80vw;
+  margin-left: 2.5vw;
 }
 
 .tipScreenRightColumn{
@@ -386,7 +396,21 @@
   margin-right: 20px;
 }
 
+.tipInput{
+  margin-top: 15px;
+}
+
 .commentInputDiv{
   margin-top: 5px;
   margin-left: 10px;
+}
+
+#tipSendButton{
+  float: right;
+}
+
+#addTipFab{
+  bottom: 5vh;
+  right: 0.1vw;
+  position: relative;
 }

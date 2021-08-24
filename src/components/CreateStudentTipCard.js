@@ -1,7 +1,8 @@
-import {Avatar, Chip, IconButton} from "@material-ui/core";
+import {Avatar, Chip, Fab, IconButton} from "@material-ui/core";
 import CustomInput from "./CustomInput";
 import {useState} from "react";
 import SendIcon from '@material-ui/icons/Send';
+import AddIcon from '@material-ui/icons/Add';
 
 
 export default function CreateStudentTipCard({}){
@@ -18,6 +19,7 @@ export default function CreateStudentTipCard({}){
         <div className={"universityTipCard"}>
             <div className={'tipAuthorRow'}>
                 <Avatar sizes={'small'}><b>A</b></Avatar>
+                <p className={'tipAuthorAddressing'}>Comment as </p>
                 <p className={'tipAuthorText'}>Hello</p>
             </div>
             <div className={'commentInputDiv'}>
@@ -25,10 +27,12 @@ export default function CreateStudentTipCard({}){
                     <option>Amrita School of Engineering</option>
                     <option>Stanford</option>
                 </select>
-                <CustomInput id="longInput" type="text" name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
-                <IconButton onClick={()=>{}}>
-                    <SendIcon color={'secondary'}/>
-                </IconButton>
+                <div className={'tipInput'}>
+                    <CustomInput type="text" name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
+                    <IconButton onClick={()=>{}}>
+                        <SendIcon color={'secondary'}/>
+                    </IconButton>
+                </div>
             </div>
         </div>
     );

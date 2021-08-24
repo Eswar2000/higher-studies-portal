@@ -1,6 +1,9 @@
 
-export default function CustomInput({id, type, placeholder,onChange}){
+export default function CustomInput({type, placeholder,onChange}){
     return (
-        <input id={id} type={type} name="username" placeholder={placeholder} onChange={onChange}/>
+        <div className="formDiv">
+            <input type={type} className="formInput" placeholder=" " onChange={onChange}/>
+            <label className="formLabel">{placeholder}</label>
+        </div>
     );
 }

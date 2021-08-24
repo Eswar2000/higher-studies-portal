@@ -40,15 +40,10 @@ export default function LoginScreen() {
                     <form id="signInForm">
                         {/* <h1 className="heading setFont">Higher Studies Portal</h1> */}
                         <h2 className="setFont subHeading">Login</h2>
-                    
-                        <div className="formDiv">
-                            <input type="text" className="formInput" placeholder=" "/>
-                            <label className="formLabel">Username</label>
-                        </div>
-                        <div  className="formDiv">
-                            <input type="text" className="formInput" placeholder=" "/>
-                            <label className="formLabel">Password</label>
-                        </div>
+
+                        <CustomInput type={'text'} placeholder={'Username'} onChange={handleUsernameChange}/>
+                        <CustomInput type={'password'} placeholder={'Password'} onChange={handlePasswordChange}/>
+
                         <input type="submit" className="formButton" value="Sign In"/>
                     </form>
                 </div>
