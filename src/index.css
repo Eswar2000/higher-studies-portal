@@ -414,3 +414,33 @@
   right: 0.1vw;
   position: relative;
 }
+
+/* --------------------Custom Select Dropdown Component------------------ */
+
+.dropdown {
+  width: 378px;
+  position: relative;
+}
+
+.dropdown select {
+  width: 100%;
+  padding: 8px;
+  height: 38px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #DADCE0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -4px;
+  border-top: 8px solid #DADCE0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  pointer-events: none;
+}

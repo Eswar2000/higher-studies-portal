@@ -3,7 +3,7 @@ import CustomInput from "./CustomInput";
 import {useState} from "react";
 import SendIcon from '@material-ui/icons/Send';
 import AddIcon from '@material-ui/icons/Add';
-
+import CustomSelect from "./CustomSelect";
 
 export default function CreateStudentTipCard({}){
 
@@ -23,10 +23,11 @@ export default function CreateStudentTipCard({}){
                 <p className={'tipAuthorText'}>Hello</p>
             </div>
             <div className={'commentInputDiv'}>
-                <select>
+                {/* <select>
                     <option>Amrita School of Engineering</option>
                     <option>Stanford</option>
-                </select>
+                </select> */}
+                <CustomSelect />
                 <div className={'tipInput'}>
                     <CustomInput type="text" name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
                     <IconButton onClick={()=>{}}>
