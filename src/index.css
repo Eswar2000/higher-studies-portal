@@ -51,6 +51,7 @@
   font-size: 27px;
   font-weight: bold;
   color: #0277bd;
+  padding-bottom: 8px;
 }
 
 #longInput {
@@ -68,9 +69,93 @@
 }
 
 #loginRightDivSubCol {
-  margin-top: 25vh;
-  margin-bottom: 25vh;
+  margin-left: 75px;
 }
+
+/* ------------Start of Temporary Sign In Page------------- */
+
+.signInFormDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#signInForm {
+  width: 400px;
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(92,99,105,0.2);
+}
+
+.formDiv {
+  position: relative;
+  height: 20px;
+  margin-bottom: 40px;
+}
+
+.formInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 100%;
+  font-size: 16px;
+  border: 1px solid #DADCE0;
+  border-radius: 8px;
+  outline: none;
+  padding: 8px;
+  background: none;
+  z-index: 1;
+}
+
+.formLabel {
+  position: absolute;
+  left: 1rem;
+  top: 11px;
+  background-color: white;
+  color: #80868B;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.formButton {
+  display: block;
+  width: 378px;
+  padding: 12px 32px;
+  outline: none;
+  border: none;
+  background-color: #1A73E8;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3px;
+}
+
+.formButton:hover {
+  box-shadow: 0 10px 36px rgba(0,0,0,0.15);
+}
+
+.formInput:focus + .formLabel {
+  top: -7px;
+  color: #1A73E8;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.formInput:not(:placeholder-shown).formInput:not(:focus)+.formLabel {
+  top: -7px;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.formInput:focus {
+  border: 1px solid #1A73E8;
+}
+
+/*-------------Start Of Navbar Layout------------- */
 
 #homeLayoutAppBar{
   background-color: #e72585ff;

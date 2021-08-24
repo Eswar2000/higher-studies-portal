@@ -26,7 +26,7 @@ export default function LoginScreen() {
             </div>
             <div className="loginRightDiv">
                 
-                <div id="loginRightDivSubCol" className="centerDiv">
+                {/* <div id="loginRightDivSubCol" className="centerDiv">
                     <h1 className="heading setFont">Higher Studies Portal</h1>
                     <h2 className="setFont subHeading">Login</h2>
                     <form>
@@ -34,7 +34,25 @@ export default function LoginScreen() {
                         <CustomInput id="longInput" type="password" name="password" placeholder="Password" onChange={handlePasswordChange}/><br/>
                         <button id="longInput" className="loginButton" type="submit">Login</button>
                     </form>
+                </div> */}
+
+                <div id="loginRightDivSubCol" className="signInFormDiv">
+                    <form id="signInForm">
+                        {/* <h1 className="heading setFont">Higher Studies Portal</h1> */}
+                        <h2 className="setFont subHeading">Login</h2>
+                    
+                        <div className="formDiv">
+                            <input type="text" className="formInput" placeholder=" "/>
+                            <label className="formLabel">Username</label>
+                        </div>
+                        <div  className="formDiv">
+                            <input type="text" className="formInput" placeholder=" "/>
+                            <label className="formLabel">Password</label>
+                        </div>
+                        <input type="submit" className="formButton" value="Sign In"/>
+                    </form>
                 </div>
+
             </div>
         </div>
     );
