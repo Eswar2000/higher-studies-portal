@@ -1,12 +1,12 @@
-import {Avatar, Chip, Fab, IconButton} from "@material-ui/core";
+import {Avatar, IconButton} from "@material-ui/core";
 import CustomInput from "./CustomInput";
 import {useState} from "react";
 import SendIcon from '@material-ui/icons/Send';
-import AddIcon from '@material-ui/icons/Add';
 
-
+// eslint-disable-next-line
 export default function CreateStudentTipCard({}){
 
+    // eslint-disable-next-line
     const [tipText,setTipText]=useState("");
 
     const handleTipTextChange=(e)=>{

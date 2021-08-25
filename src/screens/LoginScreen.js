@@ -11,7 +11,6 @@ export default function LoginScreen() {
 
     const handleUsernameChange=(e)=>{
         setUsername(e.target.value);
-        console.log(e.target.value);
     }
     const handlePasswordChange=(e)=>{
         setPassword(e.target.value);

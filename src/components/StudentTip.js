@@ -1,4 +1,4 @@
-import {Avatar, Chip, makeStyles} from "@material-ui/core";
+import {Avatar, Chip} from "@material-ui/core";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
