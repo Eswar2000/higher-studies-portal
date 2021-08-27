@@ -1,3 +1,4 @@
+
 import {
     AppBar,
     Box,
@@ -18,6 +19,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
 import clsx from "clsx";
 import UniversityTipScreen from "./UniversityTipScreen";
+import QuizScreen from "./QuizScreen" ;
 
 const sidebarWidth=240;
 
@@ -105,7 +107,8 @@ export default function HomeLayout(){
             </Drawer>
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
-                <UniversityTipScreen/>
+                {/* <UniversityTipScreen/> */}
+                <QuizScreen/>
                 {/*<CollegePredictorScreen/>*/}
                 {/* <ProfileScreen/>*/}
             </div>
