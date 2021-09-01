@@ -1,8 +1,8 @@
 
-export default function CustomInput({type, placeholder,onChange}){
+export default function CustomInput({type="text", placeholder,onChange,disabled=false,value=""}){
     return (
         <div className="formDiv">
-            <input type={type} className="formInput" placeholder=" " onChange={onChange}/>
+            <input disabled={disabled} value={value} type={type} className="formInput" placeholder=" " onChange={onChange}/>
             <label className="formLabel">{placeholder}</label>
         </div>
     );

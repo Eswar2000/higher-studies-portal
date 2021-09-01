@@ -98,19 +98,19 @@ export default function ProfileScreen() {
             <Box height={16}/>
             <Card className='profileRowCard' variant="outlined">
                 <CardContent>
-                    <ProfileInfoRow fieldName={"Name"} fieldValue={name} editAlertOnChange={handleNameChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"Name"} fieldValue={name} fieldOnChange={handleNameChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"University"} fieldValue={university} editAlertOnChange={handleUniversityChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"University"} fieldValue={university} fieldOnChange={handleUniversityChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"City"} fieldValue={city} editAlertOnChange={handleCityChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"City"} fieldValue={city} fieldOnChange={handleCityChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Email"} fieldValue={email} editAlertOnChange={handleEmail} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"Email"} fieldValue={email} fieldOnChange={handleEmail} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Phone Number"} fieldValue={phoneNumber} editAlertOnChange={handlePhoneNumberChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"Phone Number"} fieldValue={phoneNumber} fieldOnChange={handlePhoneNumberChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Security Question"} fieldValue={securityQuestion} editAlertOnChange={handleSecurityQuestionChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"Security Question"} fieldValue={securityQuestion} fieldOnChange={handleSecurityQuestionChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Security Answer"} fieldValue={securityAnswer} editAlertOnChange={handleSecurityAnswerChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"Security Answer"} fieldValue={securityAnswer} fieldOnChange={handleSecurityAnswerChange} onSubmit={()=>{}}/>
                 </CardContent>
             </Card>
             <Box height={16}/>
