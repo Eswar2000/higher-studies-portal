@@ -7,8 +7,24 @@
     --pink: #F72585;
   }
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-html, body, div, span,h1, p ,a, q, s, var,blockquote, b, i, center,ol,ul,table,article, figure, footer, header, nav, section{
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -16,13 +32,15 @@ html, body, div, span,h1, p ,a, q, s, var,blockquote, b, i, center,ol,ul,table,a
 	font: inherit;
 	vertical-align: baseline;
 }
-article, aside, details, figcaption, figure,footer, header, nav, section {
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
 	line-height: 1;
 }
-ol,ul {
+ol, ul {
 	list-style: none;
 }
 blockquote, q {
@@ -38,6 +56,8 @@ table {
 	border-spacing: 0;
 }
 
+/* End of reset */
+
 body {
     font-family: 'Barlow', sans-serif;
 }
@@ -46,15 +66,16 @@ body, html {
     overflow-x: hidden;
 }
 
+/* header section styles */
 header {
     margin: 0 auto;
     display: flex;
-    align-its: center;
+    align-items: center;
     justify-content: space-between;
-    padding: 1.2rem;
+    /*padding: 0rem;*/
 }
 
-.-order {
+.pre-order {
     width: 10rem;
     height: 3rem;
     font-size: 1em;
@@ -76,6 +97,9 @@ header {
     background-color: var(--dr-blue);
     color: var(--off-blue);
 }
+/* end of header section styles */
+
+/* main section styles */
 .container {
     margin: 0 auto;
     padding: 1.2rem;
@@ -84,7 +108,7 @@ header {
 .main__title {
     font-size: 12vw;
     font-weight: 900;
-    text-trans: uppercase;
+    text-transform: uppercase;
     color: var(--dr-blue);
 }
 
@@ -126,6 +150,26 @@ header {
     color: var(--white);
 }
 
+.release__date {
+    align-self: center;
+    margin-right: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--lg-grey);
+}
+
+.img__main-keyboard {
+    
+    background-size: cover;
+    margin-top: 4rem;
+    transform: translateX(1.5rem);
+    height: 88vw;
+    width: 100%;
+    border-radius: 1.25em;
+}
+/* end of main section styles */
+
+/* Info styles */
 .container__info {
     padding-top: 1.2rem;
     display: grid;
@@ -133,8 +177,25 @@ header {
     gap: 4.5rem 1.5rem;
 }
 
+.img__orange-keyboard {
+    /*background-image: url("../assets/image-phone-and-keyboard.jpg");*/
+    background-size: cover;
+    background-color: var(--orange);
+    background-blend-mode: multiply;
+    height: 51vw;
+    border-radius: 1.25em;
+    transform: translateX(-1.5rem);
+}
 
-.__title {
+.img__keyboard-desktop {
+    /*background-image: url("../assets/image-glass-and-keyboard.jpg");*/
+    background-size: cover;
+    height: 51vw;
+    border-radius: 1.25em;
+    transform: translateX(-1.5rem);
+}
+
+.sub__title {
     grid-column: span 2;
     margin: 0 3.75rem;
     font-weight: 900;
@@ -154,8 +215,12 @@ header {
     color: var(--lg-grey);
 }
 
+/* end of Info styles */
+
+/* stats styles */
+
 .container__stats {
-    padding: 4rem 1.2rem 1.2rem 1.2rem;
+    padding: 2rem 1.2rem 0rem 2.2rem;
 }
 
 .article__icon {
@@ -173,7 +238,7 @@ header {
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
-    margin-boom: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 0 4rem;
     line-height: 1.75rem;
 }
@@ -186,8 +251,12 @@ header {
     margin-bottom: 4rem;
 }
 
+/* end of stats styles */
+
+/* footer styles */
+
 footer {
-    padding: 1.2rem 1.2rem 2rem 1.2rem;
+    padding: 0.6rem 1.2rem 2rem 1.2rem;
     text-align: center;
     color: var(--lg-grey);
 }
@@ -198,4 +267,202 @@ footer {
 
 span {
     font-weight: 400;
+}
+/* end of footer styles */
+
+@media screen and (min-width: 768px) {
+    header {
+        padding: 3rem;
+    }
+
+    .container {
+        padding-left: 3rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .main__title {
+        font-size: 3rem;
+    }
+
+    .info__section {
+        padding: 0rem 1.5rem 0rem 0rem;
+    }
+
+    .main__info {
+        padding: 0px;
+    }
+
+    .main__title {
+        padding-top: 2rem;
+    }
+
+    .release__date {
+        margin-right: 3.2rem;
+    }
+
+    .img__main-keyboard {
+       
+        margin-top: 1;
+        height: 10vw;
+        background-size: 600px 530px;
+    }
+
+    .container__info {
+        padding: 4rem;
+    }
+
+    .img__orange-keyboard {
+        transform: none;
+        /*background-image: url("./assets/tablet/image-phone-and-keyboard.jpg");*/
+        height: 41vw;
+    }
+
+    .img__keyboard-desktop {
+        transform: none;
+        /*background-image: url("./assets/tablet/image-glass-and-keyboard.jpg");*/
+        height: 41vw;
+    }
+
+    .sub__title {
+        grid-column: span 1;
+        margin: 0 1.5rem 0 0 ;
+        text-align: left;
+    }
+
+    .sub__info {
+        grid-column: span 1;
+        padding-top: 1rem;
+        margin: 0 0 0 2.25rem;
+        text-align: left;
+    }
+
+    .container__stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4.5rem;
+        margin: 0 2.5rem 8.875rem;
+    }
+
+    .article__icon {
+        margin: 0 0 3rem 0;
+    }
+
+    .article__title {
+        text-align: left;
+        padding: unset;
+        max-width: 12.5rem;
+    }
+
+    .article__info {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    header {
+        padding: 5rem;
+    }
+
+    .container {
+        padding: 0;
+        margin: 0 5rem 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .main__title {
+        font-size: 3.5rem;
+    }
+
+    .main__info {
+        font-size: 1.2rem;
+        margin-right: 2rem;
+    }
+
+    .img__main-keyboard {
+        height: 33.5vw;
+        transform: translateX(0);
+    
+    }
+
+    .container__info {
+        grid-template-columns: 20% 35% auto;
+        gap: 2rem 2rem;
+    }
+
+    .img__orange-keyboard {
+        /*background-image: url("./assets/desktop/image-phone-and-keyboard.jpg");*/
+        height: 33.2vw;
+        grid-row: span 2;
+    }
+
+    .img__keyboard-desktop {
+        /*background-image: url("./assets/desktop/image-glass-and-keyboard.jpg");*/
+        height: 33.2vw;
+        grid-row: span 2;
+    }
+
+    .sub__title {
+        align-self: end;
+        max-width: 12rem;
+        margin-left: 6rem;
+    }
+
+    .sub__info {
+        font-size: 0.8rem;
+        padding-top: 0rem;
+        margin: 0 0 0 6rem;
+    }
+
+    .container__stats {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+        font-size: 0.8rem;
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    header {
+        max-width: 1200px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .container::after {
+        content: '';
+        position: absolute;
+        height: 23%;
+        width: 16rem;
+        background-color: var(--off-blue);
+        border-radius: 1.25rem;
+        transform: translateX(77rem);
+    }
+
+    .container__info {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .container__info::after {
+        content: '';
+        position: absolute;
+        height: 23%;
+        width: 16rem;
+        background-color: var(--off-blue);
+        border-radius: 1.25rem;
+        transform: translateX(-18rem);
+    }
+
+    .container__stats {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 }
