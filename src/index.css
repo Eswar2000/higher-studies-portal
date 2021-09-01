@@ -68,6 +68,11 @@
   border: 1px solid #4fc3f7;
 }
 
+.loginInvalidText{
+  color: red;
+  text-align: center;
+}
+
 #loginRightDivSubCol {
   margin-left: 25px;
 }
