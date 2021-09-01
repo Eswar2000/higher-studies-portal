@@ -5,8 +5,7 @@
 import HomeLayout from "./screens/HomeLayout";
 // import HomeLayout from "./screens/HomeLayout";
 // import ProfileScreen from "./subScreens/ProfileScreen";
-import CustomSelect from './components/CustomSelect';
-
+// import UniversityTipScreen from"./subScreens/UniversityTipScreen";
 function App() {
   return (
      //<LoginScreen/>
@@ -15,6 +14,7 @@ function App() {
     //<ForgotPassword/>
     //<ChangePassword/>
     // <SignUpScreen/>
+    //<UniversityTipScreen/>
   );
 }
 

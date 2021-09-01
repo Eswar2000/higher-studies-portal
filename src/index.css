@@ -75,6 +75,11 @@
   border: 1px solid #4fc3f7;
 }
 
+.loginInvalidText{
+  color: red;
+  text-align: center;
+}
+
 #loginRightDivSubCol {
   margin-left: 25px;
 }
@@ -181,24 +186,28 @@
 }
 
 #shareProfileText {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Quicksand';
   font-size: 25px;
   font-weight: bold;
 }
 
 .profileEditCategory {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Quicksand';
   font-size: 25px;
   font-weight: bold;
 }
 
 .profileEditResponse {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Quicksand';
   font-size: 20px;
 }
 
 .profileRowCard {
   width: 80vw;
+}
+
+#profileExamText{
+  font-family: 'Quicksand';
 }
 
 #profileAvatar {
@@ -209,13 +218,13 @@
 .profileListSecondary {
   font-size: 16px;
   font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Quicksand';
 }
 
 #profileListPrimary {
   font-size: 30px;
   font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Quicksand';
 }
 
 /* -------------Start Of College Predictor Page------------- */
@@ -346,6 +355,9 @@
 
 }
 
+#studentTipSendButton{
+  left: 70vw;
+}
 
 .tipAuthorRow{
   display: flex;
@@ -437,6 +449,7 @@
   border-radius: 8px;
   border: 1px solid #DADCE0;
   appearance: none;
+  color: grey;
   -webkit-appearance: none;
 }
 
