@@ -453,3 +453,47 @@
   border-right: 4px solid transparent;
   pointer-events: none;
 }
+
+/* ------------------- Quiz Screen CSS ---------------------------  */
+
+.questioncount
+{
+  font-size: 1.5em ;
+  color: black ;
+  text-align: left ;
+  margin-left: 3em ;
+}
+
+#quizquestion
+{
+  font-size: 1.5em ;
+  color: black ;
+  text-align: left ;
+  margin-left: 3em ;
+}
+
+#radiobutton
+{
+  font-size: 1.5em ; 
+  color: black ;
+  margin-left: 3em ;
+}
+
+#options
+{
+  font-size: 1.5em ; 
+  color: black ;
+  margin-left: 3em ;
+}
+
+#buttonstyle
+{
+  height: 2.5em ; 
+  width: 5em ;
+  margin-left: 8em ;
+}
+
+.maindiv
+{
+  background-color: white ;
+}

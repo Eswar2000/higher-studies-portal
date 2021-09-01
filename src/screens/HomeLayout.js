@@ -1,3 +1,4 @@
+
 import {
     AppBar,
     Box,
@@ -20,6 +21,7 @@ import clsx from "clsx";
 import UniversityTipScreen from "./UniversityTipScreen";
 import ProfileScreen from "../subScreens/ProfileScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
+import QuizScreen from "./QuizScreen" ;
 
 const sidebarWidth=240;
 
@@ -108,8 +110,10 @@ export default function HomeLayout(){
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
                 {/*<UniversityTipScreen/>*/}
+                {/* <UniversityTipScreen/> */}
+                <QuizScreen/>
                 {/*<CollegePredictorScreen/>*/}
-                 <ProfileScreen/>
+                {/* <ProfileScreen/>*/}
             </div>
         </div>
     );
