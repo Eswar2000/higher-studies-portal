@@ -28,10 +28,10 @@ export default function CreateStudentTipCard({}){
                     <option>Amrita School of Engineering</option>
                     <option>Stanford</option>
                 </select> */}
-                <CustomSelect />
+                <CustomSelect/>
                 <div className={'tipInput'}>
                     <CustomInput type="text" name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
-                    <IconButton onClick={()=>{}}>
+                    <IconButton id={'studentTipSendButton'} onClick={()=>{}}>
                         <SendIcon color={'secondary'}/>
                     </IconButton>
                 </div>

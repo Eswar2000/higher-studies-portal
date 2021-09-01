@@ -348,6 +348,9 @@
 
 }
 
+#studentTipSendButton{
+  left: 70vw;
+}
 
 .tipAuthorRow{
   display: flex;
@@ -439,6 +442,7 @@
   border-radius: 8px;
   border: 1px solid #DADCE0;
   appearance: none;
+  color: grey;
   -webkit-appearance: none;
 }
 

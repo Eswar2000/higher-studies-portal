@@ -111,7 +111,8 @@ export default function HomeLayout(){
                 {/*{TODO: This is where main content goes}*/}
                 {/*<UniversityTipScreen/>*/}
                 {/* <UniversityTipScreen/> */}
-                <QuizScreen/>
+                {/*<QuizScreen/>*/}
+                <UniversityTipScreen/>
                 {/*<CollegePredictorScreen/>*/}
                 {/* <ProfileScreen/>*/}
             </div>
