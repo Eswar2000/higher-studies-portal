@@ -10,8 +10,10 @@ function App() {
     // <LoginScreen/>
     //   <HomeLayout/>
       // <CustomSelect/>
-      <LandingScreen/>
+      // <LandingScreen/>
     // <SignUpScreen/>
+    <HomeLayout/>
+
   );
 }
 
