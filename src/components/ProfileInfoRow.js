@@ -6,18 +6,27 @@ import {
     DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle,
+    DialogTitle, IconButton,
     TextField,
     Typography
 } from "@material-ui/core";
 import {useState} from "react";
+import EditIcon from '@material-ui/icons/Edit';
+import CustomInput from "./CustomInput";
+import DoneIcon from '@material-ui/icons/Done';
+import {Done} from "@material-ui/icons";
 
 
-export default function ProfileInfoRow({fieldName,fieldValue,editAlertOnChange,onSubmit}){
-    const [openEditAlert,setOpenEditAlert]=useState(false);
+export default function ProfileInfoRow({fieldName,fieldValue,fieldOnChange,onSubmit}){
+    const [editEnabled,setEditEnabled]=useState(false);
 
-    const handleEditAlertState=(value)=>{
-        setOpenEditAlert(value);
+    const handleEditButtonOnClick=async ()=>{
+        if(editEnabled){
+            await onSubmit();
+            setEditEnabled(false);
+        }else{
+            setEditEnabled(true);
+        }
     }
 
     return (
@@ -26,32 +35,15 @@ export default function ProfileInfoRow({fieldName,fieldValue,editAlertOnChange,o
                 <span className="profileEditCategory">{fieldName}</span>
             </Box>
             <Box item flex={2}>
-                <span className="profileEditResponse">{fieldValue}</span>
+                <CustomInput value={fieldValue} disabled={!editEnabled} onChange={fieldOnChange}/>
+                {/*<span className="profileEditResponse">{fieldValue}</span>*/}
             </Box>
             <Box item flex={1}>
-                <Button variant="contained" size="small" color="secondary" onClick={()=>{
-                    handleEditAlertState(true);
-                }}>EDIT</Button>
+                <IconButton onClick={handleEditButtonOnClick}>
+                    {!editEnabled && <EditIcon color={'secondary'}/>}
+                    {editEnabled && <DoneIcon color={'secondary'}/>}
+                </IconButton>
             </Box>
-            <Dialog open={openEditAlert} onClose={()=>{handleEditAlertState(false);}} aria-labelledby="form-dialog-title">
-                <DialogTitle>
-                    <Typography variant="h5" color="secondary">Update {fieldName}</Typography>
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        {`Edit your ${fieldName} by entering the new value and click the update button`}
-                    </DialogContentText>
-                    <TextField variant="outlined" value={fieldValue} onChange={editAlertOnChange} color="secondary" label={`New ${fieldName}`} type="text" fullWidth/>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={()=>{handleEditAlertState(false)}} color="secondary">
-                        Cancel
-                    </Button>
-                    <Button onClick={()=>{handleEditAlertState(false)}} color="secondary">
-                        Update
-                    </Button>
-                </DialogActions>
-            </Dialog>
         </Grid>
     );
 }

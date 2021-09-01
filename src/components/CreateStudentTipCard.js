@@ -1,12 +1,13 @@
-import {Avatar, Chip, Fab, IconButton} from "@material-ui/core";
+import {Avatar, IconButton} from "@material-ui/core";
 import CustomInput from "./CustomInput";
 import {useState} from "react";
 import SendIcon from '@material-ui/icons/Send';
-import AddIcon from '@material-ui/icons/Add';
 import CustomSelect from "./CustomSelect";
 
+// eslint-disable-next-line
 export default function CreateStudentTipCard({}){
 
+    // eslint-disable-next-line
     const [tipText,setTipText]=useState("");
 
     const handleTipTextChange=(e)=>{
@@ -27,10 +28,10 @@ export default function CreateStudentTipCard({}){
                     <option>Amrita School of Engineering</option>
                     <option>Stanford</option>
                 </select> */}
-                <CustomSelect />
+                <CustomSelect/>
                 <div className={'tipInput'}>
                     <CustomInput type="text" name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
-                    <IconButton onClick={()=>{}}>
+                    <IconButton id={'studentTipSendButton'} onClick={()=>{}}>
                         <SendIcon color={'secondary'}/>
                     </IconButton>
                 </div>

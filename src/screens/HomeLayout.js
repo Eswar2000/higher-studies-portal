@@ -17,8 +17,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
 import clsx from "clsx";
-import ProfileScreen from "../subScreens/ProfileScreen";
 import UniversityTipScreen from "./UniversityTipScreen";
+import ProfileScreen from "../subScreens/ProfileScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
 
 const sidebarWidth=240;
