@@ -54,6 +54,13 @@
   padding-bottom: 8px;
 }
 
+.secQs {
+  font-size: 19px;
+  font-weight: bold;
+  color: #0277bd;
+  padding-bottom: 8px;
+}
+
 #longInput {
   width: 70%;
   height: 30px;
