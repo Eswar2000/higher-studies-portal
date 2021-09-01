@@ -72,7 +72,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem;
+    /*padding: 0rem;*/
 }
 
 .pre-order {
@@ -178,7 +178,7 @@ header {
 }
 
 .img__orange-keyboard {
-    background-image: url("./assets/mobile/image-phone-and-keyboard.jpg");
+    /*background-image: url("../assets/image-phone-and-keyboard.jpg");*/
     background-size: cover;
     background-color: var(--orange);
     background-blend-mode: multiply;
@@ -188,7 +188,7 @@ header {
 }
 
 .img__keyboard-desktop {
-    background-image: url("./assets/mobile/image-glass-and-keyboard.jpg");
+    /*background-image: url("../assets/image-glass-and-keyboard.jpg");*/
     background-size: cover;
     height: 51vw;
     border-radius: 1.25em;
@@ -220,7 +220,7 @@ header {
 /* stats styles */
 
 .container__stats {
-    padding: 4rem 1.2rem 1.2rem 1.2rem;
+    padding: 2rem 1.2rem 0rem 2.2rem;
 }
 
 .article__icon {
@@ -256,7 +256,7 @@ header {
 /* footer styles */
 
 footer {
-    padding: 1.2rem 1.2rem 2rem 1.2rem;
+    padding: 0.6rem 1.2rem 2rem 1.2rem;
     text-align: center;
     color: var(--lg-grey);
 }
@@ -286,7 +286,7 @@ span {
     }
 
     .info__section {
-        padding: 2rem 1.5rem 0rem 0rem;
+        padding: 0rem 1.5rem 0rem 0rem;
     }
 
     .main__info {
@@ -314,13 +314,13 @@ span {
 
     .img__orange-keyboard {
         transform: none;
-        background-image: url("./assets/tablet/image-phone-and-keyboard.jpg");
+        /*background-image: url("./assets/tablet/image-phone-and-keyboard.jpg");*/
         height: 41vw;
     }
 
     .img__keyboard-desktop {
         transform: none;
-        background-image: url("./assets/tablet/image-glass-and-keyboard.jpg");
+        /*background-image: url("./assets/tablet/image-glass-and-keyboard.jpg");*/
         height: 41vw;
     }
 
@@ -395,13 +395,13 @@ span {
     }
 
     .img__orange-keyboard {
-        background-image: url("./assets/desktop/image-phone-and-keyboard.jpg");
+        /*background-image: url("./assets/desktop/image-phone-and-keyboard.jpg");*/
         height: 33.2vw;
         grid-row: span 2;
     }
 
     .img__keyboard-desktop {
-        background-image: url("./assets/desktop/image-glass-and-keyboard.jpg");
+        /*background-image: url("./assets/desktop/image-glass-and-keyboard.jpg");*/
         height: 33.2vw;
         grid-row: span 2;
     }
