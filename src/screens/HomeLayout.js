@@ -20,6 +20,12 @@ import clsx from "clsx";
 import ProfileScreen from "../subScreens/ProfileScreen";
 import RespositoryScreen from "./RepositoryScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
+import NewResourceScreen from "../subScreens/NewResource";
+import {BrowserRouter as Router,
+    Switch,
+    Route,
+    Link} from 'react-router-dom';
+import { NewReleasesSharp } from "@material-ui/icons";
 
 const sidebarWidth=240;
 
@@ -64,6 +70,7 @@ export default function HomeLayout(){
     }
 
     return (
+        
         <div>
             <AppBar id={'homeLayoutAppBar'} position={'static'}>
                 <Toolbar>
@@ -77,6 +84,7 @@ export default function HomeLayout(){
                     </Box>
                 </Toolbar>
             </AppBar>
+            <Router>
             <Drawer variant='permanent'
                     className={clsx(useStyles.sidebar,{
                         [useStyles.sidebarOpen]: sidebarOpen,
@@ -88,18 +96,18 @@ export default function HomeLayout(){
                             [useStyles.sidebarClose]:!sidebarOpen
                         })
                     }}
-            >
+            >   
                 <List>
                     <ListItem button key="Home" id="dashboardHomeBtn" onClick={()=>{}}>
-                        <ListItemIcon>{<HomeIcon/>}</ListItemIcon>
+                        <ListItemIcon><Link to='/'>{<HomeIcon/>}</Link></ListItemIcon>
                         <ListItemText primary="Home"/>
                     </ListItem>
                     <ListItem button key="Profile" id="dashboardProfileBtn" onClick={()=>{}}>
-                        <ListItemIcon>{<AccountCircleIcon/>}</ListItemIcon>
+                        <ListItemIcon><Link to='/profile'>{<AccountCircleIcon/>}</Link></ListItemIcon>
                         <ListItemText primary="Profile"/>
                     </ListItem>
                     <ListItem button key="Repository" id="dashboardRepositoryBtn" onClick={()=>{}}>
-                        <ListItemIcon>{<BookIcon/>}</ListItemIcon>
+                        <ListItemIcon><Link to='/repository'>{<BookIcon/>}</Link></ListItemIcon>
                         <ListItemText primary="Repository"/>
                     </ListItem>
 
@@ -110,10 +118,10 @@ export default function HomeLayout(){
                 </List>
             </Drawer>
             <div className="dashboardContentSpace">
-                {/*{TODO: This is where main content goes}*/}
                 <RespositoryScreen/>
-                {/* <ProfileScreen/> */}
+                <NewResourceScreen/>
             </div>
+            </Router>
         </div>
     );
 }

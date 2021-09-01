@@ -6,7 +6,6 @@ import HomeLayout from "./screens/HomeLayout";
 function App() {
   return (
     <HomeLayout/>
-    // <SignUpScreen/>
   );
 }
 

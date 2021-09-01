@@ -5,6 +5,11 @@ export default function RespositoryScreen() {
         <div>
             <div class='RepositoryScreen'>
                 <h1 id='heading'>RESOURCE REPOSITORY</h1>
+                <div className="d-grid gap-2">
+                    <Button variant="dark" size="sm">
+                        Add New Resource
+                    </Button>
+                </div>
                 <div id='books-grid'>
                     <div class='book-tile'>
                     <Card style={{ width: '18rem' }}>
@@ -14,7 +19,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         The GRE or the Graduate Record Examination, is an entrance test that is necessary to secure admission into a graduate course in the US.
                         </Card.Text>
-                        <Button variant="primary" size="sm">View Resource</Button>
+                        <Button variant="dark" size="sm">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -27,7 +32,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         Magoosh gives students everything they need to make studying from their computers or mobile devices a breeze. Our online GRE prep offers over a thousand practice questions and video explanations.
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -40,7 +45,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         The GRE strategy session is a useful guide if you are unsure how to start your GRE preparation. You can register for one of Veritas Prep’s upcoming free live online GRE strategy sessions.
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -53,7 +58,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         A comprehensive study guide was designed to help students get their bearings at the start of their GRE preparation. The guide is packed with all kinds of useful information such as a description of the sections and an explanation of the scoring system.
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -66,7 +71,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         The Official Guide is your must-have study guide that features Verbal, Quantitative, and Integrated Reasoning questions types.
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -79,7 +84,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         The PowerScore Critical Reasoning Bible comes highly recommended. This in-depth guide is packed with theory and mini-drills to get your head around Critical Reasoning concepts. 
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -92,7 +97,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         SWAYAM Online Courses provides access to teaching-learning resources. These resources were earlier delivered on the SWAYAM platform.
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
@@ -105,7 +110,7 @@ export default function RespositoryScreen() {
                         <Card.Text>
                         e-PG Pathshala hosts high quality, curriculum-based, interactive e-content containing 23,000 modules (e-text and video) in 70 Post Graduate disciplines.
                         </Card.Text>
-                        <Button variant="primary">View Resource</Button>
+                        <Button variant="dark">View Resource</Button>
                     </Card.Body>
                     </Card>
                     </div>
