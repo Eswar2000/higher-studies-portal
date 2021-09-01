@@ -86,7 +86,7 @@ export default function ProfileScreen() {
                         </Box>
 
                         <Box item flex={1} textAlign="center">
-                            <List dense disablePadding>
+                            <List id={'profileExamText'} dense disablePadding>
                                 <h3>Examination</h3>
                                 <h1>GRE</h1>
                             </List>

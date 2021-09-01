@@ -7,10 +7,10 @@ import HomeLayout from "./screens/HomeLayout";
 function App() {
   return (
     // <LoginScreen/>
-    //   <HomeLayout/>
+      <HomeLayout/>
       // <CustomSelect/>
 
-    <SignUpScreen/>
+    // <SignUpScreen/>
   );
 }
 
