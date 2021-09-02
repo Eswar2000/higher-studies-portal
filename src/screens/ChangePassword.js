@@ -39,16 +39,16 @@ export default function ChangePassword(){
                         <h2 className="setFont subHeading">Change password</h2>
 
                         <h2 className="setFont secQs">Username:</h2>
-                        <CustomInput type={'text'} placeholder={'Username'} onChange={handleUsernameChange}/>
+                        <CustomInput type={'text'} value={username} onChange={handleUsernameChange}/>
                         
                         <h2 className="setFont secQs">Old password:</h2>
-                        <CustomInput type={'password'} placeholder={'Old Password'} onChange={handleOldPassChange}/>
+                        <CustomInput type={'password'} value={oldPassword} onChange={handleOldPassChange}/>
 
                         <h2 className="setFont secQs">New password:</h2>
-                        <CustomInput type={'password'} placeholder={'New Password'} onChange={handlePassChange}/>
+                        <CustomInput type={'password'} value={password} onChange={handlePassChange}/>
 
                         <h2 className="setFont secQs">Confirm password:</h2>
-                        <CustomInput type={'password'} placeholder={'Confirm Password'} onChange={handleNewPassChange}/>
+                        <CustomInput type={'password'} value={newPassword} onChange={handleNewPassChange}/>
 
                         <input type="submit" className="formButton" value="Submit"/>
                     </form>
