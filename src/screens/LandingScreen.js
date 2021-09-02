@@ -1,5 +1,6 @@
-import './landingPageStyles.css';
+// import './landingPageStyles.css';
 import BrandLogo from '../assets/logo4.png';
+import GetGraduated from '../assets/GetGraduated.svg';
 
 
 export default function LandingScreen(){
@@ -19,7 +20,9 @@ export default function LandingScreen(){
                         <a href="/signup" class="pre-order__org">Get Started</a>
                     </div>
                 </div>
-                <div class="img__main-keyboard"></div>
+                <div>
+                    <img height={315} width={625} src={GetGraduated}/>
+                </div>
             </section>
 
             <section class="container__stats">

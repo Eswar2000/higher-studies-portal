@@ -24,11 +24,13 @@ import ProfileScreen from "../subScreens/ProfileScreen";
 import RespositoryScreen from "./RepositoryScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
 import NewResourceScreen from "../subScreens/NewResource";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {BrowserRouter as Router,
     Switch,
     Route,
     Link} from 'react-router-dom';
 import { NewReleasesSharp } from "@material-ui/icons";
+import {useHistory} from "react-router";
 
 const sidebarWidth=240;
 
@@ -61,6 +63,7 @@ const styles=makeStyles((theme)=>({
 
 export default function HomeLayout(){
 
+    const history=useHistory();
     const useStyles=styles();
     const [sidebarOpen, setSidebarOpen]  = useState(false);
 
@@ -85,6 +88,9 @@ export default function HomeLayout(){
                             <Typography variant={"h5"} id={"homeLayoutAppBarText"}>Menu</Typography>
                         </IconButton>
                     </Box>
+                    <IconButton onClick={()=>{history.replace('/login')}}>
+                        <ExitToAppIcon id={'appBarIcon'}/>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Router>
@@ -102,15 +108,15 @@ export default function HomeLayout(){
             >   
                 <List>
                     <ListItem button key="Home" id="dashboardHomeBtn" onClick={()=>{}}>
-                        <ListItemIcon><Link to='/'>{<HomeIcon/>}</Link></ListItemIcon>
+                        <ListItemIcon><Link to='/home/'>{<HomeIcon/>}</Link></ListItemIcon>
                         <ListItemText primary="Home"/>
                     </ListItem>
                     <ListItem button key="Profile" id="dashboardProfileBtn" onClick={()=>{}}>
-                        <ListItemIcon><Link to='/profile'>{<AccountCircleIcon/>}</Link></ListItemIcon>
+                        <ListItemIcon><Link to='/home/profile'>{<AccountCircleIcon/>}</Link></ListItemIcon>
                         <ListItemText primary="Profile"/>
                     </ListItem>
                     <ListItem button key="Repository" id="dashboardRepositoryBtn" onClick={()=>{}}>
-                        <ListItemIcon><Link to='/repository'>{<BookIcon/>}</Link></ListItemIcon>
+                        <ListItemIcon><Link to='/home/repository'>{<BookIcon/>}</Link></ListItemIcon>
                         <ListItemText primary="Repository"/>
                     </ListItem>
 

@@ -7,54 +7,30 @@
     --pink: #F72585;
   }
 
-
-html, body, div, span,h1, p ,a, q, s, var,blockquote, b, i, center,ol,ul,table,article, figure, footer, header, nav, section{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-article, aside, details, figcaption, figure,footer, header, nav, section {
-	display: block;
-}
 body {
-	line-height: 1;
+    line-height: 1;
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+    font-family: 'Barlow', sans-serif;
+
 }
-ol,ul {
+ol, ul {
 	list-style: none;
 }
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 
-body {
-    font-family: 'Barlow', sans-serif;
-}
-
-body, html {
+html {
     overflow-x: hidden;
 }
 
 header {
+    padding: 5rem;
     margin: 0 auto;
     display: flex;
-    align-its: center;
+    align-items: center;
     justify-content: space-between;
-    /*padding: 0rem;*/
 }
 
-.-order {
+.pre-order {
     width: 10rem;
     height: 3rem;
     font-size: 1em;
@@ -76,31 +52,33 @@ header {
     background-color: var(--dr-blue);
     color: var(--off-blue);
 }
+
 .container {
     margin: 0 auto;
-    padding: 1.2rem;
+    padding-left: 3rem;
+    flex-direction: row;
+    padding: 0;
+    margin: 0 5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 }
 
 .main__title {
     font-size: 12vw;
     font-weight: 900;
-    text-trans: uppercase;
+    text-transform: uppercase;
     color: var(--dr-blue);
+    font-size: 3rem;
 }
 
 .main__info {
     color: var(--lg-grey);
     margin-top: 2rem;
     line-height: 1.5rem;
+    padding: 0px;
 }
 
-.date__info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 2rem;
-}
 
 .pre-order__org {
     width: 10rem;
@@ -113,7 +91,7 @@ header {
     justify-content: center;
     text-align: center;
     text-decoration: none;
-    background-color: var(--pink);
+    background-color: #03A9F4;
     font-weight: 700;
     color: var(--white);
     line-height: 1.625rem;
@@ -121,20 +99,16 @@ header {
     
 }
 
-.pre-order__org:hover {
-    background-color: var(--off-blue);
-    color: var(--white);
-}
 
 .container__info {
     padding-top: 1.2rem;
     display: grid;
-    grid-template-columns: 34% auto;
-    gap: 4.5rem 1.5rem;
+    grid-template-columns: 20% 35% auto;
+    gap: 2rem 2rem;
 }
 
 
-.__title {
+.sub__title {
     grid-column: span 2;
     margin: 0 3.75rem;
     font-weight: 900;
@@ -142,6 +116,12 @@ header {
     line-height: 2.25rem;
     text-align: center;
     text-transform: uppercase;
+    grid-column: span 1;
+    margin: 0 1.5rem 0 0 ;
+    text-align: left;
+    align-self: end;
+    max-width: 12rem;
+    margin-left: 6rem;
 }
 
 .sub__info {
@@ -152,30 +132,36 @@ header {
     line-height: 1.625rem;
     text-align: center;
     color: var(--lg-grey);
+    grid-column: span 1;
+    padding-top: 1rem;
+    margin: 0 0 0 2.25rem;
+    text-align: left;
+    font-size: 0.8rem;
+    padding-top: 0rem;
+    margin: 0 0 0 6rem;
 }
 
 .container__stats {
     padding: 2rem 1.2rem 0rem 2.2rem;
 }
-
-.article__icon {
-    width: 4rem;
-    height: 4rem;
-    background: var(--orange);
-    border-radius: 1rem;
-    margin: 0 auto 3rem;
-    display: grid;
-    place-items: center;
+.container__stats {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    font-size: 0.8rem;
 }
+
 
 .article__title {
     font-size: 1.5rem;
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
-    margin-boom: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 0 4rem;
     line-height: 1.75rem;
+    text-align: left;
+    padding: unset;
+    max-width: 12.5rem;
 }
 
 .article__info {
@@ -184,6 +170,35 @@ header {
     text-align: center;
     line-height: 1.7rem;
     margin-bottom: 4rem;
+    text-align: left;
+}
+
+
+span {
+    font-weight: 400;
+}
+
+
+.info__section {
+    padding: 0rem 1.5rem 0rem 0rem;
+}
+
+
+.container__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5rem;
+    margin: 0 2.5rem 8.875rem;
+}
+
+.article__icon {
+    margin: 0 0 3rem 0;
+}
+
+.container__stats {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    font-size: 0.8rem;
 }
 
 footer {
@@ -194,8 +209,4 @@ footer {
 
 .footer__info {
     font-weight: 600;
-}
-
-span {
-    font-weight: 400;
 }

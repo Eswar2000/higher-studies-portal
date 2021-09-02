@@ -2,11 +2,13 @@ import AddUser from '../assets/AddUser.svg';
 import CustomInput from "../components/CustomInput";
 import InputValidation from "../tools/InputValidation";
 import {useState} from "react";
+import {useHistory} from "react-router";
 
 
 
 export default function SignUpScreen() {
 
+    const history=useHistory();
     const [username, setUsername]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
@@ -38,6 +40,11 @@ export default function SignUpScreen() {
         setConfirmPassword(e.target.value);
     }
 
+    const onSubmit=(e)=>{
+        e.preventDefault();
+        history.replace('/login');
+    }
+
 
 
 
@@ -57,7 +64,7 @@ export default function SignUpScreen() {
                         <CustomInput type="password" name="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
 
                         <CustomInput type="password" name="confirmPassword" value={confirmPassword} placeholder="Confirm Password" onChange={handleConfirmPasswordChange}/>
-                        <input className={'formButton'} name={'SignUp'} type="submit"/>
+                        <input className={'formButton'} name={'SignUp'} type="submit" onClick={onSubmit}/>
                         {!usernameValid && <p className={'loginInvalidText'}>Username must be 5-25 alphanumeric characters only</p>}
                         {usernameValid && !emailValid && <p className={'loginInvalidText'}>Enter valid Email</p>}
                         {usernameValid && emailValid && !passwordValid && <p className={'loginInvalidText'}>Password must contain 8-16 characters including at least <br/> 1 Upper case, 1 Lower case and 1 special character</p>}

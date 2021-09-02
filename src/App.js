@@ -16,6 +16,9 @@ function App() {
         <Route exact path={'/signup'}>
           <SignUpScreen/>
         </Route>
+        <Route exact path={'/home'}>
+          <HomeLayout/>
+        </Route>
         <Route path={'/'}>
           <LandingScreen/>
         </Route>
