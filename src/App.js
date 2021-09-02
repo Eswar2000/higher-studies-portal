@@ -7,8 +7,8 @@ import LandingScreen from "./screens/LandingScreen";
 
 function App() {
   return (
-    // <LoginScreen/>
-      <HomeLayout/>
+    <LoginScreen/>
+    //   <HomeLayout/>
       // <CustomSelect/>
       // <LandingScreen/>
     // <SignUpScreen/>

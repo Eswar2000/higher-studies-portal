@@ -1,4 +1,4 @@
-import {Button, Card} from 'react-bootstrap'
+import {Button, Card} from 'react-bootstrap';
 
 export default function RespositoryScreen() {
     return (

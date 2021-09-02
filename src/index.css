@@ -233,7 +233,7 @@
   font-family: 'Quicksand';
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 7.5px;
-  height: 100px;
+  height: auto;
   width: 80vw;
 }
 
@@ -284,18 +284,18 @@
   display: flex;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 7.5px;
-  height: 120px;
+  height: auto;
   width: 80vw;
 }
 
 #collegeAvatarRow {
   width: 20%;
   text-align: center;
-  margin: 20px;
+  margin: 35px 0px 0px 20px;
 }
 
 #collegeInfoRow {
-  margin: 20px;
+  margin-top: 20px;
   width: 30%;
 }
 
@@ -328,7 +328,7 @@
 }
 
 #collegeAcceptanceRow {
-  margin: 20px;
+  margin-top: 20px;
   width: 30%;
 }
 

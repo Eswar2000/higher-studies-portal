@@ -1,4 +1,4 @@
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap';
 
 export default function NewResource() {
     return (
