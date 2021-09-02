@@ -65,8 +65,8 @@ const styles=makeStyles((theme)=>({
 
 export default function HomeLayout(){
 
-    const screenPaths=['home','profile','repository','predictor','tips'];
-    const screenNames=['Home','Profile','Study Materials','University Finder','Forum'];
+    const screenPaths=['home','profile','repository','quiz','predictor','tips'];
+    const screenNames=['Home','Profile','Study Materials','Sample Quiz','University Finder','Forum'];
     const history=useHistory();
     const url=useRouteMatch().url;
     const useStyles=styles();
@@ -147,16 +147,25 @@ export default function HomeLayout(){
                         </Link>
 
                         <Link to={`${url}/${screenPaths[3]}`} className={'sidebarOptionText'}>
-                            <ListItem button key="CollegePredictor" id="dashboardCollegePredictorBtn" onClick={()=>{setCurrentPathIndex(3)}}>
+                            <ListItem button key="QuizScreen" id="dashboardCollegePredictorBtn" onClick={()=>{setCurrentPathIndex(3)}}>
                                 <ListItemIcon>{<SchoolIcon className={getSidebarStyleClass(3)}/>}</ListItemIcon>
-                                <ListItemText className={getSidebarStyleClass(3)} primary="College Predictor"/>
+                                <ListItemText className={getSidebarStyleClass(3)} primary="Quiz"/>
                             </ListItem>
                         </Link>
 
                         <Link to={`${url}/${screenPaths[4]}`} className={'sidebarOptionText'}>
-                            <ListItem button key="Tip" id="dashboardTipBtn" onClick={()=>{setCurrentPathIndex(4)}}>
-                                <ListItemIcon>{<DoneAllIcon className={getSidebarStyleClass(4)}/>}</ListItemIcon>
-                                <ListItemText className={getSidebarStyleClass(4)} primary="Tips"/>
+                            <ListItem button key="CollegePredictor" id="dashboardCollegePredictorBtn" onClick={()=>{setCurrentPathIndex(4)}}>
+                                <ListItemIcon>{<SchoolIcon className={getSidebarStyleClass(4)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(4)} primary="College Predictor"/>
+                            </ListItem>
+                        </Link>
+
+
+
+                        <Link to={`${url}/${screenPaths[5]}`} className={'sidebarOptionText'}>
+                            <ListItem button key="Tip" id="dashboardTipBtn" onClick={()=>{setCurrentPathIndex(5)}}>
+                                <ListItemIcon>{<DoneAllIcon className={getSidebarStyleClass(5)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(5)} primary="Tips"/>
                             </ListItem>
                         </Link>
 
@@ -178,9 +187,12 @@ export default function HomeLayout(){
                         <RepositoryScreen/>
                     </Route>
                     <Route exact path={`${url}/${screenPaths[3]}`}>
-                        <CollegePredictorScreen/>
+                        <QuizScreen/>
                     </Route>
                     <Route exact path={`${url}/${screenPaths[4]}`}>
+                        <CollegePredictorScreen/>
+                    </Route>
+                    <Route exact path={`${url}/${screenPaths[5]}`}>
                         <UniversityTipScreen/>
                     </Route>
                 </Switch>
