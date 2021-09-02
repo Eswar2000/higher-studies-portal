@@ -14,6 +14,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import BookIcon from "@material-ui/icons/Book"
+import QuizScreen from "./QuizScreen";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
@@ -22,7 +23,6 @@ import UniversityTipScreen from "./UniversityTipScreen";
 import ProfileScreen from "../subScreens/ProfileScreen";
 import RespositoryScreen from "./RepositoryScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
-import QuizScreen from "./QuizScreen" ;
 import NewResourceScreen from "../subScreens/NewResource";
 import {BrowserRouter as Router,
     Switch,
@@ -128,8 +128,12 @@ export default function HomeLayout(){
                 {/*<UniversityTipScreen/>*/}
                 {/*<CollegePredictorScreen/>*/}
                 {/* <ProfileScreen/>*/}
-                <RespositoryScreen/>
+                {/*<RespositoryScreen/>*/}
                 {/*<NewResourceScreen/>*/}
+                {/* <UniversityTipScreen/> */}
+                {/* <CollegePredictorScreen/> */}
+                {/* <ProfileScreen/> */}
+                <QuizScreen/>
             </div>
             </Router>
         </div>
