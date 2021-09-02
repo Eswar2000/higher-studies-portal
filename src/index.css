@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -94,7 +95,7 @@
 }
 
 #signInForm {
-  width: 400px;
+  width: auto;
   padding: 4rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(92,99,105,0.2);
@@ -102,7 +103,7 @@
 
 .formDiv {
   position: relative;
-  height: 20px;
+  height: 45px;
   margin-bottom: 40px;
 }
 
@@ -133,7 +134,7 @@
 
 .formButton {
   display: block;
-  width: 378px;
+  width: 360px;
   padding: 12px 32px;
   outline: none;
   border: none;
@@ -170,7 +171,36 @@
 /*-------------Start Of Navbar Layout------------- */
 
 #homeLayoutAppBar{
-  background-color: #e72585ff;
+  background: linear-gradient(45deg,#F72585,#B5179E, #4361EE, #4895EF, #EC38BC , #ff0080);
+  background-size: 150% 150%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+#appBarIcon{
+  color: white;
+}
+
+@keyframes gradientAnimation{
+  0% {
+    background-position: 0% 60%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 60%;
+  }
+}
+
+.sidebarOptionText{
+  text-decoration-color: white !important;
+  color: black;
+  font-family: Quicksand;
+  font-weight: bold !important;
+}
+
+.screenOptionSelected{
+  color: #1A73E8;
 }
 
 #homeLayoutAppBarText{
@@ -239,7 +269,7 @@
   font-family: 'Quicksand';
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 7.5px;
-  height: 100px;
+  height: auto;
   width: 80vw;
 }
 
@@ -260,7 +290,7 @@
   width: 100%;
   height: 7.5px;
   margin-top: 15px;
-  border-radius: 5px;  
+  border-radius: 5px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -272,7 +302,7 @@
   appearance: none;
   width: 17.5px;
   height: 17.5px;
-  border-radius: 50%; 
+  border-radius: 50%;
   background: #2EC866;
   cursor: pointer;
 }
@@ -290,18 +320,18 @@
   display: flex;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 7.5px;
-  height: 120px;
+  height: auto;
   width: 80vw;
 }
 
 #collegeAvatarRow {
   width: 20%;
   text-align: center;
-  margin: 20px;
+  margin: 35px 0px 0px 20px;
 }
 
 #collegeInfoRow {
-  margin: 20px;
+  margin-top: 20px;
   width: 30%;
 }
 
@@ -334,7 +364,7 @@
 }
 
 #collegeAcceptanceRow {
-  margin: 20px;
+  margin-top: 20px;
   width: 30%;
 }
 
@@ -437,7 +467,7 @@
 /* --------------------Custom Select Dropdown Component------------------ */
 
 .dropdown {
-  width: 378px;
+  width: 360px;
   position: relative;
 }
 
@@ -463,4 +493,196 @@
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   pointer-events: none;
+}
+
+/* ------------------- Quiz Screen CSS ---------------------------  */
+
+.questioncount
+{
+  font-size: 1.5em ;
+  color: black ;
+  text-align: left ;
+  margin-left: 3em ;
+}
+
+#quizquestion
+{
+  font-size: 1.5em ;
+  color: black ;
+  text-align: left ;
+  margin-left: 3em ;
+}
+
+#radiobutton
+{
+  font-size: 1.5em ;
+  color: black ;
+  margin-left: 3em ;
+}
+
+#options
+{
+  font-size: 1.5em ;
+  color: black ;
+  margin-left: 3em ;
+}
+
+#buttonstyle
+{
+  height: 2.5em ;
+  width: 5em ;
+  margin-left: 8em ;
+}
+
+.maindiv {
+  background-color: white;
+}
+.RepositoryScreen, .NewResourceScreen {
+  margin: 60px;
+}
+
+.RepositoryScreen #heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: 'Rubik', sans-serif;
+  color: #3F37C9;
+}
+
+.RepositoryScreen #books-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.RepositoryScreen .book-tile {
+  margin: 30px;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.RepositoryScreen .book-tile:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.RepositoryScreen .card-title {
+  font-weight: bolder;
+}
+
+.RepositoryScreen .card {
+  background-color: #E8ECFD !important;
+}
+
+.NewResourceScreen h1 {
+  text-align: center;
+}
+
+.NewResourceScreen Form {
+  padding: 2% 5%;
+}
+
+#imageDiv {
+  float: right;
+  padding: 2%;
+}
+
+/* --------------------Start of Eswar Quiz Screen------------------ */
+
+.quizRow {
+  display: flex;
+  height: 80vh;
+  width: 90vw;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#quizQuestionCol {
+  margin: 20px;
+  width: 70%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+#quizQuestion {
+  font-family: 'Quicksand';
+  font-size: 40px;
+  text-align: center;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+#quizOverviewCol {
+  margin: 20px;
+  width: 30%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+#quizNavContainer {
+  margin: 80px 10px auto 10px;
+}
+
+.quizNavNext {
+  float: right;
+}
+
+.quizNavPrev {
+  float: left;
+}
+
+#quizBanner {
+  margin: 10px;
+}
+
+#quizOverview {
+  margin: 30px 10px 30px 10px;
+}
+
+#quizOverview p {
+  font-family: 'Quicksand';
+  font-size: 22px;
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  font-weight: 700;
+}
+
+/* --------------------Start of Quiz Option Card------------------ */
+
+.quizOptionCard {
+  display: flex;
+  height: 40px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  transition: transform 0.3s;
+}
+
+.quizOptionCard:hover{
+  transform: scale(1.05,1.2);
+}
+
+#quizOptionAvatar {
+  font-family: 'Quicksand';
+  height: 35px;
+  width: 35px;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  margin-left: 7.5px;
+  margin-right: 10px;
+}
+
+#quizOption {
+  font-family: 'Quicksand';
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
 }
