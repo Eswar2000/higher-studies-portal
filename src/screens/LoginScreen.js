@@ -3,6 +3,7 @@ import {useState} from "react";
 import CustomInput from "../components/CustomInput";
 import InputValidation from "../tools/InputValidation";
 import {useHistory} from "react-router";
+import {Link} from "react-router-dom";
 
 
 
@@ -62,6 +63,9 @@ export default function LoginScreen() {
 
                         <input type="submit" className="formButton" value="Sign In" onClick={onSubmit}/><br/>
                         {errorText!=="" && <p className={'loginInvalidText'}>{errorText}</p>}
+
+                        <Link to={'/recovery'}>Forgot your Password? Click Here</Link>
+
                     </form>
                 </div>
 

@@ -21,6 +21,12 @@ function App() {
         <Route exact path={'/home'}>
           <HomeLayout/>
         </Route>
+        <Route exact path={'/recovery'}>
+          <ForgotPassword/>
+        </Route>
+        <Route exact path={'/changePassword'}>
+          <ChangePassword/>
+        </Route>
         <Route path={'/'}>
           <LandingScreen/>
         </Route>
