@@ -21,16 +21,18 @@ import {useState} from "react";
 import clsx from "clsx";
 import UniversityTipScreen from "./UniversityTipScreen";
 import ProfileScreen from "../subScreens/ProfileScreen";
-import RespositoryScreen from "./RepositoryScreen";
+import RepositoryScreen from "./RepositoryScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
 import NewResourceScreen from "../subScreens/NewResource";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SchoolIcon from '@material-ui/icons/School';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
 import {BrowserRouter as Router,
     Switch,
     Route,
     Link} from 'react-router-dom';
-import { NewReleasesSharp } from "@material-ui/icons";
-import {useHistory} from "react-router";
+import {DoneAll, NewReleasesSharp} from "@material-ui/icons";
+import {useRouteMatch,useHistory} from "react-router";
 
 const sidebarWidth=240;
 
@@ -63,8 +65,12 @@ const styles=makeStyles((theme)=>({
 
 export default function HomeLayout(){
 
+    const screenPaths=['home','profile','repository','predictor','tips'];
+    const screenNames=['Home','Profile','Study Materials','University Finder','Forum'];
     const history=useHistory();
+    const url=useRouteMatch().url;
     const useStyles=styles();
+    const [currentPathIndex,setCurrentPathIndex]=useState(0);
     const [sidebarOpen, setSidebarOpen]  = useState(false);
 
 
@@ -74,6 +80,19 @@ export default function HomeLayout(){
         }
         return sidebarWidth/4.5;
     }
+
+    const getSidebarStyleClass=(index)=>{
+        if(index===currentPathIndex){
+            return 'screenOptionSelected';
+        }
+        return null;
+    }
+
+    // const changeScreen=(index)=>{
+    //     history.push(`${url}/${screenPaths[index]}`);
+    //     console.log(history);
+    //     console.log(`${url}/${screenPaths[index]}`);
+    // }
 
     return (
         
@@ -85,7 +104,7 @@ export default function HomeLayout(){
                         <IconButton edge="start" color="inherit" onClick={()=>setSidebarOpen(!sidebarOpen)}>
                             <MenuIcon/>
                             <Box width={8}/>
-                            <Typography variant={"h5"} id={"homeLayoutAppBarText"}>Menu</Typography>
+                            <Typography variant={"h5"} id={"homeLayoutAppBarText"}>{screenNames[currentPathIndex]}</Typography>
                         </IconButton>
                     </Box>
                     <IconButton onClick={()=>{history.replace('/login')}}>
@@ -106,30 +125,65 @@ export default function HomeLayout(){
                         })
                     }}
             >   
-                <List>
-                    <ListItem button key="Home" id="dashboardHomeBtn" onClick={()=>{}}>
-                        <ListItemIcon><Link to='/home/'>{<HomeIcon/>}</Link></ListItemIcon>
-                        <ListItemText primary="Home"/>
-                    </ListItem>
-                    <ListItem button key="Profile" id="dashboardProfileBtn" onClick={()=>{}}>
-                        <ListItemIcon><Link to='/home/profile'>{<AccountCircleIcon/>}</Link></ListItemIcon>
-                        <ListItemText primary="Profile"/>
-                    </ListItem>
-                    <ListItem button key="Repository" id="dashboardRepositoryBtn" onClick={()=>{}}>
-                        <ListItemIcon><Link to='/home/repository'>{<BookIcon/>}</Link></ListItemIcon>
-                        <ListItemText primary="Repository"/>
-                    </ListItem>
+                    <List>
+                        <Link to={`${url}/${screenPaths[0]}`} className={'sidebarOptionText'}>
+                            <ListItem button key="Home" id="dashboardHomeBtn" onClick={()=>{setCurrentPathIndex(0)}}>
+                                <ListItemIcon>{<HomeIcon className={getSidebarStyleClass(0)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(0)} primary="Home"/>
+                            </ListItem>
+                        </Link>
+                        <Link to={`${url}/${screenPaths[1]}`} className={'sidebarOptionText'}>
+                            <ListItem button key="Profile" id="dashboardProfileBtn" onClick={()=>{setCurrentPathIndex(1)}}>
+                                <ListItemIcon>{<AccountCircleIcon className={getSidebarStyleClass(1)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(1)} primary="Profile"/>
+                            </ListItem>
+                        </Link>
 
-                    <ListItem button onClick={()=>setSidebarOpen(false)}>
-                        <ListItemIcon>{<CloseIcon/>}</ListItemIcon>
-                        <ListItemText primary={"Close"} />
-                    </ListItem>
-                </List>
+                        <Link to={`${url}/${screenPaths[2]}`} className={'sidebarOptionText'}>
+                            <ListItem button key="Repository" id="dashboardRepositoryBtn" onClick={()=>{setCurrentPathIndex(2)}}>
+                                <ListItemIcon>{<BookIcon className={getSidebarStyleClass(2)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(2)} primary="Repository"/>
+                            </ListItem>
+                        </Link>
+
+                        <Link to={`${url}/${screenPaths[3]}`} className={'sidebarOptionText'}>
+                            <ListItem button key="CollegePredictor" id="dashboardCollegePredictorBtn" onClick={()=>{setCurrentPathIndex(3)}}>
+                                <ListItemIcon>{<SchoolIcon className={getSidebarStyleClass(3)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(3)} primary="College Predictor"/>
+                            </ListItem>
+                        </Link>
+
+                        <Link to={`${url}/${screenPaths[4]}`} className={'sidebarOptionText'}>
+                            <ListItem button key="Tip" id="dashboardTipBtn" onClick={()=>{setCurrentPathIndex(4)}}>
+                                <ListItemIcon>{<DoneAllIcon className={getSidebarStyleClass(4)}/>}</ListItemIcon>
+                                <ListItemText className={getSidebarStyleClass(4)} primary="Tips"/>
+                            </ListItem>
+                        </Link>
+
+
+                        <ListItem button onClick={()=>setSidebarOpen(false)}>
+                            <ListItemIcon>{<CloseIcon/>}</ListItemIcon>
+                            <ListItemText primary={"Close"} />
+                        </ListItem>
+                    </List>
             </Drawer>
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
-                <UniversityTipScreen/>
-                {/* <ProfileScreen/>*/}
+
+                <Switch>
+                    <Route exact path={`${url}/${screenPaths[1]}`}>
+                        <ProfileScreen/>
+                    </Route>
+                    <Route exact path={`${url}/${screenPaths[2]}`}>
+                        <RepositoryScreen/>
+                    </Route>
+                    <Route exact path={`${url}/${screenPaths[3]}`}>
+                        <CollegePredictorScreen/>
+                    </Route>
+                    <Route exact path={`${url}/${screenPaths[4]}`}>
+                        <UniversityTipScreen/>
+                    </Route>
+                </Switch>
                 {/*<RespositoryScreen/>*/}
                 {/*<NewResourceScreen/>*/}
                 {/* <CollegePredictorScreen/>*/}

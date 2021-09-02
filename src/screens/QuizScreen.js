@@ -70,7 +70,7 @@ export default function QuizScreen() {
             </div>
             <div id="quizOverviewCol">
                 <div>
-                    <img id="quizBanner" src={QuizThink} width="370" alt="QuizBanner"/>
+                    <img id="quizBanner" src={QuizThink} width="370" height={'230'} alt="QuizBanner"/>
                 </div>
                 <div id="quizOverview">
                     <p>Total Number Of Questions: 10</p>

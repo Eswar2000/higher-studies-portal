@@ -185,6 +185,17 @@
   }
 }
 
+.sidebarOptionText{
+  text-decoration-color: white !important;
+  color: black;
+  font-family: Quicksand;
+  font-weight: bold !important;
+}
+
+.screenOptionSelected{
+  color: #1A73E8;
+}
+
 #homeLayoutAppBarText{
   font-family: 'Quicksand';
 }
