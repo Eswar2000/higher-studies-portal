@@ -1,4 +1,4 @@
-// import './landingPageStyles.css';
+import './landingPageStyles.css';
 import BrandLogo from '../assets/logo4.png';
 
 
@@ -7,7 +7,7 @@ export default function LandingScreen(){
         <div>
             <header>
                 <img src={BrandLogo} alt="logo"/>
-                    <a href="#" class="pre-order">Login</a>
+                    <a href="/login" class="pre-order">Login</a>
             </header>
 
             <section class="container">
@@ -16,7 +16,7 @@ export default function LandingScreen(){
                     <p class="main__info">Get help from thousands of aspirants just like you!
                         Discover courses & universities abroad and connect with students studying there!</p>
                     <div class="date__info">
-                        <a href="#" class="pre-order__org">Get Started</a>
+                        <a href="/signup" class="pre-order__org">Get Started</a>
                     </div>
                 </div>
                 <div class="img__main-keyboard"></div>
