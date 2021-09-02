@@ -54,8 +54,8 @@ export default function LoginScreen() {
                         {/* <h1 className="heading setFont">Higher Studies Portal</h1> */}
                         <h2 className="setFont subHeading">Login</h2>
 
-                        <CustomInput type={'text'} placeholder={'Username'} onChange={handleUsernameChange}/>
-                        <CustomInput type={'password'} placeholder={'Password'} onChange={handlePasswordChange}/>
+                        <CustomInput type={'text'} value={username} placeholder={'Username'} onChange={handleUsernameChange}/>
+                        <CustomInput type={'password'} value={password} placeholder={'Password'} onChange={handlePasswordChange}/>
 
                         <input type="submit" className="formButton" value="Sign In" onClick={onSubmit}/><br/>
                         {errorText!=="" && <p className={'loginInvalidText'}>{errorText}</p>}

@@ -30,7 +30,7 @@ export default function CreateStudentTipCard({}){
                 </select> */}
                 <CustomSelect/>
                 <div className={'tipInput'}>
-                    <CustomInput type="text" name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
+                    <CustomInput type="text" value={tipText} name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
                     <IconButton id={'studentTipSendButton'} onClick={()=>{}}>
                         <SendIcon color={'secondary'}/>
                     </IconButton>

@@ -47,16 +47,16 @@ export default function SignUpScreen() {
                 <div id="loginRightDivSubCol" className="signInFormDiv">
                     <form id={'signInForm'}>
                         <h1 className="setFont subHeading">Sign Up</h1>
-                        <CustomInput type="text" name="username" placeholder="Username" onChange={handleUsernameChange}/>
+                        <CustomInput type="text" name="username" value={username} placeholder="Username" onChange={handleUsernameChange}/>
 
-                        <CustomInput type="email" name="email" placeholder="User email" onChange={handleEmailChange}/>
+                        <CustomInput type="email" name="email" value={email} placeholder="User email" onChange={handleEmailChange}/>
                         {/*<input id="longInput" type="text" name="dob" placeholder="Date of Birth" onFocus={(obj)=>{*/}
                         {/*    obj.type='date';*/}
                         {/*}}/><br/>*/}
 
-                        <CustomInput type="password" name="password" placeholder="Password" onChange={handlePasswordChange}/>
+                        <CustomInput type="password" name="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
 
-                        <CustomInput type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleConfirmPasswordChange}/>
+                        <CustomInput type="password" name="confirmPassword" value={confirmPassword} placeholder="Confirm Password" onChange={handleConfirmPasswordChange}/>
                         <input className={'formButton'} name={'SignUp'} type="submit"/>
                         {!usernameValid && <p className={'loginInvalidText'}>Username must be 5-25 alphanumeric characters only</p>}
                         {usernameValid && !emailValid && <p className={'loginInvalidText'}>Enter valid Email</p>}
