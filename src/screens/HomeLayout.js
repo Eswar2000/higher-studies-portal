@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-
+import QuizScreen from "./QuizScreen";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
@@ -108,8 +108,9 @@ export default function HomeLayout(){
             <div className="dashboardContentSpace">
                 {/*{TODO: This is where main content goes}*/}
                 {/* <UniversityTipScreen/> */}
-                <CollegePredictorScreen/>
+                {/* <CollegePredictorScreen/> */}
                 {/* <ProfileScreen/> */}
+                <QuizScreen/>
             </div>
         </div>
     );

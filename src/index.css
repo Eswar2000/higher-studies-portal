@@ -457,3 +457,102 @@
   border-right: 4px solid transparent;
   pointer-events: none;
 }
+
+
+/* --------------------Start of Quiz Screen------------------ */
+
+.quizRow {
+  display: flex;
+  height: 80vh;
+  width: 90vw;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#quizQuestionCol {
+  margin: 20px;
+  width: 70%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+#quizQuestion {
+  font-family: 'Quicksand';
+  font-size: 40px;
+  text-align: center;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+#quizOverviewCol {
+  margin: 20px;
+  width: 30%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+#quizNavContainer {
+  margin: 80px 10px auto 10px;
+}
+
+.quizNavNext {
+  float: right;
+}
+
+.quizNavPrev {
+  float: left;
+}
+
+#quizBanner {
+  margin: 10px;
+}
+
+#quizOverview {
+  margin: 30px 10px 30px 10px;
+}
+
+#quizOverview p {
+  font-family: 'Quicksand';
+  font-size: 22px;
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  font-weight: 700;
+}
+
+/* --------------------Start of Quiz Option Screen------------------ */
+
+.quizOptionCard {
+  display: flex;
+  height: 40px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  transition: transform 0.3s;
+}
+
+.quizOptionCard:hover{
+  transform: scale(1.05,1.2);
+}
+
+#quizOptionAvatar {
+  font-family: 'Quicksand';
+  height: 35px;
+  width: 35px;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  margin-left: 7.5px;
+  margin-right: 10px;
+}
+
+#quizOption {
+  font-family: 'Quicksand';
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+}
