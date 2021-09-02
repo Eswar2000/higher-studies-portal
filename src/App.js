@@ -8,11 +8,11 @@ import LandingScreen from "./screens/LandingScreen";
 function App() {
   return (
     // <LoginScreen/>
-    //   <HomeLayout/>
+      <HomeLayout/>
       // <CustomSelect/>
       // <LandingScreen/>
     // <SignUpScreen/>
-    <HomeLayout/>
+    // <HomeLayout/>
 
   );
 }

@@ -130,10 +130,10 @@ export default function HomeLayout(){
                 {/* <ProfileScreen/>*/}
                 {/*<RespositoryScreen/>*/}
                 {/*<NewResourceScreen/>*/}
-                {/* <UniversityTipScreen/> */}
+                 <UniversityTipScreen/>
                 {/* <CollegePredictorScreen/> */}
                 {/* <ProfileScreen/> */}
-                <QuizScreen/>
+                {/*<QuizScreen/>*/}
             </div>
             </Router>
         </div>

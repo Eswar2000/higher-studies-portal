@@ -88,7 +88,7 @@
 }
 
 #signInForm {
-  width: 400px;
+  width: auto;
   padding: 4rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(92,99,105,0.2);
@@ -96,7 +96,7 @@
 
 .formDiv {
   position: relative;
-  height: 20px;
+  height: 45px;
   margin-bottom: 40px;
 }
 
@@ -127,7 +127,7 @@
 
 .formButton {
   display: block;
-  width: 378px;
+  width: 360px;
   padding: 12px 32px;
   outline: none;
   border: none;
@@ -431,7 +431,7 @@
 /* --------------------Custom Select Dropdown Component------------------ */
 
 .dropdown {
-  width: 378px;
+  width: 360px;
   position: relative;
 }
 
@@ -553,7 +553,7 @@
   padding: 2%;
 }
 
-/* --------------------Start of Quiz Screen------------------ */
+/* --------------------Start of Eswar Quiz Screen------------------ */
 
 .quizRow {
   display: flex;
@@ -614,7 +614,7 @@
   font-weight: 700;
 }
 
-/* --------------------Start of Quiz Option Screen------------------ */
+/* --------------------Start of Quiz Option Card------------------ */
 
 .quizOptionCard {
   display: flex;
