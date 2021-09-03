@@ -1,38 +1,76 @@
 export default function QuizScreen({})
 {
     return (
-        <div class="maindiv">
-        <div>
-            <div class = "container">
-                <div class = "col-md-12">
-                    <div class = "row">
-                        <br/><br/><br/>
-                        <p class = "questioncount">Question _ of _</p>
-                        <br/><br/><br/><br/>
-                        <p id= "quizquestion">Who is the president of India?</p>
-                        <br/><br/><br/>
-                        <div class = "radio">
-                            <input class="form-check-input" type="radio" name="option1" id = "radiobutton"/>
-                            <label id="options" for="option1">
-                                Ramnath Govind
+        <div class="background">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="maindiv"> 
+                        <div class="quizstatus">
+                            <h3 style={"color: black; text-align: center;"}>Quiz Status</h3>
+                            <h5 style={"color: black; margin-top: 2em; text-align: center;"}>Current question __ of __</h5>
+                            <h5 style={"color: black; text-align: center;"}>Total Questions - __</h5>
+                            <h5 style={"color: black; text-align: center;"}>Questions answered - __</h5>
+                            <h5 style={"color: black; text-align: center;"}>Questions remaining - __</h5>
+                        
+                        </div> 
+                    
+                    <div class="question">Q1. Howmuch marks will you award to us for this review ?</div>
+                    {/* <!-- Radio buttons --> */}
+                    
+                
+                    <div style={"display: inline-block; margin-top: 3.3em;"}>
+                        <div class="options">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" class="optionlabel">
+                                10
+                                </label>
+                                </input>
+                            </div>
+                        </div>
+    
+                        <div class="options">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" class="optionlabel">
+                                10.00
+                                </label>
+                                </input>
+                            </div>
+                        </div>
+                        
+                        <div class="options">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                            <label class="form-check-label" class="optionlabel">
+                            Ten
                             </label>
-                            <br/><br/>
-                            <input class="form-check-input" type="radio" name="option2" id = "radiobutton"/>
-                            <label id="options" for="option2">
-                                Narendra Modi
-                            </label>
-                            <br/><br/>
-                            <input class="form-check-input" type="radio" name="option3" id = "radiobutton"/>
-                            <label id="options" for="option3">
-                                Rahul Gandhi
-                            </label>
-                            <br/><br/><br/><br/>
-                            <button class="btn btn-primary" id="buttonstyle"> Next</button>
+                            </input>
+                        </div>
+                        </div>
+
+                        <div class="options">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                                <label class="form-check-label" class="optionlabel">
+                                2x5 = 10
+                                </label>
+                            </input>
                         </div>
                     </div>
+                    
+                    <div>
+                        <button class="btn btn-primary" class="buttons-prev">Previous</button>
+                    
+                        <button class="btn btn-primary" class="buttons-next">Next</button>
+                    </div>
+                    
                 </div>
-            </div>
+                </div>
         </div>
     </div>
+            </div>
+        </div>
     ) ;
 }

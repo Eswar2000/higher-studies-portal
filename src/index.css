@@ -446,45 +446,79 @@
 }
 
 /* ------------------- Quiz Screen CSS ---------------------------  */
-
-.questioncount
-{
-  font-size: 1.5em ;
-  color: black ;
-  text-align: left ;
-  margin-left: 3em ;
-}
-
-#quizquestion
-{
-  font-size: 1.5em ;
-  color: black ;
-  text-align: left ;
-  margin-left: 3em ;
-}
-
-#radiobutton
-{
-  font-size: 1.5em ; 
-  color: black ;
-  margin-left: 3em ;
-}
-
-#options
-{
-  font-size: 1.5em ; 
-  color: black ;
-  margin-left: 3em ;
-}
-
-#buttonstyle
-{
-  height: 2.5em ; 
-  width: 5em ;
-  margin-left: 8em ;
-}
-
 .maindiv
 {
-  background-color: white ;
+  width:100%; 
+  height:140px; 
+  border:3px solid; 
+  color: rgb(114, 9, 183); 
+  border-radius: 1em; 
+  background-color: rgb(114, 9, 183); 
+  margin-top: 6em; 
+  display: inline; 
+  margin-left: 0.7em;
+}
+
+.background
+{
+  background-color: rgb(114, 9, 183) ;
+}
+
+.quizstatus
+{
+  width:300px; 
+  height:240px; 
+  border:3px solid; 
+  color: white; 
+  border-radius: 1em; 
+  background-color: white; 
+  margin-left: 10em; 
+  float: right; 
+  margin-top: 10.8em;
+}
+
+.options
+{
+  width:400px; 
+  height:2.5em; 
+  border:3px solid; 
+  color: white; 
+  background-color: white; 
+  margin-top: 2em; 
+  border-radius: 1em;
+}
+
+.buttons-prev
+{
+  background-color: gold; 
+  border-color: gold; 
+  height: 2.1em; width: 5.9em; 
+  margin-top: 3.3em; 
+  color: black; 
+  display: inline;
+}
+
+.buttons-next
+{
+  background-color: gold; 
+  border-color: gold; 
+  height: 2.1em; 
+  width: 5.9em;
+  margin-top: 3.3em ; 
+  margin-left : 5em; 
+  display: inline; 
+  color: black;
+}
+
+.optionlabel
+{
+  color: black;
+}
+
+.question
+{
+  color: white; 
+  font-weight: bold; 
+  font-size: xx-large; 
+  margin-top: 35px;
 }
