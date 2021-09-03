@@ -5,7 +5,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import QuizThink from '../assets/QuizThink.svg';
 import {amber, green, red} from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const useStyles = makeStyles((theme) => ({
     amber: {
@@ -59,10 +59,6 @@ export default function QuizScreen() {
                 {optionSelected.map((value,index)=>(
                     <QuizOptionRow key={index} quizOptionType={String.fromCharCode(65+index)} quizOptionText={optionsText[index]} quizAvatarColor={getOptionColorClass(index,optionSelected[index])} onOptionClick={onOptionClick}/>
                 ))}
-                {/*<QuizOptionRow quizOptionType={'A'} quizOptionText={"Christopher Nolan"} quizAvatarColor={classes.green}/>*/}
-                {/*<QuizOptionRow quizOptionType={'B'} quizOptionText={"J K Rowling"} quizAvatarColor={classes.amber}/>*/}
-                {/*<QuizOptionRow quizOptionType={'C'} quizOptionText={"James Cameron"} quizAvatarColor={classes.amber}/>*/}
-                {/*<QuizOptionRow quizOptionType={'D'} quizOptionText={"Quentin Tarantino"} quizAvatarColor={classes.amber}/>*/}
                 <div id="quizNavContainer">
                     <Button variant="contained" color="secondary" className="quizNavPrev" startIcon={<ArrowBackIcon />}>Prev</Button>
                     <Button variant="contained" color="secondary" className="quizNavNext" endIcon={<ArrowForwardIcon />}>Next</Button>

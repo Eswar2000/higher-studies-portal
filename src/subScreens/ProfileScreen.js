@@ -12,7 +12,6 @@ import SchoolIcon from '@material-ui/icons/School';
 import ProfileInfoRow from "../components/ProfileInfoRow";
 import {useState} from "react";
 import {useHistory} from "react-router";
-import {Link} from 'react-router-dom';
 // import {
 //     Dialog,
 //     DialogActions,

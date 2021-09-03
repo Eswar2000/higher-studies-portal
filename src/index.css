@@ -176,10 +176,6 @@
   animation: gradientAnimation 10s ease infinite;
 }
 
-#appBarIcon{
-  color: white;
-}
-
 @keyframes gradientAnimation{
   0% {
     background-position: 0% 60%;
@@ -191,6 +187,12 @@
     background-position: 0% 60%;
   }
 }
+
+#appBarIcon{
+  color: white;
+}
+
+
 
 .sidebarOptionText{
   text-decoration-color: white !important;

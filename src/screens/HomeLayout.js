@@ -32,7 +32,6 @@ import {BrowserRouter as Router,
     Switch,
     Route,
     Link} from 'react-router-dom';
-import {DoneAll, NewReleasesSharp} from "@material-ui/icons";
 import {useRouteMatch,useHistory} from "react-router";
 
 const sidebarWidth=240;
