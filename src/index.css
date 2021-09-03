@@ -257,6 +257,15 @@
   font-family: 'Quicksand';
 }
 
+#changePasswordBtn {
+  background-color: #F50057;
+  padding: 4px 15px 7px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+}
+
 /* -------------Start Of College Predictor Page------------- */
 
 #examAvatar {

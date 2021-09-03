@@ -13,7 +13,8 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import BookIcon from "@material-ui/icons/Book"
+import BookIcon from "@material-ui/icons/Book";
+import BallotIcon from '@material-ui/icons/Ballot';
 import QuizScreen from "./QuizScreen";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
@@ -148,7 +149,7 @@ export default function HomeLayout(){
 
                         <Link to={`${url}/${screenPaths[3]}`} className={'sidebarOptionText'}>
                             <ListItem button key="QuizScreen" id="dashboardCollegePredictorBtn" onClick={()=>{setCurrentPathIndex(3)}}>
-                                <ListItemIcon>{<SchoolIcon className={getSidebarStyleClass(3)}/>}</ListItemIcon>
+                                <ListItemIcon>{<BallotIcon className={getSidebarStyleClass(3)}/>}</ListItemIcon>
                                 <ListItemText className={getSidebarStyleClass(3)} primary="Quiz"/>
                             </ListItem>
                         </Link>

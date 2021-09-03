@@ -1,4 +1,4 @@
-import BookRead from '../assets/BookRead.svg';
+import PasswordForget from '../assets/PasswordForget.svg';
 import {useState} from "react";
 import CustomInput from "../components/CustomInput";
 
@@ -30,7 +30,7 @@ export default function ForgotPassword(){
     return (
         <div>
             <div className="loginLeftDiv">
-                <img src={BookRead} alt="LoginImage"/>
+                <img src={PasswordForget} alt="Forgot Password"/>
             </div>
             <div className="loginRightDiv">
 

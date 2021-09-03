@@ -126,9 +126,12 @@ export default function ProfileScreen() {
                     <Grid container>
                         <Box item flex={1} textAlign="center">
                             <Button variant="contained" size="small" color="secondary">Share Profile URL</Button>
+                            {/* <Link to={'/recovery'}>Forgot your Password? Click Here</Link> */}
                         </Box>
                         <Box item flex={1} textAlign="center">
-                            <Button variant="contained" size="small" color="secondary">Change Password</Button>
+                            <Box height={4}/>
+                            {/* <Button variant="contained" size="small" color="secondary">Change Password</Button> */}
+                            <Link id="changePasswordBtn" to={'/'}>CHANGE PASSWORD</Link>
                         </Box>
                     </Grid>
                 </CardContent>
