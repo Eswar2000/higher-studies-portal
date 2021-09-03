@@ -1,14 +1,21 @@
 import {Button, Card} from 'react-bootstrap';
+import {useRouteMatch} from "react-router";
+import {Link} from 'react-router-dom';
 
-export default function RespositoryScreen() {
+export default function RepositoryScreen() {
+
+    const url=useRouteMatch().url;
+
     return (
         <div>
             <div class='RepositoryScreen'>
                 <h1 id='heading'>RESOURCE REPOSITORY</h1>
-                <div className="d-grid gap-2">
-                    <Button variant="dark" size="sm">
-                        Add New Resource
-                    </Button>
+                <div className="col-md-12 text-center">
+                    <Link to={`${url}/new`}>
+                        <Button variant="dark" size="sm">
+                            Add New Resource
+                        </Button>
+                    </Link>
                 </div>
                 <div id='books-grid'>
                     <div class='book-tile'>

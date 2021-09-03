@@ -196,6 +196,9 @@ export default function HomeLayout(){
                     <Route exact path={`${url}/${screenPaths[5]}`}>
                         <UniversityTipScreen/>
                     </Route>
+                    <Route exact path={`${url}/${screenPaths[2]}/new`}>
+                        <NewResourceScreen/>
+                    </Route>
                 </Switch>
                 {/*<RespositoryScreen/>*/}
                 {/*<NewResourceScreen/>*/}

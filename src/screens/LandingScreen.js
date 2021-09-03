@@ -11,7 +11,7 @@ export default function LandingScreen(){
                     <a href="/login" class="pre-order">Login</a>
             </header>
 
-            <section class="container">
+            <section class="landingPageContainer">
                 <div class="info__section">
                     <h1 class="main__title">Want to go for higher studies after undergrad</h1>
                     <p class="main__info">Get help from thousands of aspirants just like you!
