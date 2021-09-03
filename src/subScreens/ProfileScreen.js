@@ -11,6 +11,8 @@ import RoomIcon from '@material-ui/icons/Room';
 import SchoolIcon from '@material-ui/icons/School';
 import ProfileInfoRow from "../components/ProfileInfoRow";
 import {useState} from "react";
+import {useHistory} from "react-router";
+import {Link} from 'react-router-dom';
 // import {
 //     Dialog,
 //     DialogActions,
@@ -23,6 +25,8 @@ import {useState} from "react";
 
 
 export default function ProfileScreen() {
+
+    const history=useHistory();
 
     const [name,setName]=useState("Eswar Raman");
     const [university,setUniversity]=useState("Amrita Vishwa Vidyapeetham");
@@ -55,6 +59,9 @@ export default function ProfileScreen() {
         setSecurityAnswer(e.target.value);
     }
 
+    // const onChangePasswordButtonClick=()=>{
+    //     history.replace('/changePassword');
+    // }
 
 
 

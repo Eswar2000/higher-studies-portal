@@ -2,11 +2,14 @@ import BookRead from '../assets/BookRead.svg';
 import {useState} from "react";
 import CustomInput from "../components/CustomInput";
 import InputValidation from "../tools/InputValidation";
+import {useHistory} from "react-router";
+import {Link} from "react-router-dom";
 
 
 
 export default function LoginScreen() {
 
+    const history=useHistory();
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
 
@@ -27,6 +30,7 @@ export default function LoginScreen() {
         if(!InputValidation.checkUsername(username) || !InputValidation.checkPassword(password)){
             setErrorText("Invalid Username or Password");
         }
+        history.replace('/home');
 
     }
 
@@ -59,6 +63,9 @@ export default function LoginScreen() {
 
                         <input type="submit" className="formButton" value="Sign In" onClick={onSubmit}/><br/>
                         {errorText!=="" && <p className={'loginInvalidText'}>{errorText}</p>}
+
+                        <Link to={'/recovery'}>Forgot your Password? Click Here</Link>
+
                     </form>
                 </div>
 

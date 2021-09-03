@@ -2,11 +2,13 @@ import AddUser from '../assets/AddUser.svg';
 import CustomInput from "../components/CustomInput";
 import InputValidation from "../tools/InputValidation";
 import {useState} from "react";
+import {useHistory} from "react-router";
 
 
 
 export default function SignUpScreen() {
 
+    const history=useHistory();
     const [username, setUsername]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
@@ -38,6 +40,11 @@ export default function SignUpScreen() {
         setConfirmPassword(e.target.value);
     }
 
+    const onSubmit=(e)=>{
+        e.preventDefault();
+        history.replace('/login');
+    }
+
 
 
 
@@ -47,11 +54,17 @@ export default function SignUpScreen() {
                 <div id="loginRightDivSubCol" className="signInFormDiv">
                     <form id={'signInForm'}>
                         <h1 className="setFont subHeading">Sign Up</h1>
-                        <CustomInput type="text" value={username} name="username" placeholder="Username" onChange={handleUsernameChange}/>
-                        <CustomInput type="email" value={email} name="email" placeholder="User email" onChange={handleEmailChange}/>
-                        <CustomInput type="password" value={password} name="password" placeholder="Password" onChange={handlePasswordChange}/>
-                        <CustomInput type="password" value={confirmPassword} name="confirmPassword" placeholder="Confirm Password" onChange={handleConfirmPasswordChange}/>
-                        <input className={'formButton'} name={'SignUp'} type="submit"/>
+                        <CustomInput type="text" name="username" value={username} placeholder="Username" onChange={handleUsernameChange}/>
+
+                        <CustomInput type="email" name="email" value={email} placeholder="User email" onChange={handleEmailChange}/>
+                        {/*<input id="longInput" type="text" name="dob" placeholder="Date of Birth" onFocus={(obj)=>{*/}
+                        {/*    obj.type='date';*/}
+                        {/*}}/><br/>*/}
+
+                        <CustomInput type="password" name="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
+
+                        <CustomInput type="password" name="confirmPassword" value={confirmPassword} placeholder="Confirm Password" onChange={handleConfirmPasswordChange}/>
+                        <input className={'formButton'} name={'SignUp'} type="submit" onClick={onSubmit}/>
                         {!usernameValid && <p className={'loginInvalidText'}>Username must be 5-25 alphanumeric characters only</p>}
                         {usernameValid && !emailValid && <p className={'loginInvalidText'}>Enter valid Email</p>}
                         {usernameValid && emailValid && !passwordValid && <p className={'loginInvalidText'}>Password must contain 8-16 characters including at least <br/> 1 Upper case, 1 Lower case and 1 special character</p>}
