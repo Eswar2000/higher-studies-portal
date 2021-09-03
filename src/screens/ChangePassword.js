@@ -1,4 +1,4 @@
-import BookRead from '../assets/BookRead.svg';
+import ChangePasswordImage from '../assets/ChangePasswordImage.svg';
 import {useState} from "react";
 import CustomInput from "../components/CustomInput";
 
@@ -29,7 +29,7 @@ export default function ChangePassword(){
     return (
         <div>
             <div className="loginLeftDiv">
-                <img src={BookRead} alt="LoginImage"/>
+                <img src={ChangePasswordImage} alt="LoginImage"/>
             </div>
             <div className="loginRightDiv">
 

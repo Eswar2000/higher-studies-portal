@@ -130,8 +130,8 @@ export default function ProfileScreen() {
                         </Box>
                         <Box item flex={1} textAlign="center">
                             <Box height={4}/>
-                            {/* <Button variant="contained" size="small" color="secondary">Change Password</Button> */}
-                            <Link id="changePasswordBtn" to={'/'}>CHANGE PASSWORD</Link>
+                             <Button variant="contained" size="small" color="secondary" onClick={()=>{history.replace('/changePassword');window.location.reload(false);}}>Change Password</Button>
+                            {/*<Link id="changePasswordBtn" to={'/changePassword'}>CHANGE PASSWORD</Link>*/}
                         </Box>
                     </Grid>
                 </CardContent>
