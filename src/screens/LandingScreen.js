@@ -1,4 +1,4 @@
-// import './landingPageStyles.css';
+import './landingPageStyles.css';
 import BrandLogo from '../assets/logo4.png';
 import GetGraduated from '../assets/GetGraduated.svg';
 
@@ -6,7 +6,7 @@ import GetGraduated from '../assets/GetGraduated.svg';
 export default function LandingScreen(){
     return (
         <div>
-            <header>
+            <header id='landingPageHeader'>
                 <img src={BrandLogo} alt="logo"/>
                     <a href="/login" class="pre-order">Login</a>
             </header>

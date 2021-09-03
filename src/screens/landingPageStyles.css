@@ -7,7 +7,7 @@
     --pink: #F72585;
   }
 
-  header {
+#landingPageHeader {
     margin: 0 auto;
     display: flex;
     align-items: center;
