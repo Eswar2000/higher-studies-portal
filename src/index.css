@@ -423,6 +423,13 @@
   width: 15vw;
 }
 
+.tipAdmittedUniversity{
+  font-family: Quicksand;
+  font-weight: lighter;
+  color: grey;
+  padding-left: 3.5vw;
+}
+
 .tipAuthorUniversity{
   font-family: Quicksand;
   padding-left: 60px;

@@ -28,7 +28,8 @@ export default function ProfileScreen() {
     const history=useHistory();
 
     const [name,setName]=useState("Eswar Raman");
-    const [university,setUniversity]=useState("Amrita Vishwa Vidyapeetham");
+    const [ugUniversity,setUgUniversity]=useState("Amrita Vishwa Vidyapeetham");
+    const [pgUniversity,setPgUniversity]=useState("");
     const [city, setCity]=useState("Hosur");
     const [email,setEmail]=useState("v.eswarraman2000@gmail.com");
     const [phoneNumber,setPhoneNumber]=useState("1234567890");
@@ -39,8 +40,11 @@ export default function ProfileScreen() {
     const handleNameChange=(e)=>{
         setName(e.target.value);
     }
-    const handleUniversityChange=(e)=>{
-        setUniversity(e.target.value);
+    const handleUgUniversityChange=(e)=>{
+        setUgUniversity(e.target.value);
+    }
+    const handlePgUniversityChange=(e)=>{
+        setPgUniversity(e.target.value);
     }
     const handleCityChange=(e)=>{
         setCity(e.target.value);
@@ -106,7 +110,9 @@ export default function ProfileScreen() {
                 <CardContent>
                     <ProfileInfoRow fieldName={"Name"} fieldValue={name} fieldOnChange={handleNameChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"University"} fieldValue={university} fieldOnChange={handleUniversityChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldName={"UG University"} fieldValue={ugUniversity} fieldOnChange={handleUgUniversityChange} onSubmit={()=>{}}/>
+                    <Box height={16}/>
+                    <ProfileInfoRow fieldName={"Admitted University"} fieldType={'select'} fieldValue={pgUniversity} fieldOnChange={handlePgUniversityChange} onSubmit={()=>{}}/>
                     <Box height={16}/>
                     <ProfileInfoRow fieldName={"City"} fieldValue={city} fieldOnChange={handleCityChange} onSubmit={()=>{}}/>
                     <Box height={16}/>

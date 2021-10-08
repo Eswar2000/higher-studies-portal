@@ -7,9 +7,10 @@ import {useState} from "react";
 import EditIcon from '@material-ui/icons/Edit';
 import CustomInput from "./CustomInput";
 import DoneIcon from '@material-ui/icons/Done';
+import CustomSelect from "./CustomSelect";
 
 
-export default function ProfileInfoRow({fieldName,fieldValue,fieldOnChange,onSubmit}){
+export default function ProfileInfoRow({fieldName,fieldType="textField",fieldValue,fieldOnChange,onSubmit}){
     const [editEnabled,setEditEnabled]=useState(false);
 
     const handleEditButtonOnClick=async ()=>{
@@ -27,7 +28,8 @@ export default function ProfileInfoRow({fieldName,fieldValue,fieldOnChange,onSub
                 <span className="profileEditCategory">{fieldName}</span>
             </Box>
             <Box item flex={2}>
-                <CustomInput value={fieldValue} disabled={!editEnabled} onChange={fieldOnChange}/>
+                {fieldType=='textField' && <CustomInput value={fieldValue} disabled={!editEnabled} onChange={fieldOnChange}/>}
+                {fieldType=='select' && <CustomSelect disabled={!editEnabled} onSelect={fieldOnChange}/>}
                 {/*<span className="profileEditResponse">{fieldValue}</span>*/}
             </Box>
             <Box item flex={1}>

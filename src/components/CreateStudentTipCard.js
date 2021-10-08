@@ -23,12 +23,12 @@ export default function CreateStudentTipCard({}){
                 <p className={'tipAuthorAddressing'}>Comment as </p>
                 <p className={'tipAuthorText'}>Hello</p>
             </div>
+            <p className={'tipAdmittedUniversity'}>Amrita Vishwa Vidyapeetham </p>
             <div className={'commentInputDiv'}>
                 {/* <select>
                     <option>Amrita School of Engineering</option>
                     <option>Stanford</option>
                 </select> */}
-                <CustomSelect/>
                 <div className={'tipInput'}>
                     <CustomInput type="text" value={tipText} name="tipText" placeholder="Your Tip" onChange={handleTipTextChange}/>
                     <IconButton id={'studentTipSendButton'} onClick={()=>{}}>
