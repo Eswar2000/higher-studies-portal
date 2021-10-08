@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 
-public class ObjectToXML {
+public class XMLTools {
 
     public static void convertToXML(Object object, Writer resWriter, String qNameLocalPart) throws JAXBException {
         JAXBContext jaxbContext=JAXBContext.newInstance(LoginModel.class);
