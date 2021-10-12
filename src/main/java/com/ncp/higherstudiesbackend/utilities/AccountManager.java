@@ -22,4 +22,12 @@ public class AccountManager extends Database {
         }
         return AuthStatus.noSuchUser;
     }
+
+    public static boolean createUser(String name,String username,String email,String passwordHash) throws Exception {
+        if(checkCredentials(username,null)==AuthStatus.noSuchUser){
+            executeQuery("insert into student (name, username, email, passwordHash) values (\""+name+"\", \""+username+"\", \""+email+"\", \""+passwordHash+"\")");
+            return true;
+        }
+        return false;
+    }
 }
