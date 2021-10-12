@@ -2,43 +2,34 @@ package com.ncp.higherstudiesbackend.controller;
 
 
 import com.ncp.higherstudiesbackend.enums.AuthStatus;
-import com.ncp.higherstudiesbackend.responseModels.LoginModel;
-import com.ncp.higherstudiesbackend.responseModels.StudentModel;
-import com.ncp.higherstudiesbackend.utilities.Authentication;
-import com.ncp.higherstudiesbackend.utilities.Database;
+import com.ncp.higherstudiesbackend.utilities.AccountManager;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import javax.xml.bind.JAXBException;
 
 @WebServlet(name = "loginServlet",value = "/login")
 public class Login extends HttpServlet {
 
 
-
-
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-
-        //TODO Do JDBC call and check credentials below instead of object creation
-
-
+    public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
         try{
-            if(Authentication.checkCredentials("","") == AuthStatus.authenticated){
-                res.setContentType("application/xml");
+            AuthStatus authStatus= AccountManager.checkCredentials(req.getHeader("username"),req.getHeader("authhash"));
 
-                XMLTools.sendXMLResponse(Database.sampleQuery(),res.getWriter());
+            if(authStatus == AuthStatus.authenticated){
+                res.setContentType("application/XML");
+                XMLTools.sendXMLResponse(new StringBuffer("<authStatus>Authenticated</authStatus>"),res.getWriter());
                 res.setStatus(200);
-            } else if (Authentication.checkCredentials("","") == AuthStatus.incorrectPassword){
+            } else if (authStatus == AuthStatus.incorrectPassword){
+                res.setContentType("application/XML");
+                XMLTools.sendXMLResponse(new StringBuffer("<authStatus>NOT AUTHORIZED</authStatus>"),res.getWriter());
                 res.setStatus(401);
             } else{
+                res.setContentType("application/XML");
+                XMLTools.sendXMLResponse(new StringBuffer("<authStatus>No such user</authStatus>"),res.getWriter());
                 res.setStatus(404);
             }
         }catch (Exception e) {
