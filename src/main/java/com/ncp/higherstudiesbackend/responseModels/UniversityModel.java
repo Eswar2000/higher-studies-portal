@@ -1,12 +1,14 @@
 package com.ncp.higherstudiesbackend.responseModels;
 
 public class UniversityModel {
-    public String universityName, acceptanceRate, state, minGREMarks, tuitionFee, minTOEFLMarks;
+    public String universityName, location;
+    public int minGREMarks,minTOEFLMarks;
+    public double acceptanceRate, tuitionFee;
 
-    UniversityModel(String universityName, String acceptanceRate, String state, String minGREMarks, String tuitionFee, String minTOEFLMarks){
+    public UniversityModel(String universityName, double acceptanceRate, String location, int minGREMarks, double tuitionFee, int minTOEFLMarks){
         this.universityName=universityName;
         this.acceptanceRate=acceptanceRate;
-        this.state=state;
+        this.location=location;
         this.minGREMarks=minGREMarks;
         this.tuitionFee=tuitionFee;
         this.minTOEFLMarks=minTOEFLMarks;
