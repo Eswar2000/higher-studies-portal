@@ -1,18 +1,12 @@
 package com.ncp.higherstudiesbackend.utilities;
-
-import com.ncp.higherstudiesbackend.responseModels.StudentModel;
-
-import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Database {
 
     static String dbURL="jdbc:mysql://localhost:3306/higher_studies",username="root",password="sashank123";
 
 
-    static ResultSet executeQuery(String query) throws  SQLException, ClassNotFoundException{
+    protected static ResultSet executeQuery(String query) throws  SQLException, ClassNotFoundException{
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection(dbURL,username,password);
         Statement statement = connection.createStatement();

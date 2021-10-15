@@ -1,4 +1,4 @@
-package com.ncp.higherstudiesbackend.controller;
+package com.ncp.higherstudiesbackend.controllers;
 
 import com.ncp.higherstudiesbackend.utilities.XMLDocument;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;

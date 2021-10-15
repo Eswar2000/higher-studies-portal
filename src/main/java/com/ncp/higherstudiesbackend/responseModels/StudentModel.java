@@ -1,11 +1,8 @@
 package com.ncp.higherstudiesbackend.responseModels;
 
-
-import javax.xml.bind.annotation.XmlRootElement;
-
 public class StudentModel {
-    public String name,username,email,phoneNumber,secQuestion,secAnswer,passwordHash,examStream,ugUniversity;
-    public int examMarks,toeflMarks,pgUniversityID;
+    private String name,username,email,phoneNumber,secQuestion,secAnswer,passwordHash,examStream,ugUniversity;
+    private int examMarks,toeflMarks,pgUniversityID;
 
     public StudentModel(String name,String username,String email,String phoneNumber,String secQuestion,String secAnswer,String passwordHash,String examStream,String ugUniversity,int examMarks,int toeflMarks,int pgUniversityID){
         this.name=name;
@@ -36,7 +33,6 @@ public class StudentModel {
         stringBuffer.append("<examMarks>"+this.examMarks+"</examMarks>");
         stringBuffer.append("<toeflMarks>"+this.toeflMarks+"</toeflMarks>");
         stringBuffer.append("<pgUniversityID>"+this.pgUniversityID+"</pgUniversityID>");
-
         stringBuffer.append("</student>");
 
         return stringBuffer;

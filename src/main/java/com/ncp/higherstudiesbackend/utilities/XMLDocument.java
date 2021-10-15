@@ -1,7 +1,6 @@
 package com.ncp.higherstudiesbackend.utilities;
 
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class XMLDocument {
@@ -18,6 +17,10 @@ public class XMLDocument {
 
     public NodeList getAttributesList(String attributeName){
         return documentRoot.getElementsByTagName(attributeName);
+    }
+
+    public Element getDocumentRoot(){
+        return documentRoot;
     }
 
 

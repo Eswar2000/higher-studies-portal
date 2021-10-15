@@ -6,19 +6,19 @@ import java.util.List;
 public class LoginModel{
     public String username;
     public String password;
-    public List employees;
+    public List list;
     public int status;
 
     public LoginModel(String username, String password, int status){
         this.username=username;
         this.password=password;
 
-        employees=new ArrayList();
+        list =new ArrayList();
 
         this.status=status;
 
         for(int i=0;i<5;i++){
-            employees.add(i);
+            list.add(i);
         }
     }
 

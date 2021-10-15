@@ -14,11 +14,14 @@ import java.io.*;
 
 public class XMLTools {
 
-    public static void sendXMLResponse(StringBuffer xmlResponse, PrintWriter resWriter){
-        resWriter.println(new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append(xmlResponse));
+    public static void sendXMLResponse(StringBuilder xmlResponse, PrintWriter resWriter, String rootName){
+        StringBuilder xmlDocument=new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        xmlDocument.append("<").append(rootName).append(">\n").append(xmlResponse).append("</").append(rootName).append(">");
+
+        resWriter.println(xmlDocument);
     }
 
-    public static void convertToXML(Object object, Writer resWriter, String qNameLocalPart) throws JAXBException {
+    public static void convertObjectToXML(Object object, Writer resWriter, String qNameLocalPart) throws JAXBException {
         JAXBContext jaxbContext=JAXBContext.newInstance(object.getClass());
         Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);

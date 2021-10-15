@@ -1,7 +1,7 @@
 package com.ncp.higherstudiesbackend.responseModels;
 
 public class ProfileModel {
-    public String name,ugUniversity,city,exam,email,phoneNumber,securityQuestion,securityAnswer,username;
+    private String name,ugUniversity,city,exam,email,phoneNumber,securityQuestion,securityAnswer,username;
 
     public ProfileModel(String name,String ugUniversity,String city,String exam,String email,String phoneNumber,String securityQuestion,String securityAnswer,String username){
         this.name=name;
