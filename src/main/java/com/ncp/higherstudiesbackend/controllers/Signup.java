@@ -1,5 +1,6 @@
 package com.ncp.higherstudiesbackend.controllers;
 
+import com.ncp.higherstudiesbackend.handlers.AccountHandler;
 import com.ncp.higherstudiesbackend.utilities.XMLDocument;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
 
@@ -7,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 
 @WebServlet(name = "signupServlet",value = "/signup")
 
@@ -28,9 +30,19 @@ public class Signup extends HttpServlet {
 
         try{
             XMLDocument signUpRequestXML=XMLTools.parseXML(req.getInputStream());
-            res.getWriter().println(signUpRequestXML.getAttributeValue("username"));
+            PrintWriter resWriter = res.getWriter();
+            res.setContentType("application/xml");
+            if(AccountHandler.createUser(signUpRequestXML.getAttributeValue("name"),signUpRequestXML.getAttributeValue("username"),signUpRequestXML.getAttributeValue("email"),signUpRequestXML.getAttributeValue("passwordHash"))){
+                System.out.println("User created");
+                res.setStatus(200);
+                XMLTools.sendXMLResponse(new StringBuilder("<status>Account Created</status>"),resWriter,"response");
+            }
+            else {
+                res.setStatus(200);
+                XMLTools.sendXMLResponse(new StringBuilder("<status>Failed To Create New User</status>"),resWriter,"response");
+            }
         }catch (Exception e) {
-            e.printStackTrace();
+            res.setStatus(500);
         }
 
     }

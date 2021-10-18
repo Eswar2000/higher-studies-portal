@@ -26,8 +26,11 @@ public class AccountHandler extends Database {
     }
 
     public static boolean createUser(String name,String username,String email,String passwordHash) throws Exception {
-        if(checkCredentials(username,null)==AuthStatus.noSuchUser){
-            executeQuery("insert into student (name, username, email, passwordHash) values (\""+name+"\", \""+username+"\", \""+email+"\", \""+passwordHash+"\")");
+        if(email.matches("^[A-Za-z0-9+_.-]+@(.+)$") && username.matches("^[a-zA-Z0-9_]+$") && checkCredentials(username,null)==AuthStatus.noSuchUser){
+            System.out.println("About to create an account");
+            System.out.println("insert into student (name, username, email, passwordHash) values (\""+name+"\", \""+username+"\", \""+email+"\", \""+passwordHash+"\")");
+            executeQuery("insert into student (name, username, email, passwordHash) values (\""+name+"\", \""+username+"\", \""+email+"\", \""+passwordHash+"\");");
+            System.out.println("Account created");
             return true;
         }
         return false;
