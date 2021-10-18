@@ -26,7 +26,6 @@ public class XMLTools {
         Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
         jaxbMarshaller.marshal(new JAXBElement(new QName("",qNameLocalPart),Object.class,object), resWriter);
-
     }
 
     public static StringBuilder getReqBodyAsString(InputStream reqReader) throws IOException {

@@ -13,6 +13,13 @@ public class Database {
         return statement.executeQuery(query);
     }
 
+    protected static int executeUpdate(String query) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection=DriverManager.getConnection(dbURL,username,password);
+        Statement statement = connection.createStatement();
+        return statement.executeUpdate(query);
+    }
+
 
 //    public static StringBuffer sampleQuery() throws SQLException, ClassNotFoundException {
 //
