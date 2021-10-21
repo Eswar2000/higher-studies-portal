@@ -27,7 +27,7 @@ public class ProfileHandler extends Database {
     }
      public static boolean UpdateProfile(String name,String username,String email,String ugUniversity,String city ,String exam,String phonenumber,String securityQuestion,String securityAnswer) throws Exception {
         if(email.matches("^[A-Za-z0-9+_.-]+@(.+)$") && username.matches("^[a-zA-Z0-9_]+$")){
-            return executeUpdate("insert into prrofile (name, ugUniversity, city, exam,phoneNumber,securityQuestion,securityAnswer,username) values (\""+name+"\", \""+ugUniversity+"\", \""+email+"\", \""+city+"\",\""+exam+"\",\""+phonenumber+"\",\""+securityQuestion+"\",\""+securityAnswer+"\",\""+username+"\");")>0?true:false;
+            return executeUpdate("insert into profile (name, ugUniversity, city, exam,phoneNumber,securityQuestion,securityAnswer,username) values (\""+name+"\", \""+ugUniversity+"\", \""+email+"\", \""+city+"\",\""+exam+"\",\""+phonenumber+"\",\""+securityQuestion+"\",\""+securityAnswer+"\",\""+username+"\");")>0?true:false;
         }
         return false;
     }
