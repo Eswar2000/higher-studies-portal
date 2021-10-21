@@ -21,17 +21,13 @@ public class Database {
     }
 
 
-//    public static StringBuffer sampleQuery() throws SQLException, ClassNotFoundException {
-//
-//        ResultSet resultSet=executeQuery("select * from student");
-//
-//        StringBuffer resultString=new StringBuffer("");
-//
-//        while(resultSet.next()){
-//            resultString.append(new StudentModel(resultSet.getString("name"),resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("phone"),resultSet.getString("secQuestion"),resultSet.getString("secAnswer"),resultSet.getString("passwordHash"),resultSet.getString("examStream"),resultSet.getString("ugUniversity"),resultSet.getInt("examMarks"),resultSet.getInt("TOEFLMarks"),resultSet.getInt("pgUniversityID")).getStudentXML());
-//        }
-//
-//        return resultString;
-//    }
+   public static StringBuffer sampleQuery() throws SQLException, ClassNotFoundException {
+       ResultSet resultSet=executeQuery("select * from student");
+       StringBuffer resultString=new StringBuffer("");
+      while(resultSet.next()){
+         resultString.append(new StudentModel(resultSet.getString("name"),resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("phone"),resultSet.getString("secQuestion"),resultSet.getString("secAnswer"),resultSet.getString("passwordHash"),resultSet.getString("examStream"),resultSet.getString("ugUniversity"),resultSet.getInt("examMarks"),resultSet.getInt("TOEFLMarks"),resultSet.getInt("pgUniversityID")).getStudentXML());
+     }
+       return resultString;
+   }
 
 }
