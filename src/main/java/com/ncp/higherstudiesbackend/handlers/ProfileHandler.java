@@ -1,5 +1,3 @@
-
-   
 package com.ncp.higherstudiesbackend.handlers;
 
 import com.ncp.higherstudiesbackend.responseModels.ProfileModel;
