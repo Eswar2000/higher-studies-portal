@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet(name = "universityServlet",value = "/university")
+@WebServlet(name = "profileServlet",value = "/profile")
 
 public class University extends HttpServlet {
 
