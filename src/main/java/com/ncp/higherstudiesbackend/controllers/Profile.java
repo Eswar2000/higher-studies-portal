@@ -35,17 +35,17 @@ public class Profile extends HttpServlet {
 
  
         try{
-            XMLDocument signUpRequestXML=XMLTools.parseXML(req.getInputStream());
+            XMLDocument profileRequestXML=XMLTools.parseXML(req.getInputStream());
             PrintWriter resWriter = res.getWriter();
             res.setContentType("application/xml");
-            if(AccountHandler.createUser(signUpRequestXML.getAttributeValue("name"),signUpRequestXML.getAttributeValue("username"),signUpRequestXML.getAttributeValue("email"),signUpRequestXML.getAttributeValue("city"),signUpRequestXML.getAttributeValue("phonemumber"))){
+            if(ProfileHandler.updateProfile(profileRequestXML.getAttributeValue("name"),profileRequestXML.getAttributeValue("username"),profileRequestXML.getAttributeValue("email"),profileRequestXML.getAttributeValue("city"),profileRequestXML.getAttributeValue("phonemumber"),profileRequestXML.getAttributeValue("securityQuestion"),profileRequestXML.getAttributeValue("securityAnswer"))){
                 System.out.println("User created");
                 res.setStatus(200);
-                XMLTools.sendXMLResponse(new StringBuilder("<status>Account Created</status>"),resWriter,"response");
+                XMLTools.sendXMLResponse(new StringBuilder("<status>Profile updated</status>"),resWriter,"response");
             }
             else {
-                res.setStatus(200);
-                XMLTools.sendXMLResponse(new StringBuilder("<status>Failed To Create New User</status>"),resWriter,"response");
+                res.setStatus(400);
+                XMLTools.sendXMLResponse(new StringBuilder("<status>Failed To Update Profile</status>"),resWriter,"response");
             }
         }catch (Exception e) {
             res.setStatus(500);
