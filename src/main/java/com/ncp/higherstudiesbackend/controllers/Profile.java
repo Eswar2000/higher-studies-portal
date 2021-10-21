@@ -1,4 +1,4 @@
-ackage com.ncp.higherstudiesbackend.controllers;
+package com.ncp.higherstudiesbackend.controllers;
 
 import com.ncp.higherstudiesbackend.enums.AuthStatus;
 import com.ncp.higherstudiesbackend.handlers.AccountHandler;
