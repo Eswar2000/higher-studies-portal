@@ -17,10 +17,8 @@ public class ProfileHandler extends Database {
         StringBuilder profileXML=new StringBuilder("");
 
         while(resultSet.next()){
-            if(resultSet.getInt("id")!=1){
-                profileXML.append(new ProfileModel(resultSet.getString("name"),resultSet.getString("ugUniversity"),resultSet.getString("city"),resultSet.getString("exam"),resultSet.getString("email"),resultSet.getString("phoneNumber"),resultSet.getString("securityQuestion"),resultSet.getString("securityAnswer"),resultSet.getString("username")).getAllProfile());
+                profileXML.append(new ProfileModel(resultSet.getString("name"),resultSet.getString("ugUniversity"),resultSet.getString("city"),resultSet.getString("exam"),resultSet.getString("email"),resultSet.getString("phoneNumber"),resultSet.getString("securityQuestion"),resultSet.getString("securityAnswer"),resultSet.getString("username")).getProfileXML());
             }
-        }
 
         return profileXML;
 
