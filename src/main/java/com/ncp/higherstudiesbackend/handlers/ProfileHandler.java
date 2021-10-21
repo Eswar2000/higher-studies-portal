@@ -11,18 +11,18 @@ import java.sql.SQLException;
 public class ProfileHandler extends Database {
 
 
-    public static StringBuilder getAllUniversities() throws SQLException, ClassNotFoundException {
+    public static StringBuilder getAllProfile() throws SQLException, ClassNotFoundException {
         ResultSet resultSet=executeQuery("select * from profile");
 
-        StringBuilder universitiesXML=new StringBuilder("");
+        StringBuilder profileXML=new StringBuilder("");
 
         while(resultSet.next()){
             if(resultSet.getInt("id")!=1){
-                universitiesXML.append(new ProfileModel(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getInt("acceptanceRate"),resultSet.getString("location"),resultSet.getInt("minGREMarks"),resultSet.getInt("tuitionFee"),resultSet.getInt("minTOEFLMarks")).getUniversityXML());
+                profileXML.append(new ProfileModel(resultSet.getString("name"),resultSet.getString("ugUniversity"),resultSet.getString("city"),resultSet.getString("exam"),resultSet.getString("email"),resultSet.getString("phoneNumber"),resultSet.getString("securityQuestion"),resultSet.getString("securityAnswer"),resultSet.getString("username")).getAllProfile());
             }
         }
 
-        return universitiesXML;
+        return profileXML;
 
 
     }
