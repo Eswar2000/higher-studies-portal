@@ -31,5 +31,25 @@ public class Profile extends HttpServlet {
             e.printStackTrace();
         }
     }
+        public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
+ 
+        try{
+            XMLDocument signUpRequestXML=XMLTools.parseXML(req.getInputStream());
+            PrintWriter resWriter = res.getWriter();
+            res.setContentType("application/xml");
+            if(AccountHandler.createUser(signUpRequestXML.getAttributeValue("name"),signUpRequestXML.getAttributeValue("username"),signUpRequestXML.getAttributeValue("email"),signUpRequestXML.getAttributeValue("city"),signUpRequestXML.getAttributeValue("phonemumber"))){
+                System.out.println("User created");
+                res.setStatus(200);
+                XMLTools.sendXMLResponse(new StringBuilder("<status>Account Created</status>"),resWriter,"response");
+            }
+            else {
+                res.setStatus(200);
+                XMLTools.sendXMLResponse(new StringBuilder("<status>Failed To Create New User</status>"),resWriter,"response");
+            }
+        }catch (Exception e) {
+            res.setStatus(500);
+        }
+
+    }
 }
