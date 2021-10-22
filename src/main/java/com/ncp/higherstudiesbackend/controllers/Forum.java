@@ -7,10 +7,13 @@ import com.ncp.higherstudiesbackend.handlers.ForumHandler;
 import com.ncp.higherstudiesbackend.utilities.XMLDocument;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+@WebServlet(name = "forum-servlet", value = "/forum")
 public class Forum extends HttpServlet {
 
 

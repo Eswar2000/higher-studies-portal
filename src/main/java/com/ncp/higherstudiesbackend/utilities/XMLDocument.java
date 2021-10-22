@@ -15,6 +15,10 @@ public class XMLDocument {
         return documentRoot.getElementsByTagName(attributeName).item(0).getTextContent();
     }
 
+    public String getAttributeListIndex(String attributeName, int index){
+        return documentRoot.getElementsByTagName(attributeName).item(index).getTextContent();
+    }
+
     public NodeList getAttributesList(String attributeName){
         return documentRoot.getElementsByTagName(attributeName);
     }
