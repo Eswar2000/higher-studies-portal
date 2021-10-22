@@ -38,7 +38,7 @@ public class Profile extends HttpServlet {
             XMLDocument profileRequestXML=XMLTools.parseXML(req.getInputStream());
             PrintWriter resWriter = res.getWriter();
             res.setContentType("application/xml");
-            if(ProfileHandler.updateProfile(profileRequestXML.getAttributeValue("name"),profileRequestXML.getAttributeValue("username"),profileRequestXML.getAttributeValue("uguniversity"),profileRequestXML.getAttributeValue("email"),profileRequestXML.getAttributeValue("city"),profileRequestXML.getAttributeValue("phonemumber"),profileRequestXML.getAttributeValue("securityQuestion"),profileRequestXML.getAttributeValue("securityAnswer"))){
+            if(ProfileHandler.UpdateProfile(profileRequestXML.getAttributeValue("name"),profileRequestXML.getAttributeValue("username"),profileRequestXML.getAttributeValue("ugUniversity"),profileRequestXML.getAttributeValue("email"),profileRequestXML.getAttributeValue("city"),profileRequestXML.getAttributeValue("phonemumber"),profileRequestXML.getAttributeValue("securityQuestion"),profileRequestXML.getAttributeValue("securityAnswer"))){
                 System.out.println("Profile Updated!");
                 res.setStatus(200);
                 XMLTools.sendXMLResponse(new StringBuilder("<status>Profile updated</status>"),resWriter,"response");
