@@ -17,18 +17,19 @@ public class UniversityModel {
     }
 
     public StringBuilder getUniversityXML(){
-        StringBuilder outputXML=new StringBuilder("");
-        outputXML.append("<university>");
-        outputXML.append("<id>"+this.universityID+"</id>");
-        outputXML.append("<name>"+this.universityName+"</name>");
-        outputXML.append("<acceptanceRate>"+this.acceptanceRate+"</acceptanceRate>");
-        outputXML.append("<location>"+this.location+"</location>");
-        outputXML.append("<minGREMarks>"+this.minGREMarks+"</minGREMarks>");
-        outputXML.append("<tuitionFee>"+this.tuitionFee+"</tuitionFee>");
-        outputXML.append("<minTOEFLMarks>"+this.minTOEFLMarks+"</minTOEFLMarks>");
-        outputXML.append("</university>");
 
-        return outputXML;
+        StringBuilder universityXML=new StringBuilder("");
+        universityXML.append("<university>");
+        universityXML.append("<id>"+this.universityID+"</id>");
+        universityXML.append("<name>"+this.universityName+"</name>");
+        universityXML.append("<acceptanceRate>"+this.acceptanceRate+"</acceptanceRate>");
+        universityXML.append("<location>"+this.location+"</location>");
+        universityXML.append("<minGREMarks>"+this.minGREMarks+"</minGREMarks>");
+        universityXML.append("<tuitionFee>"+this.tuitionFee+"</tuitionFee>");
+        universityXML.append("<minTOEFLMarks>"+this.minTOEFLMarks+"</minTOEFLMarks>");
+        universityXML.append("</university>");
+
+        return universityXML;
     }
 
 }
