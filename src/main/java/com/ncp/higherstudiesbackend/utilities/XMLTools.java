@@ -16,7 +16,7 @@ public class XMLTools {
 
     public static void sendXMLResponse(StringBuilder xmlResponse, PrintWriter resWriter, String rootName){
         StringBuilder xmlDocument=new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        xmlDocument.append("<").append(rootName).append(">\n").append(xmlResponse).append("</").append(rootName).append(">");
+        xmlDocument.append("<").append(rootName).append(">\n").append(xmlResponse).append("\n</").append(rootName).append(">");
 
         resWriter.println(xmlDocument);
     }

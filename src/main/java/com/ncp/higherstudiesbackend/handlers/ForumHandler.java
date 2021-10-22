@@ -24,11 +24,11 @@ public class ForumHandler extends Database {
     }
 
     public static boolean createNewPost(String username, String postText) throws SQLException, ClassNotFoundException {
-        return executeUpdate("")==1?true:false;
+        return executeUpdate("")==1;
     }
 
     public static boolean performReaction(String username, String postID, PostReactionType postReactionType) throws SQLException, ClassNotFoundException {
-        return executeUpdate("")==1?true:false;
+        return executeUpdate("")==1;
     }
 
 }

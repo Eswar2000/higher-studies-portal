@@ -1,5 +1,6 @@
 package com.ncp.higherstudiesbackend.handlers;
 
+import com.mysql.cj.jdbc.exceptions.NotUpdatable;
 import com.ncp.higherstudiesbackend.responseModels.ProfileModel;
 import com.ncp.higherstudiesbackend.utilities.Database;
 
@@ -31,6 +32,13 @@ public class ProfileHandler extends Database {
 
         return studentProfile;
 
+    }
+
+    public static boolean updateStudentProfileAttribute(String username,String fieldName, String fieldValue) throws SQLException, ClassNotFoundException {
+        if(fieldName.equals("username") || fieldName.equals("passwordHash")){
+            throw new NotUpdatable("Can't Update Primary Key Without Admin Access");
+        }
+        return executeUpdate("update student set "+fieldName+"=\""+fieldValue+"\" where username =\""+username+"\"")==1;
     }
 
 }

@@ -1,8 +1,10 @@
 package com.ncp.higherstudiesbackend.controllers;
 
+import com.mysql.cj.jdbc.exceptions.NotUpdatable;
 import com.ncp.higherstudiesbackend.enums.AuthStatus;
 import com.ncp.higherstudiesbackend.handlers.AccountHandler;
 import com.ncp.higherstudiesbackend.handlers.ProfileHandler;
+import com.ncp.higherstudiesbackend.utilities.XMLDocument;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
 
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +27,33 @@ public class Profile extends HttpServlet {
                 XMLTools.sendXMLResponse(ProfileHandler.getStudentProfile(req.getHeader("username")),res.getWriter(),"response");
             }
 
+        }catch(Exception e){
+            res.setStatus(500);
+            e.printStackTrace();
+        }
+    }
+
+    public void doPut(HttpServletRequest req, HttpServletResponse res){
+        try{
+            AuthStatus authStatus = AccountHandler.handleCredentialCheck(req,res);
+            if(authStatus == AuthStatus.authenticated){
+                res.setContentType("application/xml");
+                res.setStatus(200);
+                XMLDocument updateRequest = XMLTools.parseXML(req.getInputStream());
+
+                try{
+                    if(ProfileHandler.updateStudentProfileAttribute(req.getHeader("username"),updateRequest.getAttributeValue("fieldName"),updateRequest.getAttributeValue("fieldValue"))){
+                        XMLTools.sendXMLResponse(new StringBuilder("Updated Successfully"),res.getWriter(),"response");
+                    }
+                    else{
+                        XMLTools.sendXMLResponse(new StringBuilder("Something Went Wrong"),res.getWriter(),"response");
+                    }
+                }catch(NotUpdatable e){
+                    res.setStatus(403);
+                    XMLTools.sendXMLResponse(new StringBuilder("Unauthorized Attempt To Modify Critical Data"),res.getWriter(),"response");
+                }
+
+            }
         }catch(Exception e){
             res.setStatus(500);
             e.printStackTrace();

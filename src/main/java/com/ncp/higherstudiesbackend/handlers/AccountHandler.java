@@ -27,7 +27,7 @@ public class AccountHandler extends Database {
 
     public static boolean createUser(String name,String username,String email,String passwordHash) throws Exception {
         if(email.matches("^[A-Za-z0-9+_.-]+@(.+)$") && username.matches("^[a-zA-Z0-9_]+$") && checkCredentials(username,null)==AuthStatus.noSuchUser){
-            return executeUpdate("insert into student (name, username, email, passwordHash) values (\""+name+"\", \""+username+"\", \""+email+"\", \""+passwordHash+"\");")>0?true:false;
+            return executeUpdate("insert into student (name, username, email, passwordHash) values (\""+name+"\", \""+username+"\", \""+email+"\", \""+passwordHash+"\");")>0;
         }
         return false;
     }
