@@ -10,12 +10,12 @@ import java.sql.SQLException;
 public class ProfileHandler extends Database {
 
 
-    public static String getNameFromUsername(String username) throws SQLException, ClassNotFoundException {
+    public static String getAttributeFromUsername(String username, String attribute) throws SQLException, ClassNotFoundException {
 
-        ResultSet studentProfile=executeQuery("select name from student where username=\""+username+"\"");
+        ResultSet studentProfile=executeQuery("select "+attribute+" from student where username=\""+username+"\"");
 
         if(studentProfile.next()){
-            return studentProfile.getString("name");
+            return studentProfile.getString(attribute);
         }
 
         return "";
@@ -33,6 +33,9 @@ public class ProfileHandler extends Database {
         return studentProfile;
 
     }
+
+
+
 
     public static boolean updateStudentProfileAttribute(String username,String fieldName, String fieldValue) throws SQLException, ClassNotFoundException {
         if(fieldName.equals("username") || fieldName.equals("passwordHash")){
