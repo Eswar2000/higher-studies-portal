@@ -3,6 +3,7 @@ package com.ncp.higherstudiesbackend.controllers;
 import com.ncp.higherstudiesbackend.enums.AuthStatus;
 import com.ncp.higherstudiesbackend.handlers.AccountHandler;
 import com.ncp.higherstudiesbackend.handlers.QuizHandler;
+import com.ncp.higherstudiesbackend.utilities.XMLDocument;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
 
 import javax.servlet.annotation.WebServlet;
@@ -23,17 +24,32 @@ public class Quiz extends HttpServlet {
 
             if(authStatus==AuthStatus.authenticated){
                 res.setContentType("application/xml");
-
-                XMLTools.sendXMLResponse(QuizHandler.getAllQuestions(req.getHeader("username")),res.getWriter(),"questions");
-
+                XMLDocument reqDocument = XMLTools.parseXML(req.getInputStream());
+                if(reqDocument.getAttributeValue("query").equals("prevResult")){
+                    XMLTools.sendXMLResponse(QuizHandler.getPreviousQuizResults(req.getHeader("username")),res.getWriter(),"results");
+                } else{
+                    XMLTools.sendXMLResponse(QuizHandler.getAllQuestions(req.getHeader("username")),res.getWriter(),"questions");
+                }
             }
-
-
         }catch(Exception e){
-
+            res.setStatus(500);
+            e.printStackTrace();
         }
 
     }
 
+    public void doPost(HttpServletRequest req, HttpServletResponse res){
+        try{
+            AuthStatus authStatus= AccountHandler.handleCredentialCheck(req,res);
+            if(authStatus == AuthStatus.authenticated){
+                res.setContentType("application/xml");
+                XMLDocument reqDocument = XMLTools.parseXML(req.getInputStream());
+                XMLTools.sendXMLResponse(QuizHandler.addQuestionResult(req.getHeader("username"),Integer.parseInt(reqDocument.getAttributeValue("questionID")),reqDocument.getAttributeValue("curAnswer")),res.getWriter(),"questionResponse");
+            }
+        }catch(Exception e){
+            res.setStatus(500);
+            e.printStackTrace();
+        }
+    }
 
 }
