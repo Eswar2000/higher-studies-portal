@@ -65,7 +65,7 @@ public class Forum extends HttpServlet {
                 res.setStatus(200);
                 XMLDocument postReaction = XMLTools.parseXML(req.getInputStream());
 
-                if(ForumHandler.performReaction(req.getHeader("username"),postReaction.getAttributeValue("postID"),postReaction.getAttributeValue("reactionType").equals("downVote")?PostReactionType.downVote:PostReactionType.upVote)){
+                if(ForumHandler.performReaction(req.getHeader("username"),Integer.parseInt(postReaction.getAttributeValue("postID")),postReaction.getAttributeValue("reactionType").equals("downVote")?PostReactionType.downVote:PostReactionType.upVote)){
                     XMLTools.sendXMLResponse(new StringBuilder(postReaction.getAttributeValue("reactionType")+" done successfully"),res.getWriter(),"response");
                 }else{
                     XMLTools.sendXMLResponse(new StringBuilder("Something went wrong"),res.getWriter(),"response");
