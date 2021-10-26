@@ -1,6 +1,7 @@
 package com.ncp.higherstudiesbackend.responseModels;
 
 import java.util.List;
+import java.util.Random;
 
 public class QuestionModel {
 
@@ -20,11 +21,17 @@ public class QuestionModel {
         questionXML.append("<question>");
         questionXML.append("<questionText>"+this.questionText+"</questionText>");
 
+
+        Random random=new Random();
+
+        int randomIndex=random.nextInt(options.size());
+
         for(int i=0;i< options.size();i++){
+            if(randomIndex==i){
+                questionXML.append("<option>"+this.answer+"</option>");
+            }
             questionXML.append("<option>"+options.get(i)+"</option>");
         }
-
-        questionXML.append("<answer>"+this.answer+"</answer>");
         questionXML.append("</question>");
 
         return questionXML;

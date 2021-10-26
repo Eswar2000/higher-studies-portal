@@ -16,26 +16,26 @@ public class QuizHandler extends Database {
 
         //Query: select * from quiz order by RAND() LIMIT 10 where examStream=ProfileHandler.getAttributeFromUsername
 
-        ResultSet resultSet=executeQuery("");
+        ResultSet resultSet=executeQuery("select * from questionpool where examStream=\""+ProfileHandler.getAttributeFromUsername(username,"examStream")+"\" order by RAND() LIMIT 10");
 
         StringBuilder questionsXML = new StringBuilder("");
 
         while(resultSet.next()){
-            ResultSet optionsResult=executeQuery("select * from options where questionID="+resultSet.getString("id"));
+            ResultSet optionsResult=executeQuery("select * from choice where qID="+resultSet.getString("ID")+" order by RAND() LIMIT 3");
             List<String> options = new ArrayList<>();
             while(optionsResult.next()){
-                options.add(optionsResult.getString("option"));
+                options.add(optionsResult.getString("opt"));
             }
             questionsXML.append(new QuestionModel(resultSet.getString("question"),options,resultSet.getString("answer")).getQuestionXML());
         }
-        executeQuery("delete from quizresults where username=\""+username+"\"");
+        executeUpdate("delete from quiz where studentUsername=\""+username+"\"");
         return questionsXML;
     }
 
     public static StringBuilder getPreviousQuizResults(String username) throws SQLException, ClassNotFoundException {
-        ResultSet quizResult=executeQuery("select sum(iscorrect) as \"quizmarks\" from quizresults where username=\""+username+"\"");
+        ResultSet quizResult=executeQuery("select sum(iscorrect) as \"quizmarks\",count(*) as \"questionsAttended\" from quiz where studentUsername=\""+username+"\"");
         StringBuilder prevQuizResults = new StringBuilder("");
-        if(quizResult.next()){
+        if(quizResult.next() && quizResult.getInt("questionsAttended") > 0){
             prevQuizResults.append("<present>True</present>").append("<curmarks>"+quizResult.getInt("quizmarks")+"</curmarks>");
             return prevQuizResults;
         }
@@ -52,7 +52,7 @@ public class QuizHandler extends Database {
             if(questionResult.getString("answer").equals(curAnswer)){
                 isCorrect = 1;
             }
-            executeUpdate("insert into quizresults values (\""+username+"\","+questionID+","+isCorrect+")");
+            executeUpdate("insert into quiz values (\""+username+"\","+questionID+","+isCorrect+")");
             StringBuilder questionResponse = new StringBuilder("<isCorrect>"+isCorrect+"</isCorrect>");
             return questionResponse;
         }

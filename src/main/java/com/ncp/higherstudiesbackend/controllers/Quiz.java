@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(name = "quiz-servlet",value = "/path")
+@WebServlet(name = "quiz-servlet",value = "/quiz")
 public class Quiz extends HttpServlet {
 
 
