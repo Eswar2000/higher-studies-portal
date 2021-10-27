@@ -16,6 +16,9 @@ public class AccountHandler extends Database {
         ResultSet resultSet=executeQuery("select passwordHash from student where username=\""+username+"\"");
 
         if(resultSet.next()){
+            System.out.println(resultSet);
+            System.out.println(resultSet.getString("passwordHash"));
+            System.out.println(hashValue);
             if(resultSet.getString("passwordHash").equals(hashValue)){
                 return AuthStatus.authenticated;
             }else{
@@ -34,7 +37,6 @@ public class AccountHandler extends Database {
 
     public static AuthStatus handleCredentialCheck(HttpServletRequest req, HttpServletResponse res) throws Exception {
         AuthStatus authStatus= AccountHandler.checkCredentials(req.getHeader("username"),req.getHeader("authhash"));
-
         if (authStatus == AuthStatus.incorrectPassword){
             res.setContentType("application/XML");
             XMLTools.sendXMLResponse(new StringBuilder("<authStatus>NOT AUTHORIZED</authStatus>"),res.getWriter(),"authorization");
