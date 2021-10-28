@@ -34,7 +34,6 @@ public class AccountHandler extends Database {
 
     public static AuthStatus handleCredentialCheck(HttpServletRequest req, HttpServletResponse res) throws Exception {
         AuthStatus authStatus= AccountHandler.checkCredentials(req.getHeader("username"),req.getHeader("authhash"));
-
         if (authStatus == AuthStatus.incorrectPassword){
             res.setContentType("application/XML");
             XMLTools.sendXMLResponse(new StringBuilder("<authStatus>NOT AUTHORIZED</authStatus>"),res.getWriter(),"authorization");
