@@ -12,51 +12,51 @@ import java.sql.SQLException;
 
 public class AccountHandler extends Database {
 
-    public static String handleChangePassword(HttpServletRequest req, HttpServletResponse res) throws Exception{
-        return changePassword(req.getHeader("username"), req.getHeader("hashValue"), req.getHeader("newHashValue"));
-    }
 
-    public static String changePassword(String username, String hashValue, String newHashValue) throws SQLException, ClassNotFoundException {
+    public static StringBuilder changePassword(String username, String hashValue, String newHashValue) throws SQLException, ClassNotFoundException {
 
-        ResultSet resultSet=executeQuery("select passwordHash from student where username=\""+username+"\"");
-
-        if(resultSet.next()){
-            if(resultSet.getString("passwordHash").equals(hashValue)){
-                int res = executeUpdate("update student set passwordHash=\""+newHashValue+"\" where username=\""+username+"\"");
-                if(res){
-                    return "Password changed successfully";
-                }
-                else{
-                    return "error";
-                }
-            }else{
-                return "incorrect credentials";
+        if(checkCredentials(username,hashValue) == AuthStatus.authenticated){
+            if(executeUpdate("update student set passwordHash=\""+newHashValue+"\" where username=\""+username+"\"")>0){
+                return new StringBuilder("Password changed successfully");
+            }
+            else{
+                return new StringBuilder("An error occurred while changing the password");
             }
         }
-        return AuthStatus.noSuchUser;
+        return new StringBuilder("Incorrect credentials");
     }
 
-    public static String handleForgotPassword(HttpServletRequest req, HttpServletResponse res) throws Exception{
-        return forgotPassword(req.getHeader("securityAnswer"), req.getHeader("username"), req.getHeader("newHashValue"));
+
+    public static StringBuilder getSecurityQuestion(String username) throws SQLException, ClassNotFoundException {
+
+        ResultSet queryResult = executeQuery("select secQuestion from student where username=\""+username+"\"");
+
+        if(queryResult.next()){
+            return new StringBuilder(queryResult.getString("secQuestion"));
+        }
+
+        return new StringBuilder("No such user");
+
     }
 
-    public static String forgotPassword(String securityAnswer, String username, String newHashValue) throws SQLException, ClassNotFoundException{
+
+    public static StringBuilder forgotPasswordSetPassword(String securityAnswer, String username, String newHashValue) throws SQLException, ClassNotFoundException{
         ResultSet resultSet=executeQuery("select secAnswer from student where username=\""+username+"\"");
-            if(resultSet.next()){
+
+        if(resultSet.next()){
             if(resultSet.getString("secAnswer").equals(securityAnswer)){
-                int res = executeUpdate("update student set passwordHash=\""+newHashValue+"\" where username=\""+username+"\"");
-                if(res){
-                    return "Password changed successfully";
+                if(executeUpdate("update student set passwordHash=\""+newHashValue+"\" where username=\""+username+"\"") > 0){
+                    return new StringBuilder("Password changed successfully");
                 }
                 else{
-                    return "error";
+                    return new StringBuilder("error");
                 }
             }
             else{
-                return "Incorrect Security Answer";
+                return new StringBuilder("Incorrect Security Answer");
             }
         }
-        return AuthStatus.noSuchUser;
+        return new StringBuilder("No such user");
     }
 
     public static AuthStatus checkCredentials(String username, String hashValue) throws SQLException, ClassNotFoundException {
