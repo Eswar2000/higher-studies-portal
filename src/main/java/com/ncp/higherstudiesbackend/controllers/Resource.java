@@ -40,6 +40,7 @@ public class Resource extends HttpServlet {
             AuthStatus authStatus=AccountHandler.handleCredentialCheck(req,res);
 
             if(authStatus == AuthStatus.authenticated){
+
                 res.setContentType("application/xml");
                 XMLDocument resourceRequest=XMLTools.parseXML(req.getInputStream());
                 res.setStatus(200);

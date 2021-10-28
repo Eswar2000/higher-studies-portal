@@ -49,7 +49,13 @@ public class QuizHandler extends Database {
             if(questionResult.getString("answer").equals(curAnswer)){
                 isCorrect = 1;
             }
-            executeUpdate("insert into quiz values (\""+username+"\","+questionID+","+isCorrect+")");
+            ResultSet prevResult=executeQuery("select * from quiz where studentUsername=\""+username+"\" and qID="+questionID);
+
+            if(prevResult.next()){
+                executeUpdate("update quiz set isCorrect= "+isCorrect+" where studentUsername=\""+username+"\" and qID="+questionID);
+            }else {
+                executeUpdate("insert into quiz values (\""+username+"\","+questionID+","+isCorrect+")");
+            }
             StringBuilder questionResponse = new StringBuilder("<isCorrect>"+isCorrect+"</isCorrect>");
             return questionResponse;
         }

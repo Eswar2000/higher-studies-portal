@@ -27,8 +27,10 @@ public class Quiz extends HttpServlet {
                 XMLDocument reqDocument = XMLTools.parseXML(req.getInputStream());
                 if(reqDocument.getAttributeValue("query").equals("prevResult")){
                     XMLTools.sendXMLResponse(QuizHandler.getPreviousQuizResults(req.getHeader("username")),res.getWriter(),"results");
-                } else{
+                } else if(reqDocument.getAttributeValue("query").equals("questions")){
                     XMLTools.sendXMLResponse(QuizHandler.getAllQuestions(req.getHeader("username")),res.getWriter(),"questions");
+                }else{
+                    XMLTools.sendXMLResponse(new StringBuilder("Invalid Request! Specify query"), res.getWriter(), "response");
                 }
             }
         }catch(Exception e){
