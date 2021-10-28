@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "loginServlet",value = "/login")
 public class Login extends HttpServlet {
 
-
     public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
         try{

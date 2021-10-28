@@ -27,5 +27,4 @@ public class XMLDocument {
         return documentRoot;
     }
 
-
 }

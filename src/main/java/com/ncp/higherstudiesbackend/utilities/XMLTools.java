@@ -47,7 +47,6 @@ public class XMLTools {
         StringBuilder bodyString=getReqBodyAsString(reqReader);
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bodyString.toString().getBytes("UTF-8"));
 
-
 //        System.out.println(bodyString);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();

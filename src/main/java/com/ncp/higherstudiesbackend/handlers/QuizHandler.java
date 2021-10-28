@@ -12,9 +12,6 @@ public class QuizHandler extends Database {
 
 
     public static StringBuilder getAllQuestions(String username) throws Exception{
-        //TODO do JDBC call to get all questions and return to controller
-
-        //Query: select * from quiz order by RAND() LIMIT 10 where examStream=ProfileHandler.getAttributeFromUsername
 
         ResultSet resultSet=executeQuery("select * from questionpool where examStream=\""+ProfileHandler.getAttributeFromUsername(username,"examStream")+"\" order by RAND() LIMIT 10");
 
