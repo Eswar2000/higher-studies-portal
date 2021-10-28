@@ -2,6 +2,7 @@ package com.ncp.higherstudiesbackend.controllers;
 
 import com.ncp.higherstudiesbackend.enums.AuthStatus;
 import com.ncp.higherstudiesbackend.handlers.AccountHandler;
+import com.ncp.higherstudiesbackend.handlers.BookmarkedResourceHandler;
 import com.ncp.higherstudiesbackend.handlers.ResourceHandler;
 import com.ncp.higherstudiesbackend.handlers.UniversityHandler;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
@@ -12,16 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
-@WebServlet(name = "resourceServlet",value = "/resource")
+@WebServlet(name = "bookmarkedResourceServlet",value = "/bookmarkedResource")
 
-public class Resource extends HttpServlet {
+public class BookmarkedResource extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) {
         try{
             AuthStatus authStatus= AccountHandler.handleCredentialCheck(req, res);
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
-                XMLTools.sendXMLResponse(ResourceHandler.getAllResources(), res.getWriter(), "resources");
+                XMLTools.sendXMLResponse(BookmarkedResourceHandler.getBookmarkedResources(req.getHeader("username")), res.getWriter(), "bookmarkedResources");
             }
         }catch (Exception e) {
             res.setStatus(500);
@@ -30,20 +31,21 @@ public class Resource extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) {
-        try {
-            AuthStatus authStatus = AccountHandler.handleCredentialCheck(req, res);
-            if(authStatus == AuthStatus.authenticated) {
+        try{
+            AuthStatus authStatus= AccountHandler.handleCredentialCheck(req, res);
+            if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
                 PrintWriter resWriter = res.getWriter();
-                if(ResourceHandler.handleCreateResource(req,res)) {
-                    XMLTools.sendXMLResponse(new StringBuilder("<status>Resource Created</status>"),resWriter,"resources");
+                if(BookmarkedResourceHandler.createNewBookmarkedResourceHandler(req,res)) {
+                    XMLTools.sendXMLResponse(new StringBuilder("<status>Resource Bookmarked</status>"),resWriter,"bookmarkedResources");
+                    XMLTools.sendXMLResponse(new StringBuilder("<status>Resource Bookmarked</status>"),resWriter,"bookmarkedResources");
                 }
                 else {
-                    XMLTools.sendXMLResponse(new StringBuilder("<status>Error in Resource Creation</status>"),resWriter,"resources");
+                    XMLTools.sendXMLResponse(new StringBuilder("<status>Error in Bookmarking Resource</status>"),resWriter,"bookmarkedResources");
                 }
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             res.setStatus(500);
             e.printStackTrace();
         }

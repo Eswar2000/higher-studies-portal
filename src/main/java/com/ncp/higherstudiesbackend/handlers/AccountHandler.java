@@ -16,9 +16,6 @@ public class AccountHandler extends Database {
         ResultSet resultSet=executeQuery("select passwordHash from student where username=\""+username+"\"");
 
         if(resultSet.next()){
-            System.out.println(resultSet);
-            System.out.println(resultSet.getString("passwordHash"));
-            System.out.println(hashValue);
             if(resultSet.getString("passwordHash").equals(hashValue)){
                 return AuthStatus.authenticated;
             }else{
