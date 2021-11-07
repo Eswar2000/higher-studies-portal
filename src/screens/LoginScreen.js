@@ -4,6 +4,7 @@ import CustomInput from "../components/CustomInput";
 import InputValidation from "../tools/InputValidation";
 import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
+import backendService from "../services/backendService";
 
 
 
@@ -23,13 +24,18 @@ export default function LoginScreen() {
         setPassword(e.target.value);
     }
 
-    const onSubmit=(e)=>{
+    const onSubmit=async (e)=>{
         e.preventDefault();
         //Length restriction username min 5-25 alphanum only
         //Password 8-16, atleast 1 caps, 1 small, 1 num, 1 special character
         if(!InputValidation.checkUsername(username) || !InputValidation.checkPassword(password)){
             setErrorText("Invalid Username or Password");
         }
+
+        let response=await backendService("POST","/login",null,username,password);
+
+        console.log(response);
+
         history.replace('/home');
 
     }
