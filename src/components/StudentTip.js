@@ -33,6 +33,12 @@ export default function StudentTip({post,onVoteCallback}){
         onVoteCallback(post.postID,"downVote");
     }
 
+    const getDateTimeString=()=>{
+        let date=new Date(Date.parse(post.postDateTime));
+        let dateTimeString=`Posted on ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes()}`;
+        return dateTimeString;
+    }
+
 
     return (
         <div className={"universityTipCard"}>
@@ -43,6 +49,7 @@ export default function StudentTip({post,onVoteCallback}){
             <p className={'tipAuthorUniversity'}>{post.postAuthorUniversity}</p>
             <p className={'universityTip'}>{post.postText}</p>
             <div className={'voteReaction'}>
+                <p className={'postDateTimeText'}>{getDateTimeString()}</p>
                 <Chip icon={<ThumbUpIcon/>} className={'upVoteButton'} label={post.upVoteList.length} clickable color="primary" onClick={handleUpVote} variant={getUpvoteButtonVariant()}/>
                 <Chip icon={<ThumbDownIcon/>} className={'downVoteButton'} label={post.downVoteList.length} clickable color="secondary" onClick={handleDownVote} variant={getDownvoteButtonVariant()}/>
             </div>
