@@ -19,7 +19,7 @@ import java.util.TimeZone;
 public class ForumHandler extends Database {
 
     public static StringBuilder getAllPosts() throws SQLException, ClassNotFoundException {
-        ResultSet posts=executeQuery("select * from feed");
+        ResultSet posts=executeQuery("select feed.ID, post, postDateTime,studentUsername,university.name from feed inner join student on feed.studentUsername = student.username inner join university on student.pgUniversityID = university.id;");
 
         StringBuilder postsXML=new StringBuilder("");
 
@@ -38,7 +38,7 @@ public class ForumHandler extends Database {
                 }
             }
 
-            postsXML.append(new PostModel(ProfileHandler.getAttributeFromUsername(posts.getString("studentUsername"),"name"),posts.getString("postDateTime"),posts.getString("post"),upVoteUsernames,downVoteUsernames).getPostXML());
+            postsXML.append(new PostModel(posts.getInt("ID"),ProfileHandler.getAttributeFromUsername(posts.getString("studentUsername"),"name"),posts.getString("postDateTime"),posts.getString("post"),upVoteUsernames,downVoteUsernames,posts.getString("name")).getPostXML());
         }
 
         return postsXML;

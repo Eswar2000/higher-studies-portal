@@ -21,6 +21,16 @@ public class ProfileHandler extends Database {
         return "";
     }
 
+    public static String getStudentPgUniversityName(String username) throws SQLException, ClassNotFoundException {
+        ResultSet universityName=executeQuery("select name from university where id="+getAttributeFromUsername(username,"pgUniversityID"));
+
+        if(universityName.next()){
+            return universityName.getString("name");
+        }
+
+        return "";
+    }
+
     public static StringBuilder getStudentProfile(String username) throws SQLException, ClassNotFoundException {
         ResultSet studentData=executeQuery("select * from student where username=\""+username+"\"");
 
