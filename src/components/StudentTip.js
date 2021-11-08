@@ -4,26 +4,33 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
 
 
-export default function StudentTip({post,upVotes,downVotes,onVoteCallback}){
+export default function StudentTip({post,onVoteCallback}){
 
 
 
     const getUpvoteButtonVariant=()=>{
-        // for(const facultyID of post.upvotes){
-        //     if(facultyID===sessionStorage.USER_DB_ID){
-        //         return "default";
-        //     }
-        // }
+        for(const username of post.upVoteList){
+            if(username===sessionStorage.username){
+                return "default";
+            }
+        }
         return "outlined";
     }
 
     const getDownvoteButtonVariant=()=>{
-        // for(const facultyID of post.downvotes){
-        //     if(facultyID===sessionStorage.USER_DB_ID){
-        //         return "default";
-        //     }
-        // }
+        for(const username of post.downVoteList){
+            if(username===sessionStorage.username){
+                return "default";
+            }
+        }
         return "outlined";
+    }
+
+    const handleUpVote=()=>{
+        onVoteCallback(post.postID,"upVote");
+    }
+    const handleDownVote=()=>{
+        onVoteCallback(post.postID,"downVote");
     }
 
 
@@ -36,8 +43,8 @@ export default function StudentTip({post,upVotes,downVotes,onVoteCallback}){
             <p className={'tipAuthorUniversity'}>{post.postAuthorUniversity}</p>
             <p className={'universityTip'}>{post.postText}</p>
             <div className={'voteReaction'}>
-                <Chip icon={<ThumbUpIcon/>} className={'upVoteButton'} label={upVotes} clickable color="primary" onClick={()=>{}} variant={getUpvoteButtonVariant()}/>
-                <Chip icon={<ThumbDownIcon/>} className={'downVoteButton'} label={downVotes} clickable color="secondary" onClick={()=>{}} variant={getDownvoteButtonVariant()}/>
+                <Chip icon={<ThumbUpIcon/>} className={'upVoteButton'} label={post.upVoteList.length} clickable color="primary" onClick={handleUpVote} variant={getUpvoteButtonVariant()}/>
+                <Chip icon={<ThumbDownIcon/>} className={'downVoteButton'} label={post.downVoteList.length} clickable color="secondary" onClick={handleDownVote} variant={getDownvoteButtonVariant()}/>
             </div>
         </div>
     );

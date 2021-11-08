@@ -36,10 +36,11 @@ export default function LoginScreen() {
         let response=await backendService("POST","/login",null,username,hashString(username,password));
 
 
-
         if(response.statusCode===200){
             sessionStorage.username=username;
             sessionStorage.passwordHash=hashString(username,password);
+            sessionStorage.name=response.response.name._text;
+            sessionStorage.pgUniversityName=response.response.pgUniversityName._text;
             history.replace('/home');
         }else if(response.statusCode===500){
             setErrorText("Something went wrong");

@@ -2,13 +2,18 @@ import StudentTip from "../components/StudentTip";
 import CreateStudentTipCard from "../components/CreateStudentTipCard";
 import {useEffect, useState} from "react";
 import backendService from "../services/backendService";
-import hashString from "../services/hashString";
 
 // eslint-disable-next-line
 export default function UniversityTipScreen({}){
 
     const [posts,setPosts]=useState([]);
     const [statusCode,setStatusCode]=useState(0);
+
+    const [tipText,setTipText]=useState("");
+
+    const handleTipTextChange=(e)=>{
+        setTipText(e.target.value);
+    }
 
     const fetchPosts=async ()=>{
 
@@ -33,29 +38,63 @@ export default function UniversityTipScreen({}){
             let downVoteList=[];
 
             try{
-                // console.log(response.post[i].reactions.upVoteID[1]._text);
                 for(let j=0;j<response.post[i].reactions.upVoteID.length;j++){
                     upVoteList.push(response.post[i].reactions.upVoteID[j]._text);
                 }
-                post.upVoteList=upVoteList;
-            }catch(e){
-                try{
-                    if(response.post[i].reactions.upVoteID._text){
-                        upVoteList.push(response.post[i].reactions.upVoteID._text);
-                    }
-                }catch (e){
-                    post.upVoteList=[];
+                if(typeof response.post[i].reactions.upVoteID.length === "undefined"){
+                    upVoteList.push(response.post[i].reactions.upVoteID._text);
                 }
+            }catch(e){
+                post.upVoteList=[];
             }
+
+            try{
+                for(let j=0;j<response.post[i].reactions.downVoteID.length;j++){
+                    downVoteList.push(response.post[i].reactions.downVoteID[j]._text);
+                }
+                if(typeof response.post[i].reactions.downVoteID.length === "undefined"){
+                    downVoteList.push(response.post[i].reactions.downVoteID._text);
+                }
+            }catch(e){
+                post.downVoteList=[];
+            }
+
+            post.upVoteList=upVoteList;
+            post.downVoteList=downVoteList;
 
             tempPost.push(post);
         }
 
-        console.log(tempPost);
-
         setPosts(tempPost);
 
         setStatusCode(receivedStatusCode);
+    }
+
+    const postNewPost=async ()=>{
+        let result=await backendService("POST","/forum",{postText:tipText},sessionStorage.username,sessionStorage.passwordHash);
+
+        if(result.statusCode===200){
+            fetchPosts();
+            setTipText("");
+        }else{
+            alert("Error occurred");
+        }
+
+    }
+
+    const handleVote=async (postID,voteType)=>{
+        let reqBody={
+            postID:postID,
+            reactionType:voteType
+        };
+        let result=await backendService("PUT","/forum",reqBody,sessionStorage.username,sessionStorage.passwordHash);
+
+        if(result.statusCode===200){
+            fetchPosts();
+        }else{
+            alert("Something went wrong");
+        }
+
     }
 
     useEffect(()=>{
@@ -64,24 +103,10 @@ export default function UniversityTipScreen({}){
 
 
     const getPostsCard=()=>{
-
-        // let post={
-        //     postAuthorName:"Me",
-        //     postAuthorUniversity:"Me",
-        //     postDateTime:"Me",
-        //     postText:"Me",
-        // }
-
-        // return (
-        //     <div>
-        //         <StudentTip post={posts[0]} upVotes={20} downVotes={20} onVoteCallback={()=>{}}></StudentTip>
-        //     </div>
-        // );
-
         return (
             <div>
                 {posts.map((item,index)=>(
-                    <StudentTip post={item} upVotes={20} downVotes={2} onVoteCallback={()=>{}}/>
+                    <StudentTip key={index} post={item} onVoteCallback={handleVote}/>
                 ))}
             </div>
         );
@@ -90,7 +115,7 @@ export default function UniversityTipScreen({}){
     return (
         <div className={'tipScreenColumn'}>
             <div>
-                <CreateStudentTipCard/>
+                <CreateStudentTipCard tipText={tipText} handleTipTextChange={handleTipTextChange} onSubmit={postNewPost}/>
                 {statusCode===200 && getPostsCard()}
             </div>
         </div>
