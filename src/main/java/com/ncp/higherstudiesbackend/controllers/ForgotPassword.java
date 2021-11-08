@@ -38,6 +38,7 @@ public class ForgotPassword extends HttpServlet {
             XMLDocument userResponse = XMLTools.parseXML(req.getInputStream());
 
             res.setStatus(200);
+
             XMLTools.sendXMLResponse(AccountHandler.forgotPasswordSetPassword(userResponse.getAttributeValue("securityAnswer"),userResponse.getAttributeValue("username"),userResponse.getAttributeValue("newHash")),res.getWriter(),"response");
         }catch (Exception e) {
             res.setStatus(500);

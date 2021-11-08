@@ -23,7 +23,7 @@ public class BookmarkedResource extends HttpServlet {
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
-                XMLTools.sendXMLResponse(BookmarkedResourceHandler.getBookmarkedResources(req.getHeader("username")), res.getWriter(), "bookmarkedResources");
+                XMLTools.sendXMLResponse(BookmarkedResourceHandler.getBookmarkedResources(req.getHeader("username")), res.getWriter(), "response");
             }
         }catch (Exception e) {
             res.setStatus(500);
@@ -44,7 +44,7 @@ public class BookmarkedResource extends HttpServlet {
                     XMLTools.sendXMLResponse(new StringBuilder("<status>Resource Bookmarked</status>"),resWriter,"bookmarkedResources");
                 }
                 else {
-                    XMLTools.sendXMLResponse(new StringBuilder("<status>Error in Bookmarking Resource</status>"),resWriter,"bookmarkedResources");
+                    XMLTools.sendXMLResponse(new StringBuilder("<status>Error in Bookmarking Resource</status>"),resWriter,"response");
                 }
             }
         }catch (Exception e) {

@@ -13,16 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "loginServlet",value = "/login")
 public class Login extends HttpServlet {
 
+    @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
         try{
             AuthStatus authStatus= AccountHandler.handleCredentialCheck(req,res);
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/XML");
-                XMLTools.sendXMLResponse(new StringBuilder("<authStatus>Authenticated</authStatus>"),res.getWriter(),"authorization");
+                XMLTools.sendXMLResponse(new StringBuilder("<authStatus>Authenticated</authStatus>"),res.getWriter(),"response");
                 res.setStatus(200);
             }
         }catch (Exception e) {
+            res.setStatus(500);
             e.printStackTrace();
         }
 

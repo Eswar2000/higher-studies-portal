@@ -25,7 +25,7 @@ public class Forum extends HttpServlet {
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
-                XMLTools.sendXMLResponse(ForumHandler.getAllPosts(),res.getWriter(),"posts");
+                XMLTools.sendXMLResponse(ForumHandler.getAllPosts(),res.getWriter(),"response");
             }
         }catch(Exception e){
             res.setStatus(500);

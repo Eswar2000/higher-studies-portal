@@ -24,9 +24,9 @@ public class Resource extends HttpServlet {
                 XMLDocument resourceRequest=XMLTools.parseXML(req.getInputStream());
 
                 if(resourceRequest.getAttributeValue("author").equals("all")){
-                    XMLTools.sendXMLResponse(ResourceHandler.getAllResources(), res.getWriter(), "resources");
+                    XMLTools.sendXMLResponse(ResourceHandler.getAllResources(), res.getWriter(), "response");
                 }else{
-                    XMLTools.sendXMLResponse(ResourceHandler.getResourcesByUserId(resourceRequest.getAttributeValue("author")), res.getWriter(), "resources");
+                    XMLTools.sendXMLResponse(ResourceHandler.getResourcesByUserId(resourceRequest.getAttributeValue("author")), res.getWriter(), "response");
                 }
             }
         }catch (Exception e) {
@@ -45,9 +45,9 @@ public class Resource extends HttpServlet {
                 XMLDocument resourceRequest=XMLTools.parseXML(req.getInputStream());
                 res.setStatus(200);
                 if(ResourceHandler.createResource(resourceRequest.getAttributeValue("resourceName"),resourceRequest.getAttributeValue("author"),resourceRequest.getAttributeValue("coverURL"),resourceRequest.getAttributeValue("source"))){
-                    XMLTools.sendXMLResponse(new StringBuilder("Resource Added Successfully"), res.getWriter(), "resourceResponse");
+                    XMLTools.sendXMLResponse(new StringBuilder("Resource Added Successfully"), res.getWriter(), "response");
                 }else{
-                    XMLTools.sendXMLResponse(new StringBuilder("Something went wrong"), res.getWriter(), "resourceResponse");
+                    XMLTools.sendXMLResponse(new StringBuilder("Something went wrong"), res.getWriter(), "response");
                 }
             }
 

@@ -23,7 +23,7 @@ public class University extends HttpServlet {
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
-                XMLTools.sendXMLResponse(UniversityHandler.getAllUniversities(),res.getWriter(),"universities");
+                XMLTools.sendXMLResponse(UniversityHandler.getAllUniversities(),res.getWriter(),"response");
             }
 
         }catch(Exception e){

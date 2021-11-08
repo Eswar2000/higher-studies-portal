@@ -26,9 +26,9 @@ public class Quiz extends HttpServlet {
                 res.setContentType("application/xml");
                 XMLDocument reqDocument = XMLTools.parseXML(req.getInputStream());
                 if(reqDocument.getAttributeValue("query").equals("prevResult")){
-                    XMLTools.sendXMLResponse(QuizHandler.getPreviousQuizResults(req.getHeader("username")),res.getWriter(),"results");
+                    XMLTools.sendXMLResponse(QuizHandler.getPreviousQuizResults(req.getHeader("username")),res.getWriter(),"response");
                 } else if(reqDocument.getAttributeValue("query").equals("questions")){
-                    XMLTools.sendXMLResponse(QuizHandler.getAllQuestions(req.getHeader("username")),res.getWriter(),"questions");
+                    XMLTools.sendXMLResponse(QuizHandler.getAllQuestions(req.getHeader("username")),res.getWriter(),"response");
                 }else{
                     XMLTools.sendXMLResponse(new StringBuilder("Invalid Request! Specify query"), res.getWriter(), "response");
                 }
@@ -46,7 +46,7 @@ public class Quiz extends HttpServlet {
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 XMLDocument reqDocument = XMLTools.parseXML(req.getInputStream());
-                XMLTools.sendXMLResponse(QuizHandler.addQuestionResult(req.getHeader("username"),Integer.parseInt(reqDocument.getAttributeValue("questionID")),reqDocument.getAttributeValue("curAnswer")),res.getWriter(),"questionResponse");
+                XMLTools.sendXMLResponse(QuizHandler.addQuestionResult(req.getHeader("username"),Integer.parseInt(reqDocument.getAttributeValue("questionID")),reqDocument.getAttributeValue("curAnswer")),res.getWriter(),"response");
             }
         }catch(Exception e){
             res.setStatus(500);
