@@ -21,7 +21,7 @@ export default function LandingScreen(){
                     </div>
                 </div>
                 <div>
-                    <img height={315} width={625} src={GetGraduated}/>
+                    <img height={315} width={625} alt={"getGraduated"} src={GetGraduated}/>
                 </div>
             </section>
 

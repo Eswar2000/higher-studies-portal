@@ -28,8 +28,8 @@ export default function ProfileInfoRow({fieldName,fieldType="textField",fieldVal
                 <span className="profileEditCategory">{fieldName}</span>
             </Box>
             <Box item flex={2}>
-                {fieldType=='textField' && <CustomInput value={fieldValue} disabled={!editEnabled} onChange={fieldOnChange}/>}
-                {fieldType=='select' && <CustomSelect disabled={!editEnabled} onSelect={fieldOnChange}/>}
+                {fieldType==='textField' && <CustomInput value={fieldValue} disabled={!editEnabled} onChange={fieldOnChange}/>}
+                {fieldType==='select' && <CustomSelect disabled={!editEnabled} onSelect={fieldOnChange}/>}
                 {/*<span className="profileEditResponse">{fieldValue}</span>*/}
             </Box>
             <Box item flex={1}>

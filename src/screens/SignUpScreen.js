@@ -1,6 +1,6 @@
 import AddUser from '../assets/AddUser.svg';
 import CustomInput from "../components/CustomInput";
-import InputValidation from "../tools/InputValidation";
+import InputValidation from "../services/InputValidation";
 import {useState} from "react";
 import {useHistory} from "react-router";
 

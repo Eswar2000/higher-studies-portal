@@ -1,10 +1,12 @@
 import BookRead from '../assets/BookRead.svg';
 import {useState} from "react";
 import CustomInput from "../components/CustomInput";
-import InputValidation from "../tools/InputValidation";
+import InputValidation from "../services/InputValidation";
 import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
 import backendService from "../services/backendService";
+import hashString from "../services/hashString";
+import xmlParser from "xml-js";
 
 
 
@@ -32,11 +34,19 @@ export default function LoginScreen() {
             setErrorText("Invalid Username or Password");
         }
 
-        let response=await backendService("POST","/login",null,username,password);
+        let response=await backendService("POST","/login",null,username,hashString(username,password));
 
-        console.log(response);
 
-        history.replace('/home');
+
+        if(response.statusCode===200){
+            sessionStorage.username=username;
+            sessionStorage.password=hashString(username,password);
+            history.replace('/home');
+        }else if(response.statusCode===500){
+            setErrorText("Something went wrong");
+        }else{
+            setErrorText(response.authorization.authStatus._text);
+        }
 
     }
 
