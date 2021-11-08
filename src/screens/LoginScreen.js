@@ -6,7 +6,6 @@ import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
 import backendService from "../services/backendService";
 import hashString from "../services/hashString";
-import xmlParser from "xml-js";
 
 
 
@@ -40,7 +39,7 @@ export default function LoginScreen() {
 
         if(response.statusCode===200){
             sessionStorage.username=username;
-            sessionStorage.password=hashString(username,password);
+            sessionStorage.passwordHash=hashString(username,password);
             history.replace('/home');
         }else if(response.statusCode===500){
             setErrorText("Something went wrong");

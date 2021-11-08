@@ -4,7 +4,7 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
 
 
-export default function StudentTip({authorName,authorUniversity,tipText,upVotes,downVotes,onVoteCallback}){
+export default function StudentTip({post,upVotes,downVotes,onVoteCallback}){
 
 
 
@@ -30,11 +30,11 @@ export default function StudentTip({authorName,authorUniversity,tipText,upVotes,
     return (
         <div className={"universityTipCard"}>
             <div className={'tipAuthorRow'}>
-                <Avatar className={GetRandomAvatarColor('random')} sizes={'small'}><b>A</b></Avatar>
-                <p className={'tipAuthorText'}>{authorName}</p>
+                <Avatar className={GetRandomAvatarColor('ascii',post.postAuthorName)} sizes={'small'}><b>{post.postAuthorName[0]}</b></Avatar>
+                <p className={'tipAuthorText'}>{post.postAuthorName}</p>
             </div>
-            <p className={'tipAuthorUniversity'}>{authorUniversity}</p>
-            <p className={'universityTip'}>{tipText}</p>
+            <p className={'tipAuthorUniversity'}>{post.postAuthorUniversity}</p>
+            <p className={'universityTip'}>{post.postText}</p>
             <div className={'voteReaction'}>
                 <Chip icon={<ThumbUpIcon/>} className={'upVoteButton'} label={upVotes} clickable color="primary" onClick={()=>{}} variant={getUpvoteButtonVariant()}/>
                 <Chip icon={<ThumbDownIcon/>} className={'downVoteButton'} label={downVotes} clickable color="secondary" onClick={()=>{}} variant={getDownvoteButtonVariant()}/>
