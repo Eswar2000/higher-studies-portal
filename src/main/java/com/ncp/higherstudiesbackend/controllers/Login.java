@@ -3,6 +3,7 @@ package com.ncp.higherstudiesbackend.controllers;
 
 import com.ncp.higherstudiesbackend.enums.AuthStatus;
 import com.ncp.higherstudiesbackend.handlers.AccountHandler;
+import com.ncp.higherstudiesbackend.handlers.ProfileHandler;
 import com.ncp.higherstudiesbackend.utilities.XMLTools;
 
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class Login extends HttpServlet {
             AuthStatus authStatus= AccountHandler.handleCredentialCheck(req,res);
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/XML");
-                XMLTools.sendXMLResponse(new StringBuilder("<authStatus>Authenticated</authStatus>"),res.getWriter(),"response");
+                XMLTools.sendXMLResponse(new StringBuilder("<authStatus>Authenticated</authStatus>"+ "<name>"+ProfileHandler.getAttributeFromUsername(req.getHeader("username"),"name")+"</name>"+"<pgUniversityName>"+ProfileHandler.getStudentPgUniversityName(req.getHeader("username"))+"</pgUniversityName>"),res.getWriter(),"response");
                 res.setStatus(200);
             }
         }catch (Exception e) {
