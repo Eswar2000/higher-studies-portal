@@ -24,13 +24,12 @@ public class Quiz extends HttpServlet {
 
             if(authStatus==AuthStatus.authenticated){
                 res.setContentType("application/xml");
-                XMLDocument reqDocument = XMLTools.parseXML(req.getInputStream());
-                if(reqDocument.getAttributeValue("query").equals("prevResult")){
+                if(req.getParameter("query").equals("prevResult")){
                     XMLTools.sendXMLResponse(QuizHandler.getPreviousQuizResults(req.getHeader("username")),res.getWriter(),"response");
-                } else if(reqDocument.getAttributeValue("query").equals("questions")){
+                } else if(req.getParameter("query").equals("questions")){
                     XMLTools.sendXMLResponse(QuizHandler.getAllQuestions(req.getHeader("username")),res.getWriter(),"response");
                 }else{
-                    XMLTools.sendXMLResponse(new StringBuilder("Invalid Request! Specify query"), res.getWriter(), "response");
+                    XMLTools.sendXMLResponse(new StringBuilder("Invalid Request! Specify valid query"), res.getWriter(), "response");
                 }
             }
         }catch(Exception e){
