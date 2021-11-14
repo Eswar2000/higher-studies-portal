@@ -27,14 +27,14 @@ export default function ProfileScreen() {
 
     const history=useHistory();
 
-    const [name,setName]=useState("Eswar Raman");
-    const [ugUniversity,setUgUniversity]=useState("Amrita Vishwa Vidyapeetham");
+    const [name,setName]=useState("");
+    const [ugUniversity,setUgUniversity]=useState("");
     const [pgUniversity,setPgUniversity]=useState("");
-    const [city, setCity]=useState("Hosur");
-    const [email,setEmail]=useState("v.eswarraman2000@gmail.com");
-    const [phoneNumber,setPhoneNumber]=useState("1234567890");
-    const [securityQuestion, setSecurityQuestion]=useState("What is your favourite novel");
-    const [securityAnswer,setSecurityAnswer]=useState("Harry Potter and the Sorcerer's Stone");
+    const [city, setCity]=useState("");
+    const [email,setEmail]=useState("");
+    const [phoneNumber,setPhoneNumber]=useState("");
+    const [securityQuestion, setSecurityQuestion]=useState("");
+    const [securityAnswer,setSecurityAnswer]=useState("");
 
 
     const handleNameChange=(e)=>{
@@ -66,26 +66,36 @@ export default function ProfileScreen() {
        history.replace('/changePassword');
     }
     
-    const UpdateProfile=()=>{
-      const article = {ugUniversity,name,pgUniversity,phoneNumber,email,securityQuestion,securityAnswer};
-    axios.post('',article) // Add end point to update profile
-        .then(response => this.setState({ , }))
-        .catch(error => {
-            this.setState({ errorMessage: error.message });
-            console.error('There was an error!', error);
-        });
+    const onupdate=async (e)=>{
+        
+        let reqBody = {
+            name: name,
+            username: username,
+            email: email,
+            uguniversity:ugUniversity,
+            pguniversity:pgUniversity,
+            phonenumber:phonenumber,
+            securityQuestion: securityQuestion,
+            securityAnswer:securityAnswer
+            };
+        let response = await backendService("POST", "/updateprofile",reqBody, null, null);
+        console.log(response);
+        setStatusCode(response.statusCode);
+        if(response.statusCode === 200){
 
+        }
     }
-    
     componentDidMount() {
-    // POST request using axios with error handling
-    const article = { user: user_id };
-    axios.get('', article) // Add end point to fetch data from profile
-        .then(response => this.setState({ name: response.data.name,ugUniversity :response.data.ugUniversity,pgUniversity :response.data.pgUniversity,phonenumber :response.data.phonenumber,email: response.data.email,securityQuestion: response.data.securityQuestion, securityAnswer: response.data.securityAnswer}))
-        .catch(error => {
-            this.setState({ errorMessage: error.message });
-            console.error('There was an error!', error);
-        });
+            let reqBody = {
+            username: username,
+            };
+        let response = await backendService("GET", "/profile",reqBody, null, null);
+        console.log(response);
+        setStatusCode(response.statusCode);
+        if(response.statusCode === 200){
+            
+        }
+
 }
 
 
