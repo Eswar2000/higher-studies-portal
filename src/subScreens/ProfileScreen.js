@@ -62,9 +62,10 @@ export default function ProfileScreen() {
         setSecurityAnswer(e.target.value);
     }
 
-    // const onChangePasswordButtonClick=()=>{
-    //     history.replace('/changePassword');
-    // }
+    const onChangePasswordButtonClick=()=>{
+       history.replace('/changePassword');
+    }
+    
 
 
 
