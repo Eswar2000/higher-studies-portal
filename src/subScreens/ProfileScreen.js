@@ -66,10 +66,27 @@ export default function ProfileScreen() {
        history.replace('/changePassword');
     }
     
+    const UpdateProfile=()=>{
+      const article = {ugUniversity,name,pgUniversity,phoneNumber,email,securityQuestion,securityAnswer};
+    axios.post('',article) // Add end point to update profile
+        .then(response => this.setState({ , }))
+        .catch(error => {
+            this.setState({ errorMessage: error.message });
+            console.error('There was an error!', error);
+        });
 
-
-
-
+    }
+    
+    componentDidMount() {
+    // POST request using axios with error handling
+    const article = { user: user_id };
+    axios.get('', article) // Add end point to fetch data from profile
+        .then(response => this.setState({ name: response.data.name,ugUniversity :response.data.ugUniversity,pgUniversity :response.data.pgUniversity,phonenumber :response.data.phonenumber,email: response.data.email,securityQuestion: response.data.securityQuestion, securityAnswer: response.data.securityAnswer}))
+        .catch(error => {
+            this.setState({ errorMessage: error.message });
+            console.error('There was an error!', error);
+        });
+}
 
 
     return (
