@@ -1,9 +1,9 @@
 import Avatar from '@material-ui/core/Avatar';
 
-export default function QuizOptionRow({quizOptionType,quizOptionText,quizAvatarColor,onOptionClick}) {
+export default function QuizOptionRow({optionIndex,quizOptionType,quizOptionText,quizAvatarColor,onOptionClick}) {
 
     const onSelect=()=>{
-        onOptionClick(quizOptionType.charCodeAt(0)-65);
+        onOptionClick(optionIndex);
     }
 
     return (

@@ -29,7 +29,7 @@ export default function QuizScreen() {
 
     const [questions,setQuestions]=useState([]);
     const [curQuestion,setCurQuestion]=useState(-1);
-    const [numCorrectAnswers,setNumCorrectAnswers]=useState(0);
+    const [maxCurQuestion,setmaxCurQuestion]=useState(-1);
 
 
 
@@ -47,7 +47,9 @@ export default function QuizScreen() {
         if(typeof response.question.length==="undefined"){
             tempQuestions.push({
                 questionText:response.question.questionText._text,
-                attended:false
+                isCorrect:false,
+                selectedChoice:-1,
+                questionID:response.question.questionID._text
             });
             if(typeof response.question.option.length==="undefined"){
                 tempQuestions[0].options=response.question.option._text;
@@ -65,18 +67,35 @@ export default function QuizScreen() {
                 }
                 tempQuestions.push({
                     questionText:response.question[i].questionText._text,
-                    attended:false,
-                    options:optionList
+                    isCorrect:false,
+                    selectedChoice:-1,
+                    options:optionList,
+                    questionID:response.question[i].questionID._text
                 });
             }
         }
-        console.log(tempQuestions);
         setQuestions(tempQuestions);
         setCurQuestion(0);
+        setmaxCurQuestion(0);
     }
 
-    const onOptionClick=(index)=>{
-
+    const onOptionClick=async (index)=>{
+        let reqBody = {
+            questionID: questions[curQuestion].questionID,
+            curAnswer: questions[curQuestion].options[index]
+        };
+        let response = await backendService("POST","/quiz",reqBody,sessionStorage.username, sessionStorage.passwordHash);
+        console.log(response.response);
+        response = response.response;
+        let tempQuestions = [];
+        for(let i=0;i<questions.length;i++){
+            if(i===curQuestion){
+                questions[i].isCorrect=response.isCorrect._text==="0"?false:true;
+                questions[i].selectedChoice=index;
+            }
+            tempQuestions.push(questions[i]);
+        }
+        setQuestions(tempQuestions);
     }
 
     const goToPrevQuestion=()=>{
@@ -86,15 +105,30 @@ export default function QuizScreen() {
     }
 
     const goToNextQuestion=()=>{
+        let tempCurQuestion=curQuestion;
         if(curQuestion !== questions.length-1){
             setCurQuestion(curQuestion+1);
+            if(maxCurQuestion<tempCurQuestion+1){
+                setmaxCurQuestion(tempCurQuestion+1);
+            }
         }
     }
 
-    const getOptionColorClass=(index,value)=>{
-        if(value && index===0){
-            return classes.green;
-        }else if(value && index !==1){
+    const getNumCorrectAnswers=()=>{
+        let count=0;
+        for(let i=0;i<questions.length;i++){
+            if(questions[i].isCorrect){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    const getOptionColorClass=(index)=>{
+        if(questions[curQuestion].selectedChoice===index){
+            if(questions[curQuestion].isCorrect){
+                return classes.green;
+            }
             return classes.red;
         }
         return classes.amber;
@@ -109,7 +143,7 @@ export default function QuizScreen() {
             {curQuestion!==-1 && <div id="quizQuestionCol">
                 <p id="quizQuestion">{questions[curQuestion].questionText}</p>
                 {questions[curQuestion].options.map((value, index) => (
-                    <QuizOptionRow key={index} quizOptionType={String.fromCharCode(65 + index)} quizOptionText={value}
+                    <QuizOptionRow key={index} optionIndex={index} quizOptionType={String.fromCharCode(65 + index)} quizOptionText={value}
                                    quizAvatarColor={getOptionColorClass(index, value)} onOptionClick={onOptionClick}/>
                 ))}
                 <div id="quizNavContainer">
@@ -125,9 +159,9 @@ export default function QuizScreen() {
                 </div>
                 <div id="quizOverview">
                     <p>Total Number Of Questions: {questions.length}</p>
-                    <p>Current Question : {curQuestion}</p>
-                    <p>Total Correct Questions: {numCorrectAnswers}</p>
-                    <p>Current Accuracy: {(numCorrectAnswers / (curQuestion + 1)) * 100}%</p>
+                    <p>Current Question : {curQuestion+1}</p>
+                    <p>Total Correct Questions: {getNumCorrectAnswers()}</p>
+                    <p>Current Accuracy: {((getNumCorrectAnswers() / (maxCurQuestion + 1)) * 100).toFixed(2)}%</p>
                 </div>
             </div>}
         </div>
