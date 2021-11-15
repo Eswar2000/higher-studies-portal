@@ -23,7 +23,7 @@ public class QuizHandler extends Database {
             while(optionsResult.next()){
                 options.add(optionsResult.getString("opt"));
             }
-            questionsXML.append(new QuestionModel(resultSet.getString("question"),options,resultSet.getString("answer")).getQuestionXML());
+            questionsXML.append(new QuestionModel(resultSet.getString("question"),options,resultSet.getString("answer"), resultSet.getInt("ID")).getQuestionXML());
         }
         executeUpdate("delete from quiz where studentUsername=\""+username+"\"");
         return questionsXML;

@@ -8,11 +8,13 @@ public class QuestionModel {
     private String questionText;
     private List<String> options;
     private String answer;
+    private int questionID;
 
-    public QuestionModel(String questionText, List<String> options, String answer){
+    public QuestionModel(String questionText, List<String> options, String answer, int questionID){
         this.questionText = questionText;
         this.options=options;
         this.answer=answer;
+        this.questionID=questionID;
     }
 
     public StringBuffer getQuestionXML(){
@@ -32,6 +34,7 @@ public class QuestionModel {
             }
             questionXML.append("<option>"+options.get(i)+"</option>");
         }
+        questionXML.append("<questionID>"+this.questionID+"</questionID>");
         questionXML.append("</question>");
 
         return questionXML;
