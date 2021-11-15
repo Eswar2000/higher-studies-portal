@@ -446,6 +446,10 @@
   text-align: right;
 }
 
+.postDateTimeText{
+  color: grey;
+}
+
 .tipScreenLeftColumn{
   display: inline;
   width: 45vw;

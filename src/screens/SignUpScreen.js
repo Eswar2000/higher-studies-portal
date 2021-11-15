@@ -1,7 +1,7 @@
 import AddUser from '../assets/AddUser.svg';
 import CustomInput from "../components/CustomInput";
 import InputValidation from "../services/InputValidation";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {useHistory} from "react-router";
 import backendService from "../services/backendService";
 import hashString from "../services/hashString";

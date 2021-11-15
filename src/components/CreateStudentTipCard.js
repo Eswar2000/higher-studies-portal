@@ -1,8 +1,6 @@
 import {Avatar, IconButton} from "@material-ui/core";
 import CustomInput from "./CustomInput";
-import {useState} from "react";
 import SendIcon from '@material-ui/icons/Send';
-import CustomSelect from "./CustomSelect";
 
 // eslint-disable-next-line
 export default function CreateStudentTipCard({tipText,handleTipTextChange,onSubmit}){

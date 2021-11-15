@@ -64,6 +64,10 @@ export default function UniversityTipScreen({}){
 
             tempPost.push(post);
         }
+        console.log(tempPost);
+        tempPost.sort((a,b)=>{
+            return Date.parse(b.postDateTime)-Date.parse(a.postDateTime);
+        });
 
         setPosts(tempPost);
 
