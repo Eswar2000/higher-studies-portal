@@ -80,9 +80,15 @@ export default function ProfileScreen() {
             };
         let response = await backendService("POST", "/updateprofile",reqBody, null, null);
         console.log(response);
-        setStatusCode(response.statusCode);
         if(response.statusCode === 200){
-
+           setName(response.name)
+           setUgUniversity(response.ugUniversity)
+           setpguniversity(response.pguniversity)
+           setphonenunber(response.phonenumber)
+           setemail(response.email)
+           setsecurityQuestion(response.securityQuestion)
+           setsecurityAnswer(response.securityAnswer)
+               
         }
     }
     componentDidMount() {
@@ -93,6 +99,13 @@ export default function ProfileScreen() {
         console.log(response);
         setStatusCode(response.statusCode);
         if(response.statusCode === 200){
+           setName(response.name)
+           setUgUniversity(response.ugUniversity)
+           setpguniversity(response.pguniversity)
+           setphonenunber(response.phonenumber)
+           setemail(response.email)
+           setsecurityQuestion(response.securityQuestion)
+           setsecurityAnswer(response.securityAnswer)
             
         }
 
