@@ -97,7 +97,6 @@ export default function ProfileScreen() {
             };
         let response = await backendService("GET", "/profile",reqBody, null, null);
         console.log(response);
-        setStatusCode(response.statusCode);
         if(response.statusCode === 200){
            setName(response.name)
            setUgUniversity(response.ugUniversity)
