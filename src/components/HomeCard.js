@@ -3,6 +3,8 @@ import { List, ListItem, ListItemIcon } from "@material-ui/core";
 import RoomIcon from '@material-ui/icons/Room';
 import BookmarkListItem from "./BookmarkListItem";
 import { Typography } from "@material-ui/core";
+import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
+
 
 
 export default function HomeCard({studentProfile}){
@@ -12,7 +14,7 @@ export default function HomeCard({studentProfile}){
                 <CardContent>
                     <Grid container>
                         <Box item flex={1}>
-                            <Avatar id="homeAvatar" variant="rounded"><b>E</b></Avatar>
+                            <Avatar id="homeAvatar" className={GetRandomAvatarColor('ascii',studentProfile.name)} variant="rounded"><b>{studentProfile.name[0]}</b></Avatar>
                         </Box>
                         <Box item flex={2}>
                             <List dense disablePadding>

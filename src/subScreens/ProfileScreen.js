@@ -10,8 +10,9 @@ import Button from "@material-ui/core/Button";
 import RoomIcon from '@material-ui/icons/Room';
 import SchoolIcon from '@material-ui/icons/School';
 import ProfileInfoRow from "../components/ProfileInfoRow";
+import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
 import {useEffect, useState} from "react";
-import {useHistory, useParams, useRouteMatch} from "react-router";
+import {useHistory, useParams} from "react-router";
 import backendService from "../services/backendService";
 // import {
 //     Dialog,
@@ -148,7 +149,7 @@ export default function ProfileScreen() {
                 <CardContent>
                     <Grid container>
                         <Box item flex={1}>
-                            <Avatar id="profileAvatar" variant="rounded"><b>E</b></Avatar>
+                            <Avatar id="profileAvatar" className={GetRandomAvatarColor('ascii',name)} variant="rounded"><b>{name[0]}</b></Avatar>
                         </Box>
                         <Box item flex={2}>
                             <List dense disablePadding>
@@ -203,7 +204,7 @@ export default function ProfileScreen() {
                 </CardContent>
             </Card>
             <Box height={16}/>
-            {(typeof user==="undefined") && <Card>
+            {(typeof user==="undefined") && <Card className='profileRowCard' variant="outlined">
                 <CardContent>
                     <Grid container>
                         <Box item flex={1} textAlign="center">

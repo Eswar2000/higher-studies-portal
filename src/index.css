@@ -295,6 +295,12 @@
   margin: 20px;
 }
 
+.cpScoreCol:nth-child(3) {
+  width: 20%;
+  margin: 40px;
+}
+
+
 .markSlider {
   -webkit-appearance: none;
   appearance: none;

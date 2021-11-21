@@ -12,30 +12,30 @@ import {IconButton} from "@material-ui/core";
 
 
 
-export default function CollegeInfoRow ({clgName, clgLocation, clgFee, clgAcceptance, clgMinMarks, languageMarks}) {
+export default function CollegeInfoRow ({uniDetails}) {
     return (
         <div id="collegeRow">
             <div id="collegeAvatarRow">
-                <Avatar className={GetRandomAvatarColor('ascii',clgName)} id="collegeAvatar"><b>{clgName[0]}</b></Avatar>
+                <Avatar className={GetRandomAvatarColor('ascii',uniDetails.uniName)} id="collegeAvatar"><b>{uniDetails.uniName[0]}</b></Avatar>
             </div>
             <div id="collegeInfoRow">
                 <dl>
                     <dt><SchoolIcon className="listIcon"/></dt>
-                    <dd>{clgName}</dd>
+                    <dd>{uniDetails.uniName}</dd>
                     <dt><RoomIcon className="listIcon"/></dt>
-                    <dd>{clgLocation}</dd>
+                    <dd>{uniDetails.uniLocation}</dd>
                     <dt><MonetizationOnIcon className="listIcon"/></dt>
-                    <dd>{clgFee}</dd>
+                    <dd>{uniDetails.uniTuitionFee}</dd>
                 </dl>
             </div>
             <div id="collegeAcceptanceRow">
                 <dl>
                     <dt><ThumbUpIcon className="listIcon"/></dt>
-                    <dd>{clgAcceptance}% Acceptance</dd>
+                    <dd>{uniDetails.uniAcceptanceRate}% Acceptance</dd>
                     <dt><ScoreIcon className="listIcon"/></dt>
-                    <dd>Min GRE Marks - {clgMinMarks}</dd>
+                    <dd>Min GRE Marks - {uniDetails.uniMinGREMarks}</dd>
                     <dt><TranslateIcon className="listIcon"/></dt>
-                    <dd>Min TOEFL Marks - {languageMarks}</dd>
+                    <dd>Min TOEFL Marks - {uniDetails.uniMinTOEFLMarks}</dd>
                 </dl>
             </div>
             <div id="collegeRoutingRow">
