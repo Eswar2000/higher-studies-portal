@@ -46,4 +46,22 @@ public class ProfileModel {
         return profileXML;
     }
 
+    public StringBuffer getProfileGuestViewXML() throws SQLException, ClassNotFoundException {
+        StringBuffer profileXML=new StringBuffer("");
+
+        profileXML.append("<studentProfile>");
+        profileXML.append("<name>"+this.name+"</name>");
+        profileXML.append("<city>"+this.city+"</city>");
+        profileXML.append("<ugUniversity>"+this.ugUniversity+"</ugUniversity>");
+        profileXML.append("<examStream>"+this.examStream +"</examStream>");
+        profileXML.append("<email>"+this.email+"</email>");
+        profileXML.append("<phoneNumber>"+this.phoneNumber+"</phoneNumber>");
+        profileXML.append("<pgUniversityID>"+this.pgUniversityID+"</pgUniversityID>");
+        profileXML.append("<examMarks>"+this.examMarks+"</examMarks>");
+        profileXML.append("<toeflMarks>"+this.toeflMarks+"</toeflMarks>");
+        profileXML.append("</studentProfile>");
+
+        return profileXML;
+    }
+
 }

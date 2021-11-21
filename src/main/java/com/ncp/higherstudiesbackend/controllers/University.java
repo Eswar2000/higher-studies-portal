@@ -18,15 +18,13 @@ public class University extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res){
         try{
-            AuthStatus authStatus= AccountHandler.handleCredentialCheck(req, res);
-
-            if(authStatus == AuthStatus.authenticated){
-                res.setContentType("application/xml");
-                res.setStatus(200);
-
-                XMLTools.sendXMLResponse(UniversityHandler.getAllUniversities(),res.getWriter(),"response");
+            res.setContentType("application/xml");
+            res.setStatus(200);
+            if(req.getParameter("includeNotAdmitted")!=null && req.getParameter("includeNotAdmitted").equals("true")){
+                XMLTools.sendXMLResponse(UniversityHandler.getAllUniversities(true),res.getWriter(),"response");
+                return;
             }
-
+            XMLTools.sendXMLResponse(UniversityHandler.getAllUniversities(false),res.getWriter(),"response");
         }catch(Exception e){
             res.setStatus(500);
             e.printStackTrace();

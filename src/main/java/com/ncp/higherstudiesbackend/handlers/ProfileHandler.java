@@ -31,13 +31,17 @@ public class ProfileHandler extends Database {
         return "";
     }
 
-    public static StringBuilder getStudentProfile(String username) throws SQLException, ClassNotFoundException {
+    public static StringBuilder getStudentProfile(String username,boolean guestView) throws SQLException, ClassNotFoundException {
         ResultSet studentData=executeQuery("select * from student where username=\""+username+"\"");
 
         StringBuilder studentProfile=new StringBuilder("");
 
         if(studentData.next()){
-            studentProfile.append(new ProfileModel(studentData.getString("name"),studentData.getString("ugUniversity"),studentData.getString("city"),studentData.getString("examStream"),studentData.getString("email"),studentData.getString("phone"),studentData.getString("secQuestion"),studentData.getString("secAnswer"),studentData.getInt("pgUniversityID"),studentData.getInt("examMarks"),studentData.getInt("toeflMarks"),studentData.getString("username")).getProfileXML());
+            if(!guestView){
+                studentProfile.append(new ProfileModel(studentData.getString("name"),studentData.getString("ugUniversity"),studentData.getString("city"),studentData.getString("examStream"),studentData.getString("email"),studentData.getString("phone"),studentData.getString("secQuestion"),studentData.getString("secAnswer"),studentData.getInt("pgUniversityID"),studentData.getInt("examMarks"),studentData.getInt("toeflMarks"),studentData.getString("username")).getProfileXML());
+            }else{
+                studentProfile.append(new ProfileModel(studentData.getString("name"),studentData.getString("ugUniversity"),studentData.getString("city"),studentData.getString("examStream"),studentData.getString("email"),studentData.getString("phone"),studentData.getString("secQuestion"),studentData.getString("secAnswer"),studentData.getInt("pgUniversityID"),studentData.getInt("examMarks"),studentData.getInt("toeflMarks"),studentData.getString("username")).getProfileGuestViewXML());
+            }
         }
 
         return studentProfile;

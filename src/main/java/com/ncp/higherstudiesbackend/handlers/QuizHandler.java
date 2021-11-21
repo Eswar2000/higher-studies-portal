@@ -33,7 +33,7 @@ public class QuizHandler extends Database {
         ResultSet quizResult=executeQuery("select sum(iscorrect) as \"quizmarks\",count(*) as \"questionsAttended\" from quiz where studentUsername=\""+username+"\"");
         StringBuilder prevQuizResults = new StringBuilder("");
         if(quizResult.next() && quizResult.getInt("questionsAttended") > 0){
-            prevQuizResults.append("<present>True</present>").append("<curmarks>"+quizResult.getInt("quizmarks")+"</curmarks>");
+            prevQuizResults.append("<present>True</present>").append("<curMarks>"+quizResult.getInt("quizmarks")+"</curMarks>").append("<questionsAttended>"+quizResult.getInt("questionsAttended")+"</questionsAttended>");
             return prevQuizResults;
         }
         prevQuizResults.append("<present>False</present>");

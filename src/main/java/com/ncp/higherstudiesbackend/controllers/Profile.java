@@ -19,6 +19,13 @@ public class Profile extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res){
         try{
+
+            if(req.getParameter("user")!=null){
+                res.setContentType("application/xml");
+                res.setStatus(200);
+                XMLTools.sendXMLResponse(ProfileHandler.getStudentProfile(req.getParameter("user"),true),res.getWriter(),"response");
+                return;
+            }
             AuthStatus authStatus = AccountHandler.handleCredentialCheck(req,res);
 
             if(authStatus == AuthStatus.authenticated){
@@ -28,7 +35,7 @@ public class Profile extends HttpServlet {
                     XMLTools.sendXMLResponse(new StringBuilder("<attributeValue>"+ProfileHandler.getAttributeFromUsername(req.getHeader("username"),req.getParameter("attribute"))+"</attributeValue>"),res.getWriter(),"response");
                     return;
                 }
-                XMLTools.sendXMLResponse(ProfileHandler.getStudentProfile(req.getHeader("username")),res.getWriter(),"response");
+                XMLTools.sendXMLResponse(ProfileHandler.getStudentProfile(req.getHeader("username"),false),res.getWriter(),"response");
             }
 
         }catch(Exception e){
