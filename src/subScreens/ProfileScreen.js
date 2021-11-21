@@ -78,24 +78,17 @@ export default function ProfileScreen() {
             securityQuestion: securityQuestion,
             securityAnswer:securityAnswer
             };
-        let response = await backendService("POST", "/updateprofile",reqBody, null, null);
+        let response = await backendService("POST", "/updateprofile",reqBody,sessionStorage.username,sessionStorage.passwordHash);
         console.log(response);
         if(response.statusCode === 200){
-           setName(response.name)
-           setUgUniversity(response.ugUniversity)
-           setpguniversity(response.pguniversity)
-           setphonenunber(response.phonenumber)
-           setemail(response.email)
-           setsecurityQuestion(response.securityQuestion)
-           setsecurityAnswer(response.securityAnswer)
-               
+           console.log("Profile Updated")        
         }
     }
     componentDidMount() {
             let reqBody = {
             username: username,
             };
-        let response = await backendService("GET", "/profile",reqBody, null, null);
+        let response = await backendService("GET", "/profile",reqBody,sessionStorage.username,sessionStorage.passwordHash);
         console.log(response);
         if(response.statusCode === 200){
            setName(response.name)
