@@ -385,6 +385,12 @@
 
 /* ---------- University Tip Screen ----------*/
 
+
+.loadingProgressBar{
+  margin-left: 45vw;
+  margin-right: 45vw;
+}
+
 .universityTipCard{
   box-shadow: 0 1px 5px rgb(0 0 0 / 0.2);
   border-radius: 7.5px;
