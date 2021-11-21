@@ -755,3 +755,95 @@
   text-align: left;
   padding: 10px;
 }
+
+
+.homeCard {
+  display: flex;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 50px;
+  height: 80vh;
+  width: 90vw;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+.homeLeftCol {
+  flex: 60%;
+  font-size: 25px;
+  font-family: 'Quicksand';
+}
+
+.homeRightCol {
+  margin-left: auto;
+  margin-right: auto;
+  flex: 20%;
+}
+
+#homeRows {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 46%;
+}
+
+#homeInfoCard {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  margin: 25px 25px;
+  width: 80%;
+  height: 90%;
+  padding-top: 20px;
+}
+
+.homeStudentRow {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#homeAvatar {
+  width: 85px;
+  height: 85px;
+}
+
+.bmRow {
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+}
+
+#coverCol {
+  flex: 10%;
+  padding: 10px;
+}
+
+#detailCol {
+  flex: 80%;
+  padding: 10px;
+}
+
+#titleText {
+  font-size: 27.5px;
+  font-weight: 500;
+  font-family: 'Quicksand';
+  text-align: left;
+}
+
+#coverCol img {
+  border-radius: 50%;
+}
+
+#bmHome {
+  width: 90%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+}
