@@ -1,11 +1,46 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import CollegeInfoRow from "../components/CollegeInfoRow";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
+import backendService from "../services/backendService";
+
 
 export default function CollegePredictorScreen() {
 
     const [examMarks,setExamMarks]=useState(290);
+    const [litMarks,setLitMarks]=useState(112);
+    const [universities, setUniversities]=useState([]);
+    const [eligibleUniversities, setEligibleUniversities]=useState([]);
+
+    const fetchUniversities=async ()=>{
+        let response = await backendService("GET","/university",null,sessionStorage.username,sessionStorage.passwordHash);
+        if(response.statusCode!==200){
+            return;
+        }
+        response = response.response;
+        // console.log(response);
+        let tempUniversity = [];
+        
+        for(let i=0;i<response.university.length;i++){
+            let uni = {
+                uniID:response.university[i].id._text,
+                uniName:response.university[i].name._text,
+                uniLocation:response.university[i].location._text,
+                uniTuitionFee:response.university[i].tuitionFee._text,
+                uniMinGREMarks:response.university[i].minGREMarks._text,
+                uniMinTOEFLMarks:response.university[i].minTOEFLMarks._text,
+                uniAcceptanceRate:response.university[i].acceptanceRate._text
+            };
+            tempUniversity.push(uni);
+        }
+
+        setUniversities(tempUniversity);
+        // console.log(universities);
+    }
+
+    useEffect(()=>{
+        fetchUniversities();
+    },[]);
 
     return (
         <div id="subScreenCard">
@@ -18,6 +53,17 @@ export default function CollegePredictorScreen() {
                     <input type="range" min="260" max="340" defaultValue={examMarks} onChange={e => setExamMarks(e.target.value)} class="markSlider"/>
                 </div>
             </div>
+
+            <div  id="cpScoreCard">
+                <div class="cpScoreCol">
+                    <Avatar id="examAvatar" variant="rounded"><b>TOEFL</b></Avatar>
+                </div>
+                <div class="cpScoreCol">
+                    <h2>Your TOEFL Marks is {litMarks}</h2>
+                    <input type="range" min="0" max="120" defaultValue={litMarks} onChange={e => setLitMarks(e.target.value)} class="markSlider"/>
+                </div>
+            </div>
+
             <Box height={8}/>
             <CollegeInfoRow clgName={"Stanford University"} clgLocation={"California"} clgFee={"$ 75,898"} clgAcceptance={2} clgMinMarks={321} languageMarks={111}/>
             <Box height={8}/>

@@ -613,6 +613,45 @@
 
 /* --------------------Start of Eswar Quiz Screen------------------ */
 
+#quizStartBanner {
+  display: flex;
+  height: 80vh;
+  width: 90vw;
+  margin-top: 50px;
+  margin-left: 100px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+.startLeft {
+  margin: 100px 50px;
+  width: 64%;
+}
+
+.quizHeads {
+  font-size: 50px;
+  font-weight: 800;
+  color: #F50057;
+}
+
+.quizSubHeads {
+  font-size: 27.5px;
+  font-weight: 700;
+}
+
+.quizText {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.startRight {
+  margin-top: 150px;
+  font-family: 'Quicksand';
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+}
+
+
 .quizRow {
   display: flex;
   height: 80vh;

@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import QuizThink from '../assets/QuizThink.svg';
+import StartBanner from '../assets/StartBanner.svg';
 import {amber, green, red} from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import {useEffect, useState} from "react";
@@ -139,31 +140,45 @@ export default function QuizScreen() {
     },[]);
 
     return (
-        <div className="quizRow">
-            {curQuestion!==-1 && <div id="quizQuestionCol">
-                <p id="quizQuestion">{questions[curQuestion].questionText}</p>
-                {questions[curQuestion].options.map((value, index) => (
-                    <QuizOptionRow key={index} optionIndex={index} quizOptionType={String.fromCharCode(65 + index)} quizOptionText={value}
-                                   quizAvatarColor={getOptionColorClass(index, value)} onOptionClick={onOptionClick}/>
-                ))}
-                <div id="quizNavContainer">
-                    <Button variant="contained" color="secondary" className="quizNavPrev"
-                            startIcon={<ArrowBackIcon/>} onClick={goToPrevQuestion}>Prev</Button>
-                    <Button variant="contained" color="secondary" className="quizNavNext"
-                            endIcon={<ArrowForwardIcon/>} onClick={goToNextQuestion}>Next</Button>
-                </div>
-            </div>}
-            {curQuestion!==-1 && <div id="quizOverviewCol">
-                <div>
-                    <img id="quizBanner" src={QuizThink} width="370" height={'230'} alt="QuizBanner"/>
-                </div>
-                <div id="quizOverview">
-                    <p>Total Number Of Questions: {questions.length}</p>
-                    <p>Current Question : {curQuestion+1}</p>
-                    <p>Total Correct Questions: {getNumCorrectAnswers()}</p>
-                    <p>Current Accuracy: {((getNumCorrectAnswers() / (maxCurQuestion + 1)) * 100).toFixed(2)}%</p>
-                </div>
-            </div>}
+        // <div className="quizRow">
+        //     {curQuestion!==-1 && <div id="quizQuestionCol">
+        //         <p id="quizQuestion">{questions[curQuestion].questionText}</p>
+        //         {questions[curQuestion].options.map((value, index) => (
+        //             <QuizOptionRow key={index} optionIndex={index} quizOptionType={String.fromCharCode(65 + index)} quizOptionText={value}
+        //                            quizAvatarColor={getOptionColorClass(index, value)} onOptionClick={onOptionClick}/>
+        //         ))}
+        //         <div id="quizNavContainer">
+        //             <Button variant="contained" color="secondary" className="quizNavPrev"
+        //                     startIcon={<ArrowBackIcon/>} onClick={goToPrevQuestion}>Prev</Button>
+        //             <Button variant="contained" color="secondary" className="quizNavNext"
+        //                     endIcon={<ArrowForwardIcon/>} onClick={goToNextQuestion}>Next</Button>
+        //         </div>
+        //     </div>}
+        //     {curQuestion!==-1 && <div id="quizOverviewCol">
+        //         <div>
+        //             <img id="quizBanner" src={QuizThink} width="370" height={'230'} alt="QuizBanner"/>
+        //         </div>
+        //         <div id="quizOverview">
+        //             <p>Total Number Of Questions: {questions.length}</p>
+        //             <p>Current Question : {curQuestion+1}</p>
+        //             <p>Total Correct Questions: {getNumCorrectAnswers()}</p>
+        //             <p>Current Accuracy: {((getNumCorrectAnswers() / (maxCurQuestion + 1)) * 100).toFixed(2)}%</p>
+        //         </div>
+        //     </div>}
+        // </div>
+        <div id="quizStartBanner">
+            <div className="startLeft">
+                <img src={StartBanner} alt="QuizStartBanner"/>
+            </div>
+            <div className="startRight">
+                <h2 className="quizHeads">Welcome Back</h2>
+                <p className="quizSubHeads">Your Previous Session Results</p>
+                <p className="quizText">Total Number Of Questions: 5</p>
+                <p className="quizText">Total Correct Questions: 3</p>
+                <p className="quizText">Your Accuracy: 60.00%</p>
+                <Button variant="contained" color="secondary">Start Quiz</Button>
+            </div>
+
         </div>
     );
 }
