@@ -5,7 +5,7 @@ import BookmarkListItem from "./BookmarkListItem";
 import { Typography } from "@material-ui/core";
 
 
-export default function HomeCard(){
+export default function HomeCard({studentProfile}){
     return (
         <div id="homeInfoCard">
             <Card className='homeStudentRow' variant="outlined">
@@ -17,11 +17,11 @@ export default function HomeCard(){
                         <Box item flex={2}>
                             <List dense disablePadding>
                                 <ListItem key="Home">
-                                    <span id="profileListPrimary">Eswar Raman</span>
+                                    <span id="profileListPrimary">{studentProfile.name}</span>
                                 </ListItem>
                                 <ListItem>
                                     <ListItemIcon>{<RoomIcon/>}</ListItemIcon>
-                                    <span className="profileListSecondary">Hosur</span>
+                                    <span className="profileListSecondary">{studentProfile.city}</span>
                                 </ListItem>
                             </List>
                         </Box>
