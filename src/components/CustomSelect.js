@@ -1,14 +1,14 @@
 
-export default function CustomSelect({disabled,onSelect}) {
+export default function CustomSelect({disabled,value=1,onChange,options}) {
+
 
     return (
         <div className="dropdown">
-            <select disabled={disabled} onSelect={onSelect}>
-                <option value="">Select University</option>
-                <option>Amrita Vishwa Vidyapeetham</option>
-                <option>Stanford University</option>
-                <option>Yale University</option>
-                <option>Harvard University</option>
+            <select disabled={disabled} value={value} onChange={onChange}>
+                {/*<option value="">Select University</option>*/}
+                {typeof options!=="undefined" && options.map((item, index)=>(
+                    <option value={options[index].uniID}>{options[index].uniName}</option>
+                ))}
             </select>
         </div>
     );
