@@ -127,7 +127,7 @@ export default function HomeLayout(){
                     }}
             >   
                     <List>
-                        <Link to={`${url}/${screenPaths[0]}`} className={'sidebarOptionText'}>
+                        <Link to={`${url}`} className={'sidebarOptionText'}>
                             <ListItem button key="Home" id="dashboardHomeBtn" onClick={()=>{setCurrentPathIndex(0)}}>
                                 <ListItemIcon>{<HomeIcon className={getSidebarStyleClass(0)}/>}</ListItemIcon>
                                 <ListItemText className={getSidebarStyleClass(0)} primary="Home"/>
@@ -181,6 +181,9 @@ export default function HomeLayout(){
                 {/*{TODO: This is where main content goes}*/}
 
                 <Switch>
+                    <Route exact path={`${url}/`}>
+                        <Home/>
+                    </Route>
                     <Route exact path={`${url}/${screenPaths[1]}`}>
                         <ProfileScreen/>
                     </Route>
