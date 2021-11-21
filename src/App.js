@@ -7,6 +7,7 @@ import LandingScreen from "./screens/LandingScreen";
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import ChangePassword from "./screens/ChangePassword";
 import ForgotPassword from "./screens/ForgotPassword";
+import ProfileScreen from "./subScreens/ProfileScreen";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route exact path={'/changePassword'}>
           <ChangePassword/>
+        </Route>
+        <Route exact path={'/visit/:user'}>
+          <ProfileScreen/>
         </Route>
         <Route path={'/'}>
           <LandingScreen/>

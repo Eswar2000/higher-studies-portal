@@ -10,12 +10,12 @@ import DoneIcon from '@material-ui/icons/Done';
 import CustomSelect from "./CustomSelect";
 
 
-export default function ProfileInfoRow({fieldName,fieldType="textField",fieldValue,fieldOnChange,onSubmit}){
+export default function ProfileInfoRow({fieldUIName,fieldName,fieldType="textField",fieldValue,selectOptions,showEditButton=true,fieldOnChange,onSubmit}){
     const [editEnabled,setEditEnabled]=useState(false);
 
     const handleEditButtonOnClick=async ()=>{
         if(editEnabled){
-            await onSubmit();
+            await onSubmit(fieldName,fieldValue);
             setEditEnabled(false);
         }else{
             setEditEnabled(true);
@@ -25,19 +25,19 @@ export default function ProfileInfoRow({fieldName,fieldType="textField",fieldVal
     return (
         <Grid container>
             <Box item flex={1}>
-                <span className="profileEditCategory">{fieldName}</span>
+                <span className="profileEditCategory">{fieldUIName}</span>
             </Box>
             <Box item flex={2}>
                 {fieldType==='textField' && <CustomInput value={fieldValue} disabled={!editEnabled} onChange={fieldOnChange}/>}
-                {fieldType==='select' && <CustomSelect disabled={!editEnabled} onSelect={fieldOnChange}/>}
+                {fieldType==='select' && <CustomSelect disabled={!editEnabled} value={fieldValue} options={selectOptions} onChange={fieldOnChange}/>}
                 {/*<span className="profileEditResponse">{fieldValue}</span>*/}
             </Box>
-            <Box item flex={1}>
+            {showEditButton && <Box item flex={1}>
                 <IconButton onClick={handleEditButtonOnClick}>
                     {!editEnabled && <EditIcon color={'secondary'}/>}
                     {editEnabled && <DoneIcon color={'secondary'}/>}
                 </IconButton>
-            </Box>
+            </Box>}
         </Grid>
     );
 }

@@ -22,7 +22,6 @@ export default function CreateStudentTipCard({tipText,handleTipTextChange,onSubm
             return;
         }
         response=response.response;
-        console.log(response);
 
         setStudentDetails({
             name: response.studentProfile.name._text,
