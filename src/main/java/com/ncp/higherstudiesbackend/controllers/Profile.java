@@ -24,6 +24,10 @@ public class Profile extends HttpServlet {
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
+                if(!(req.getParameter("attribute") == null) && !(req.getParameter("attribute").equals("")) && !req.getParameter("attribute").equals("all")){
+                    XMLTools.sendXMLResponse(new StringBuilder("<attributeValue>"+ProfileHandler.getAttributeFromUsername(req.getHeader("username"),req.getParameter("attribute"))+"</attributeValue>"),res.getWriter(),"response");
+                    return;
+                }
                 XMLTools.sendXMLResponse(ProfileHandler.getStudentProfile(req.getHeader("username")),res.getWriter(),"response");
             }
 
