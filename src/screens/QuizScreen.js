@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import QuizThink from '../assets/QuizThink.svg';
+import EndBanner from '../assets/EndBanner.svg';
 import StartBanner from '../assets/StartBanner.svg';
 import {amber, green, red} from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
@@ -166,19 +167,32 @@ export default function QuizScreen() {
         //         </div>
         //     </div>}
         // </div>
-        <div id="quizStartBanner">
-            <div className="startLeft">
-                <img src={StartBanner} alt="QuizStartBanner"/>
-            </div>
-            <div className="startRight">
-                <h2 className="quizHeads">Welcome Back</h2>
-                <p className="quizSubHeads">Your Previous Session Results</p>
+        // <div id="quizCardBanner">
+        //     <div className="startLeft">
+        //         <img src={StartBanner} alt="QuizStartBanner"/>
+        //     </div>
+        //     <div className="startRight">
+        //         <h2 className="quizHeads">Welcome Back</h2>
+        //         <p className="quizSubHeads">Your Previous Session Results</p>
+        //         <p className="quizText">Total Number Of Questions: 5</p>
+        //         <p className="quizText">Total Correct Questions: 3</p>
+        //         <p className="quizText">Your Accuracy: 60.00%</p>
+        //         <Button variant="contained" color="secondary">Start Quiz</Button>
+        //     </div>
+        // </div>
+        <div id="quizCardBanner">
+            <div className="endLeft">
+                
+                <h2 className="quizHeads">Great Work</h2>
+                <p className="quizSubHeads">Your Results</p>
                 <p className="quizText">Total Number Of Questions: 5</p>
                 <p className="quizText">Total Correct Questions: 3</p>
                 <p className="quizText">Your Accuracy: 60.00%</p>
-                <Button variant="contained" color="secondary">Start Quiz</Button>
+                <Button variant="contained" color="secondary">Go Back To Start</Button>
             </div>
-
+            <div className="endRight">
+                <img src={EndBanner} width='750' height='550' alt="QuizEndBanner"/>
+            </div>
         </div>
     );
 }
