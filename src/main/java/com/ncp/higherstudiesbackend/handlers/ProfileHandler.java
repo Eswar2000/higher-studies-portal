@@ -37,7 +37,7 @@ public class ProfileHandler extends Database {
         StringBuilder studentProfile=new StringBuilder("");
 
         if(studentData.next()){
-            studentProfile.append(new ProfileModel(studentData.getString("name"),studentData.getString("ugUniversity"),studentData.getString("city"),studentData.getString("examStream"),studentData.getString("email"),studentData.getString("phone"),studentData.getString("secQuestion"),studentData.getString("secAnswer"),studentData.getInt("pgUniversityID"),studentData.getInt("examMarks"),studentData.getInt("toeflMarks")).getProfileXML());
+            studentProfile.append(new ProfileModel(studentData.getString("name"),studentData.getString("ugUniversity"),studentData.getString("city"),studentData.getString("examStream"),studentData.getString("email"),studentData.getString("phone"),studentData.getString("secQuestion"),studentData.getString("secAnswer"),studentData.getInt("pgUniversityID"),studentData.getInt("examMarks"),studentData.getInt("toeflMarks"),studentData.getString("username")).getProfileXML());
         }
 
         return studentProfile;

@@ -1,11 +1,16 @@
 package com.ncp.higherstudiesbackend.responseModels;
 
+import com.ncp.higherstudiesbackend.handlers.ProfileHandler;
+
+import java.sql.SQLException;
+
 public class ProfileModel {
     private String name,ugUniversity,city, examStream,email,phoneNumber,securityQuestion,securityAnswer;
     private int pgUniversityID;
     private int examMarks, toeflMarks;
+    private String username;
 
-    public ProfileModel(String name, String ugUniversity, String city, String examStream, String email, String phoneNumber, String securityQuestion, String securityAnswer, int pgUniversityID, int examMarks, int toeflMarks){
+    public ProfileModel(String name, String ugUniversity, String city, String examStream, String email, String phoneNumber, String securityQuestion, String securityAnswer, int pgUniversityID, int examMarks, int toeflMarks, String username){
         this.name=name;
         this.ugUniversity=ugUniversity;
         this.city=city;
@@ -17,9 +22,10 @@ public class ProfileModel {
         this.pgUniversityID=pgUniversityID;
         this.examMarks=examMarks;
         this.toeflMarks=toeflMarks;
+        this.username=username;
     }
 
-    public StringBuffer getProfileXML(){
+    public StringBuffer getProfileXML() throws SQLException, ClassNotFoundException {
         StringBuffer profileXML=new StringBuffer("");
 
         profileXML.append("<studentProfile>");
@@ -34,6 +40,7 @@ public class ProfileModel {
         profileXML.append("<pgUniversityID>"+this.pgUniversityID+"</pgUniversityID>");
         profileXML.append("<examMarks>"+this.examMarks+"</examMarks>");
         profileXML.append("<toeflMarks>"+this.toeflMarks+"</toeflMarks>");
+        profileXML.append("<pgUniversityName>"+ ProfileHandler.getStudentPgUniversityName(username) +"</pgUniversityName>");
         profileXML.append("</studentProfile>");
 
         return profileXML;
