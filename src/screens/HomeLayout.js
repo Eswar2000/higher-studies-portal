@@ -21,6 +21,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import {useState} from "react";
 import clsx from "clsx";
 import UniversityTipScreen from "./UniversityTipScreen";
+import Home from "./Home";
 import ProfileScreen from "../subScreens/ProfileScreen";
 import RepositoryScreen from "./RepositoryScreen";
 import CollegePredictorScreen from "../subScreens/CollegePredictorScreen";
@@ -197,6 +198,9 @@ export default function HomeLayout(){
                     </Route>
                     <Route exact path={`${url}/${screenPaths[2]}/new`}>
                         <NewResourceScreen/>
+                    </Route>
+                    <Route exact path={`${url}/${screenPaths[0]}`}>
+                        <Home/>
                     </Route>
                 </Switch>
                 {/*<RespositoryScreen/>*/}
