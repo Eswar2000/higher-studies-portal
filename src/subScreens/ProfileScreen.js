@@ -77,12 +77,14 @@ export default function ProfileScreen() {
         response=response.response;
         console.log(response);
 
+        console.log();
+
         setName(response.studentProfile.name._text);
-        setUgUniversity(response.studentProfile.ugUniversity._text);
+        setUgUniversity(response.studentProfile.ugUniversity._text==="null"?"UG University Not Set":response.studentProfile.ugUniversity._text);
         setPgUniversityID(response.studentProfile.pgUniversityID._text);
-        setCity(response.studentProfile.city._text);
+        setCity(response.studentProfile.city._text==="null"?"City Not Set":response.studentProfile.city._text);
         setEmail(response.studentProfile.email._text);
-        setPhoneNumber(response.studentProfile.phoneNumber._text);
+        setPhoneNumber(response.studentProfile.phoneNumber._text==="null"?"Phone Number Not Set":response.studentProfile.phoneNumber._text);
         (typeof user==="undefined") && setSecurityQuestion(response.studentProfile.securityQuestion._text);
         (typeof user==="undefined") && setSecurityAnswer(response.studentProfile.securityAnswer._text);
         setExamStream(response.studentProfile.examStream._text);

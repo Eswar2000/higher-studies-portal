@@ -80,6 +80,14 @@ export default function CollegePredictorScreen() {
         showEligibleUniversities(universities);
     }
 
+    const handleSetScore=async (fieldName)=>{
+        let reqBody={
+            fieldName:fieldName,
+            fieldValue:fieldName==="examMarks"?tempExamMarks:tempLitMarks
+        };
+        await backendService("PUT","/profile",reqBody,sessionStorage.username,sessionStorage.passwordHash);
+    }
+
     return (
         <div id="subScreenCard">
             <div  id="cpScoreCard">
@@ -87,11 +95,11 @@ export default function CollegePredictorScreen() {
                     <Avatar id="examAvatar" variant="rounded"><b>{examStream}</b></Avatar>
                 </div>
                 <div class="cpScoreCol">
-                    <h2>Your {examStream} Marks is {examMarks}</h2>
+                    <h2>Your {examStream} Score is {examMarks}</h2>
                     <input type="range" min="260" max="340" value={examMarks} onChange={handleExamMarkChange} class="markSlider"/>
                 </div>
                 <div class="cpScoreCol">
-                    <Button variant="contained" size="small" color="secondary">Set as {examStream} Marks</Button>
+                    <Button variant="contained" size="small" color="secondary" onClick={()=>{handleSetScore("examMarks")}}>Set as your score</Button>
                 </div>
             </div>
             
@@ -102,11 +110,11 @@ export default function CollegePredictorScreen() {
                     <Avatar id="examAvatar" variant="rounded"><b>TOEFL</b></Avatar>
                 </div>
                 <div class="cpScoreCol">
-                    <h2>Your TOEFL Marks is {litMarks}</h2>
+                    <h2>Your TOEFL Score is {litMarks}</h2>
                     <input type="range" min="0" max="120" value={litMarks} onChange={handleLitMarkChange} class="markSlider"/>
                 </div>
                 <div class="cpScoreCol">
-                    <Button variant="contained" size="small" color="secondary">Set as TOEFL Marks</Button>
+                    <Button variant="contained" size="small" color="secondary" onClick={()=>{handleSetScore("TOEFLMarks")}}>Set as your score</Button>
                 </div>
             </div>
 
