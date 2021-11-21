@@ -11,12 +11,22 @@ export default function CollegePredictorScreen() {
     const [litMarks,setLitMarks]=useState(112);
     const [universities, setUniversities]=useState([]);
     const [eligibleUniversities, setEligibleUniversities]=useState([]);
+    const [score, setScore]=useState([]);
 
     const fetchScores=async ()=>{
         let streamResponse = await backendService("GET","/profile?attribute=examStream",null,sessionStorage.username,sessionStorage.passwordHash);
         let examMarkResponse = await backendService("GET","/profile?attribute=examMarks",null,sessionStorage.username,sessionStorage.passwordHash);
         let litMarkResponse = await backendService("GET","/profile?attribute=TOEFLMarks",null,sessionStorage.username,sessionStorage.passwordHash);
-
+        streamResponse = streamResponse.response;
+        examMarkResponse = examMarkResponse.response;
+        litMarkResponse = litMarkResponse.response;
+        let tempScores = {
+            examStream: streamResponse.attributeValue._text,
+            examMarks: examMarkResponse.attributeValue._text,
+            litMark: litMarkResponse.attributeValue._text
+        };
+        setScore(tempScores);
+        console.log(score);
     }
 
     const fetchUniversities=async ()=>{

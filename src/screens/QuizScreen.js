@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import QuizThink from '../assets/QuizThink.svg';
+import EndBanner from '../assets/EndBanner.svg';
 import StartBanner from '../assets/StartBanner.svg';
 import {amber, green, red} from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
@@ -145,6 +146,8 @@ export default function QuizScreen() {
             if(maxCurQuestion<tempCurQuestion+1){
                 setMaxCurQuestion(tempCurQuestion+1);
             }
+        }else{
+            setCurScreen(2);
         }
     }
 
@@ -168,6 +171,11 @@ export default function QuizScreen() {
         return classes.amber;
     }
 
+    const restartQuizButtonOnClick=async ()=>{
+        await getPrevResults();
+        setCurScreen(0);
+    }
+
     useEffect(()=>{
         getPrevResults();
     },[]);
@@ -183,9 +191,9 @@ export default function QuizScreen() {
                     ))}
                     <div id="quizNavContainer">
                         <Button variant="contained" color="secondary" className="quizNavPrev"
-                                startIcon={<ArrowBackIcon/>} onClick={goToPrevQuestion}>Prev</Button>
+                                startIcon={<ArrowBackIcon/>} onClick={goToPrevQuestion}>Previous</Button>
                         <Button variant="contained" color="secondary" className="quizNavNext"
-                                endIcon={<ArrowForwardIcon/>} onClick={goToNextQuestion}>Next</Button>
+                                endIcon={<ArrowForwardIcon/>} onClick={goToNextQuestion}>{curQuestion===questions.length-1?"Finish":"Next"}</Button>
                     </div>
                 </div>}
                 {curQuestion!==-1 && <div id="quizOverviewCol">
@@ -205,7 +213,7 @@ export default function QuizScreen() {
 
     const getQuizPrevResultUI=()=>{
         return (
-            <div id="quizStartBanner">
+            <div id="quizCardBanner">
                 <div className="startLeft">
                     <img src={StartBanner} alt="QuizStartBanner"/>
                 </div>
@@ -220,13 +228,36 @@ export default function QuizScreen() {
 
             </div>
         );
+
+
     }
+
+    const getQuizResultsUI=()=>{
+        return (
+            <div id="quizCardBanner">
+                <div className="endLeft">
+                    <h2 className="quizHeads">Great Work</h2>
+                    <p className="quizSubHeads">Your Results</p>
+                    <p className="quizText">Total Number Of Questions: {questions.length}</p>
+                    <p className="quizText">Total Correct Questions: {getNumCorrectAnswers()}</p>
+                    <p className="quizText">Your Accuracy: {((getNumCorrectAnswers()/questions.length)*100).toFixed(2)}%</p>
+                    <Button variant="contained" color="secondary" onClick={restartQuizButtonOnClick}>Go Back To Start</Button>
+                </div>
+                <div className="endRight">
+                    <img src={EndBanner} width='750' height='550' alt="QuizEndBanner"/>
+                </div>
+            </div>
+        );
+    }
+
+
 
     return (
         <div>
             {curScreen===-1 && <CircularProgress className={"loadingProgressBar"} size={24} color="secondary"/>}
             {curScreen===0 && getQuizPrevResultUI()}
             {curScreen===1 && getQuizQuestionsUI()}
+            {curScreen===2 && getQuizResultsUI()}
         </div>
 
     );
