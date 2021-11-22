@@ -45,7 +45,8 @@ export default function CollegePredictorScreen() {
                 uniTuitionFee:response.university[i].tuitionFee._text,
                 uniMinGREMarks:parseInt(response.university[i].minGREMarks._text),
                 uniMinTOEFLMarks:parseInt(response.university[i].minTOEFLMarks._text),
-                uniAcceptanceRate:response.university[i].acceptanceRate._text
+                uniAcceptanceRate:response.university[i].acceptanceRate._text,
+                uniSiteURL: response.university[i].siteURL._text
             };
             tempUniversity.push(uni);
         }
@@ -106,14 +107,14 @@ export default function CollegePredictorScreen() {
             <Box height={8}/>
 
             <div  id="cpScoreCard">
-                <div class="cpScoreCol">
+                <div className="cpScoreCol">
                     <Avatar id="examAvatar" variant="rounded"><b>TOEFL</b></Avatar>
                 </div>
-                <div class="cpScoreCol">
+                <div className="cpScoreCol">
                     <h2>Your TOEFL Score is {litMarks}</h2>
                     <input type="range" min="0" max="120" value={litMarks} onChange={handleLitMarkChange} class="markSlider"/>
                 </div>
-                <div class="cpScoreCol">
+                <div className="cpScoreCol">
                     <Button variant="contained" size="small" color="secondary" onClick={()=>{handleSetScore("TOEFLMarks")}}>Set as your score</Button>
                 </div>
             </div>
