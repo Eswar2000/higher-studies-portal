@@ -34,7 +34,6 @@ export default function CollegePredictorScreen() {
             return;
         }
         response = response.response;
-        // console.log(response);
         let tempUniversity = [];
         
         for(let i=0;i<response.university.length;i++){

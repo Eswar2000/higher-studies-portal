@@ -89,12 +89,6 @@ export default function HomeLayout(){
         return null;
     }
 
-    // const changeScreen=(index)=>{
-    //     history.push(`${url}/${screenPaths[index]}`);
-    //     console.log(history);
-    //     console.log(`${url}/${screenPaths[index]}`);
-    // }
-
     return (
         
         <div>

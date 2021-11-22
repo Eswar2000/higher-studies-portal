@@ -41,8 +41,6 @@ export default function QuizScreen() {
     const getPrevResults=async ()=>{
         let response = await backendService("GET","/quiz?query=prevResult",null,sessionStorage.username,sessionStorage.passwordHash);
 
-        console.log(response);
-
         if(response.statusCode!==200){
             return;
         }
@@ -120,7 +118,6 @@ export default function QuizScreen() {
             curAnswer: questions[curQuestion].options[index]
         };
         let response = await backendService("POST","/quiz",reqBody,sessionStorage.username, sessionStorage.passwordHash);
-        console.log(response.response);
         response = response.response;
         let tempQuestions = [];
         for(let i=0;i<questions.length;i++){

@@ -8,7 +8,6 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
 import {IconButton} from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 
 
@@ -41,7 +40,6 @@ export default function CollegeInfoRow ({uniDetails}) {
             </div>
             <div id="collegeRoutingRow">
                 <a target="_blank" href={uniDetails.uniSiteURL}>
-                    {console.log(uniDetails.uniSiteURL)}
                     <IconButton size={'small'}>
                         <ArrowForwardIcon color={'secondary'}/>
                     </IconButton>

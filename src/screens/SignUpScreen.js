@@ -60,7 +60,6 @@ export default function SignUpScreen() {
             passwordHash: hashString(username,password)
         };
         let response = await backendService("POST", "/signup",reqBody, null, null);
-        console.log(response);
         setStatusCode(response.statusCode);
         if(response.statusCode === 200){
             history.replace('/login');

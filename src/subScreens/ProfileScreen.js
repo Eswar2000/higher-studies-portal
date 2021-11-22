@@ -14,15 +14,6 @@ import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
 import {useEffect, useState} from "react";
 import {useHistory, useParams} from "react-router";
 import backendService from "../services/backendService";
-// import {
-//     Dialog,
-//     DialogActions,
-//     DialogContent,
-//     DialogContentText,
-//     DialogTitle,
-//     TextField,
-//     Typography
-// } from "@material-ui/core";
 
 export default function ProfileScreen() {
 
@@ -64,7 +55,6 @@ export default function ProfileScreen() {
 
         let response;
         await getAllPgUniversities();
-        console.log("user ",user);
         if(typeof user === 'undefined'){
             response=await backendService("GET","/profile",null,sessionStorage.username,sessionStorage.passwordHash);
         }else{
@@ -75,9 +65,6 @@ export default function ProfileScreen() {
             return;
         }
         response=response.response;
-        console.log(response);
-
-        console.log();
 
         setName(response.studentProfile.name._text);
         setUgUniversity(response.studentProfile.ugUniversity._text==="null"?"UG University Not Set":response.studentProfile.ugUniversity._text);
