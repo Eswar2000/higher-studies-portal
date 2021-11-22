@@ -16,7 +16,7 @@ public class UniversityHandler extends Database {
 
         while(resultSet.next()){
             if(includeNotAdmitted || resultSet.getInt("id")!=1){
-                universitiesXML.append(new UniversityModel(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getInt("acceptanceRate"),resultSet.getString("location"),resultSet.getInt("minGREMarks"),resultSet.getInt("tuitionFee"),resultSet.getInt("minTOEFLMarks")).getUniversityXML());
+                universitiesXML.append(new UniversityModel(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getInt("acceptanceRate"),resultSet.getString("location"),resultSet.getInt("minGREMarks"),resultSet.getInt("tuitionFee"),resultSet.getInt("minTOEFLMarks"),resultSet.getString("siteURL")).getUniversityXML());
             }
         }
 
