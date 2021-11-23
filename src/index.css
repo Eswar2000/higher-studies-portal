@@ -295,6 +295,12 @@
   margin: 20px;
 }
 
+.cpScoreCol:nth-child(3) {
+  width: 20%;
+  margin: 40px;
+}
+
+
 .markSlider {
   -webkit-appearance: none;
   appearance: none;
@@ -384,6 +390,12 @@
 }
 
 /* ---------- University Tip Screen ----------*/
+
+
+.loadingProgressBar{
+  margin-left: 45vw;
+  margin-right: 45vw;
+}
 
 .universityTipCard{
   box-shadow: 0 1px 5px rgb(0 0 0 / 0.2);
@@ -613,6 +625,47 @@
 
 /* --------------------Start of Eswar Quiz Screen------------------ */
 
+#quizCardBanner {
+  display: flex;
+  height: 80vh;
+  width: 90vw;
+  margin-top: 50px;
+  margin-left: 100px;
+  padding: 75px 50px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+.endRight, .startLeft {
+  width: 64%;
+  display: flex;
+  justify-content: center;
+}
+
+.endLeft, .startRight {
+  width: 36%;
+  margin-top: 50px;
+  font-family: 'Quicksand';
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+}
+
+.quizHeads {
+  font-size: 50px;
+  font-weight: 800;
+  color: #F50057;
+}
+
+.quizSubHeads {
+  font-size: 27.5px;
+  font-weight: 700;
+}
+
+.quizText {
+  font-size: 25px;
+  font-weight: 600;
+}
+
 .quizRow {
   display: flex;
   height: 80vh;
@@ -630,7 +683,7 @@
 
 #quizQuestion {
   font-family: 'Quicksand';
-  font-size: 40px;
+  font-size: 25px;
   text-align: center;
   font-weight: 500;
   padding-top: 50px;
@@ -707,4 +760,96 @@
   font-weight: bold;
   text-align: left;
   padding: 10px;
+}
+
+
+.homeCard {
+  display: flex;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 50px;
+  height: 80vh;
+  width: 90vw;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+}
+
+.homeLeftCol {
+  flex: 60%;
+  font-size: 25px;
+  font-family: 'Quicksand';
+}
+
+.homeRightCol {
+  margin-left: auto;
+  margin-right: auto;
+  flex: 20%;
+}
+
+#homeRows {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 46%;
+}
+
+#homeInfoCard {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  margin: 25px 25px;
+  width: 80%;
+  height: 90%;
+  padding-top: 20px;
+}
+
+.homeStudentRow {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#homeAvatar {
+  width: 85px;
+  height: 85px;
+}
+
+.bmRow {
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 7.5px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+}
+
+#coverCol {
+  flex: 10%;
+  padding: 10px;
+}
+
+#detailCol {
+  flex: 80%;
+  padding: 10px;
+}
+
+#titleText {
+  font-size: 27.5px;
+  font-weight: 500;
+  font-family: 'Quicksand';
+  text-align: left;
+}
+
+#coverCol img {
+  border-radius: 50%;
+}
+
+#bmHome {
+  width: 90%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
 }

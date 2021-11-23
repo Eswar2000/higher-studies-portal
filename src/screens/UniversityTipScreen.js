@@ -2,6 +2,7 @@ import StudentTip from "../components/StudentTip";
 import CreateStudentTipCard from "../components/CreateStudentTipCard";
 import {useEffect, useState} from "react";
 import backendService from "../services/backendService";
+import {CircularProgress} from "@material-ui/core";
 
 // eslint-disable-next-line
 export default function UniversityTipScreen({}){
@@ -64,7 +65,6 @@ export default function UniversityTipScreen({}){
 
             tempPost.push(post);
         }
-        console.log(tempPost);
         tempPost.sort((a,b)=>{
             return Date.parse(b.postDateTime)-Date.parse(a.postDateTime);
         });
@@ -121,6 +121,7 @@ export default function UniversityTipScreen({}){
             <div>
                 <CreateStudentTipCard tipText={tipText} handleTipTextChange={handleTipTextChange} onSubmit={postNewPost}/>
                 {statusCode===200 && getPostsCard()}
+                {statusCode===0 && <CircularProgress className={"loadingProgressBar"} size={24} color="secondary"/>}
             </div>
         </div>
     );

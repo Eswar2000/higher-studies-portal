@@ -10,31 +10,83 @@ import Button from "@material-ui/core/Button";
 import RoomIcon from '@material-ui/icons/Room';
 import SchoolIcon from '@material-ui/icons/School';
 import ProfileInfoRow from "../components/ProfileInfoRow";
-import {useState} from "react";
-import {useHistory} from "react-router";
-// import {
-//     Dialog,
-//     DialogActions,
-//     DialogContent,
-//     DialogContentText,
-//     DialogTitle,
-//     TextField,
-//     Typography
-// } from "@material-ui/core";
-
+import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
+import {useEffect, useState} from "react";
+import {useHistory, useParams} from "react-router";
+import backendService from "../services/backendService";
 
 export default function ProfileScreen() {
 
+    const {user}=useParams();
     const history=useHistory();
+    const [name,setName]=useState("");
+    const [ugUniversity,setUgUniversity]=useState("");
+    const [pgUniversityID,setPgUniversityID]=useState("");
+    const [city, setCity]=useState("");
+    const [email,setEmail]=useState("");
+    const [phoneNumber,setPhoneNumber]=useState("");
+    const [securityQuestion, setSecurityQuestion]=useState("");
+    const [securityAnswer,setSecurityAnswer]=useState("");
+    const [examStream,setExamStream]=useState("");
+    const [pgUniversityList,setPgUniversityList]=useState([]);
 
-    const [name,setName]=useState("Eswar Raman");
-    const [ugUniversity,setUgUniversity]=useState("Amrita Vishwa Vidyapeetham");
-    const [pgUniversity,setPgUniversity]=useState("");
-    const [city, setCity]=useState("Hosur");
-    const [email,setEmail]=useState("v.eswarraman2000@gmail.com");
-    const [phoneNumber,setPhoneNumber]=useState("1234567890");
-    const [securityQuestion, setSecurityQuestion]=useState("What is your favourite novel");
-    const [securityAnswer,setSecurityAnswer]=useState("Harry Potter and the Sorcerer's Stone");
+
+    const getAllPgUniversities=async ()=>{
+        let response = await backendService("GET","/university?includeNotAdmitted=true",null,sessionStorage.username,sessionStorage.passwordHash);
+        if(response.statusCode!==200){
+            return;
+        }
+        response = response.response;
+        let tempUniversity = [];
+
+        for(let i=0;i<response.university.length;i++){
+            let uni = {
+                uniID:response.university[i].id._text,
+                uniName:response.university[i].name._text,
+            };
+            tempUniversity.push(uni);
+        }
+
+        setPgUniversityList(tempUniversity);
+    }
+
+
+    const getProfileInfo=async ()=>{
+
+        let response;
+        await getAllPgUniversities();
+        if(typeof user === 'undefined'){
+            response=await backendService("GET","/profile",null,sessionStorage.username,sessionStorage.passwordHash);
+        }else{
+            response=await backendService("GET",`/profile?user=${user}`,null,null,null);
+        }
+
+        if(response.statusCode!==200){
+            return;
+        }
+        response=response.response;
+
+        setName(response.studentProfile.name._text);
+        setUgUniversity(response.studentProfile.ugUniversity._text==="null"?"UG University Not Set":response.studentProfile.ugUniversity._text);
+        setPgUniversityID(response.studentProfile.pgUniversityID._text);
+        setCity(response.studentProfile.city._text==="null"?"City Not Set":response.studentProfile.city._text);
+        setEmail(response.studentProfile.email._text);
+        setPhoneNumber(response.studentProfile.phoneNumber._text==="null"?"Phone Number Not Set":response.studentProfile.phoneNumber._text);
+        (typeof user==="undefined") && setSecurityQuestion(response.studentProfile.securityQuestion._text);
+        (typeof user==="undefined") && setSecurityAnswer(response.studentProfile.securityAnswer._text);
+        setExamStream(response.studentProfile.examStream._text);
+    }
+
+    const updateProfileAttribute=async (fieldName,fieldValue)=>{
+        const reqBody={
+          fieldName:fieldName,
+          fieldValue:fieldValue
+        };
+
+        let response = await backendService("PUT","/profile",reqBody,sessionStorage.username,sessionStorage.passwordHash);
+
+        return response.statusCode===200;
+    }
 
 
     const handleNameChange=(e)=>{
@@ -44,7 +96,7 @@ export default function ProfileScreen() {
         setUgUniversity(e.target.value);
     }
     const handlePgUniversityChange=(e)=>{
-        setPgUniversity(e.target.value);
+        setPgUniversityID(e.target.value);
     }
     const handleCityChange=(e)=>{
         setCity(e.target.value);
@@ -67,6 +119,15 @@ export default function ProfileScreen() {
     // }
 
 
+    const copyProfileURLToClipboard=()=>{
+        navigator.clipboard.writeText(`${window.location.host}/visit/${sessionStorage.username}`);
+    }
+
+    useEffect(()=>{
+        getProfileInfo();
+    },[]);
+
+
 
 
 
@@ -77,20 +138,20 @@ export default function ProfileScreen() {
                 <CardContent>
                     <Grid container>
                         <Box item flex={1}>
-                            <Avatar id="profileAvatar" variant="rounded"><b>E</b></Avatar>
+                            <Avatar id="profileAvatar" className={GetRandomAvatarColor('ascii',name)} variant="rounded"><b>{name[0]}</b></Avatar>
                         </Box>
                         <Box item flex={2}>
                             <List dense disablePadding>
                                 <ListItem key="Home">
-                                    <span id="profileListPrimary">Eswar Raman</span>
+                                    <span id="profileListPrimary">{name}</span>
                                 </ListItem>
                                 <ListItem key="Profile">
                                     <ListItemIcon>{<SchoolIcon/>}</ListItemIcon>
-                                    <span className="profileListSecondary">Amrita Vishwa Vidyapeetham, Coimbatore</span>
+                                    <span className="profileListSecondary">{ugUniversity}</span>
                                 </ListItem>
                                 <ListItem>
                                     <ListItemIcon>{<RoomIcon/>}</ListItemIcon>
-                                    <span className="profileListSecondary">Hosur</span>
+                                    <span className="profileListSecondary">{city}</span>
                                 </ListItem>
                             </List>
                         </Box>
@@ -98,7 +159,7 @@ export default function ProfileScreen() {
                         <Box item flex={1} textAlign="center">
                             <List id={'profileExamText'} dense disablePadding>
                                 <h3>Examination</h3>
-                                <h1>GRE</h1>
+                                <h1>{examStream}</h1>
                             </List>
                         </Box>
                     </Grid>
@@ -108,39 +169,48 @@ export default function ProfileScreen() {
             <Box height={16}/>
             <Card className='profileRowCard' variant="outlined">
                 <CardContent>
-                    <ProfileInfoRow fieldName={"Name"} fieldValue={name} fieldOnChange={handleNameChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldUIName={"Name"} showEditButton={(typeof user==="undefined")} fieldName={"name"} fieldValue={name} fieldOnChange={handleNameChange} onSubmit={updateProfileAttribute}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"UG University"} fieldValue={ugUniversity} fieldOnChange={handleUgUniversityChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldUIName={"UG University"} showEditButton={(typeof user==="undefined")} fieldName={"ugUniversity"} fieldValue={ugUniversity} fieldOnChange={handleUgUniversityChange} onSubmit={updateProfileAttribute}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Admitted University"} fieldType={'select'} fieldValue={pgUniversity} fieldOnChange={handlePgUniversityChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldUIName={"Admitted University"} showEditButton={(typeof user==="undefined")} fieldName={"pgUniversityID"} fieldType={'select'} fieldValue={pgUniversityID} selectOptions={pgUniversityList} fieldOnChange={handlePgUniversityChange} onSubmit={updateProfileAttribute}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"City"} fieldValue={city} fieldOnChange={handleCityChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldUIName={"City"} fieldValue={city} showEditButton={(typeof user==="undefined")} fieldName={"city"} fieldOnChange={handleCityChange} onSubmit={updateProfileAttribute}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Email"} fieldValue={email} fieldOnChange={handleEmail} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldUIName={"Email"} fieldValue={email} showEditButton={(typeof user==="undefined")} fieldName={"email"} fieldOnChange={handleEmail} onSubmit={updateProfileAttribute}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Phone Number"} fieldValue={phoneNumber} fieldOnChange={handlePhoneNumberChange} onSubmit={()=>{}}/>
+                    <ProfileInfoRow fieldUIName={"Phone Number"} fieldValue={phoneNumber} showEditButton={(typeof user==="undefined")} fieldName={"phone"} fieldOnChange={handlePhoneNumberChange} onSubmit={updateProfileAttribute}/>
                     <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Security Question"} fieldValue={securityQuestion} fieldOnChange={handleSecurityQuestionChange} onSubmit={()=>{}}/>
-                    <Box height={16}/>
-                    <ProfileInfoRow fieldName={"Security Answer"} fieldValue={securityAnswer} fieldOnChange={handleSecurityAnswerChange} onSubmit={()=>{}}/>
+                    {(typeof user==="undefined") && <div>
+                        <ProfileInfoRow fieldUIName={"Security Question"} fieldValue={securityQuestion}
+                                        fieldName={"secQuestion"} fieldOnChange={handleSecurityQuestionChange}
+                                        onSubmit={updateProfileAttribute}/>
+                        <Box height={16}/>
+                        <ProfileInfoRow fieldUIName={"Security Answer"} fieldValue={securityAnswer}
+                                        fieldName={"secAnswer"} fieldOnChange={handleSecurityAnswerChange}
+                                        onSubmit={updateProfileAttribute}/>
+                    </div>}
                 </CardContent>
             </Card>
             <Box height={16}/>
-            <Card>
+            {(typeof user==="undefined") && <Card className='profileRowCard' variant="outlined">
                 <CardContent>
                     <Grid container>
                         <Box item flex={1} textAlign="center">
-                            <Button variant="contained" size="small" color="secondary">Share Profile URL</Button>
+                            <Button variant="contained" size="small" color="secondary"
+                                    onClick={copyProfileURLToClipboard}>Copy Profile URL</Button>
                             {/* <Link to={'/recovery'}>Forgot your Password? Click Here</Link> */}
                         </Box>
                         <Box item flex={1} textAlign="center">
                             <Box height={4}/>
-                             <Button variant="contained" size="small" color="secondary" onClick={()=>{history.replace('/changePassword');window.location.reload(false);}}>Change Password</Button>
-                            {/*<Link id="changePasswordBtn" to={'/changePassword'}>CHANGE PASSWORD</Link>*/}
+                            <Button variant="contained" size="small" color="secondary" onClick={() => {
+                                history.replace('/changePassword');
+                                window.location.reload(false);
+                            }}>Change Password</Button>
                         </Box>
                     </Grid>
                 </CardContent>
-            </Card>
+            </Card>}
         </div>
     );
 }
