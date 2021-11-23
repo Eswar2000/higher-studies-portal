@@ -21,12 +21,11 @@ public class Resource extends HttpServlet {
             if(authStatus == AuthStatus.authenticated){
                 res.setContentType("application/xml");
                 res.setStatus(200);
-                XMLDocument resourceRequest=XMLTools.parseXML(req.getInputStream());
 
-                if(resourceRequest.getAttributeValue("author").equals("all")){
-                    XMLTools.sendXMLResponse(ResourceHandler.getAllResources(), res.getWriter(), "response");
+                if(!(req.getParameter("author") == null) && !(req.getParameter("author").equals("")) && !req.getParameter("author").equals("all")){
+                    XMLTools.sendXMLResponse(ResourceHandler.getResourcesByUserId(req.getParameter("author")), res.getWriter(), "response");
                 }else{
-                    XMLTools.sendXMLResponse(ResourceHandler.getResourcesByUserId(resourceRequest.getAttributeValue("author")), res.getWriter(), "response");
+                    XMLTools.sendXMLResponse(ResourceHandler.getAllResources(), res.getWriter(), "response");
                 }
             }
         }catch (Exception e) {
