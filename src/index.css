@@ -101,6 +101,14 @@
   box-shadow: 0 10px 25px rgba(92,99,105,0.2);
 }
 
+.bookmark-unmarked {
+  color:grey;
+}
+
+.bookmark-unmarked:hover {
+  color:black;
+}
+
 .formDiv {
   position: relative;
   height: 45px;
