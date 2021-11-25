@@ -23,7 +23,7 @@ export default function HomeCard({studentProfile,bookmarkedResources}){
                                 </ListItem>
                                 <ListItem>
                                     <ListItemIcon>{<RoomIcon/>}</ListItemIcon>
-                                    <span className="profileListSecondary">{studentProfile.city}</span>
+                                    <span className="profileListSecondary">{studentProfile.city==="null"?"City Not Set":studentProfile.city}</span>
                                 </ListItem>
                             </List>
                         </Box>

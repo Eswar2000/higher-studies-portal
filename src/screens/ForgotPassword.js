@@ -38,7 +38,7 @@ export default function ForgotPassword(){
         let response = await backendService("GET", "/forgotPassword?username="+username, null, null, null);
         // let receivedStatusCode = response.statusCode;
         // console.log(response)
-        response = response.response._text;
+        response = typeof response.response==="undefined"?"null":response.response._text;
         response = response.trim();
         // console.log(response)
         if(response.localeCompare("\nNo such user\n") === 0)
@@ -71,14 +71,14 @@ export default function ForgotPassword(){
                             }
                         }/>
                         
-                        <h2 className="setFont secQs" id="secQuest">{securityQuestion}</h2>
-                        <CustomInput type={'password'} value={securityAnswer} onChange={handleSecChange}/>
+                        <h2 className="setFont secQs" id="secQuest">{securityQuestion==="null"?"No Security Question Set":securityQuestion}</h2>
+                        <CustomInput type={'password'} value={securityAnswer} disabled={securityQuestion==="null"} onChange={handleSecChange}/>
 
                         <h2 className="setFont secQs">New password:</h2>
-                        <CustomInput type={'password'} value={password} onChange={handlePassChange}/>
+                        <CustomInput type={'password'} value={password} disabled={securityQuestion==="null"} onChange={handlePassChange}/>
 
                         <h2 className="setFont secQs">Confirm password:</h2>
-                        <CustomInput type={'password'} value={newPassword} onChange={handleNewPassChange}/>
+                        <CustomInput type={'password'} value={newPassword} disabled={securityQuestion==="null"} onChange={handleNewPassChange}/>
 
                         <input type="submit" className="formButton" value="Submit" onClick = {
                             async (e)=>{
