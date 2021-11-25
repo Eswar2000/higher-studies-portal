@@ -7,7 +7,7 @@ import GetRandomAvatarColor from "../styleComponents/GetRandomAvatarColor";
 
 
 
-export default function HomeCard({studentProfile}){
+export default function HomeCard({studentProfile,bookmarkedResources}){
     return (
         <div id="homeInfoCard">
             <Card className='homeStudentRow' variant="outlined">
@@ -32,15 +32,25 @@ export default function HomeCard({studentProfile}){
                 </CardContent>
             </Card>
             <Box height={12}/>
-            <Card id="bmHome" variant='outlined'>
+            {bookmarkedResources.length!==0 && <Card id="bmHome1" variant='outlined'>
                 <CardContent>
                     <Typography color="secondary" variant="h5" align="center">Bookmarked Resources</Typography>
-                    <BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>
-                    <BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>
-                    <BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>
-                    <BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>
+                    {bookmarkedResources.map((item) => (
+                        <BookmarkListItem coverURL={item.coverURL} resourceTitle={item.name}/>
+                    ))}
+                    {/*<Typography color="secondary" variant="h7" align="center">No Bookmarked Resources</Typography>}*/}
+                    {/*<BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>*/}
+                    {/*<BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>*/}
+                    {/*<BookmarkListItem coverURL="https://images-na.ssl-images-amazon.com/images/I/81bGEoXpcUL.jpg" resourceTitle="Sashank's Guide For GRE"/>*/}
                 </CardContent>
-            </Card>
+            </Card>}
+            {bookmarkedResources.length===0 && <Card id="bmHome2" variant='outlined'>
+                <CardContent>
+                    <Typography id={"bmText1"} color="secondary" variant="h2" align="center">No Bookmarked Resources</Typography>
+                    <Box height={20}/>
+                    <Typography id={"bmText2"} color="primary" variant="h4" align="center">Check out your study materials tab</Typography>
+                </CardContent>
+            </Card>}
         </div>
     );
 }

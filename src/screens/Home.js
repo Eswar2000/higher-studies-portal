@@ -8,6 +8,9 @@ export default function Home(){
 
     const [studentProfile,setStudentProfile]=useState();
     const [fetchedAll,setFetchedAll]=useState(false);
+    const [bookmarks,setBookmarks]=useState([]);
+
+    const [allResources,setAllResources]=useState([]);
 
 
     const getStudentDetails= async ()=>{
@@ -28,8 +31,78 @@ export default function Home(){
             toeflMarks:response.studentProfile.toeflMarks._text
         });
 
+        await fetchAllResources();
+        await fetchBookmarks();
+
         setFetchedAll(true);
 
+    }
+
+    const fetchAllResources = async() => {
+
+        let response = await backendService("GET", "/resource?author=all", null, sessionStorage.username, sessionStorage.passwordHash);
+        let receivedStatusCode = response.statusCode;
+        response = response.response;
+
+        let tempResource = [];
+
+        if(typeof response.resource!=="undefined"){
+            if(typeof response.resource.length==="undefined"){
+                tempResource.push({
+                    resourceID: response.resource.resourceID._text,
+                    name: response.resource.resourceName._text,
+                    author: response.resource.author._text,
+                    coverURL: response.resource.coverURL._text,
+                    storageLocation: response.resource.storageLocation._text
+                });
+            }else{
+                for(let i=0; i<response.resource.length; i++) {
+                    let resource = {
+                        resourceID: response.resource[i].resourceID._text,
+                        name: response.resource[i].resourceName._text,
+                        author: response.resource[i].author._text,
+                        coverURL: response.resource[i].coverURL._text,
+                        storageLocation: response.resource[i].storageLocation._text
+                    }
+                    tempResource.push(resource);
+                }
+            }
+        }
+        // console.log(tempResource);
+
+        setAllResources(tempResource);
+    }
+
+    const fetchBookmarks=async ()=>{
+        let response2 = await backendService("GET", "/bookmark", null, sessionStorage.username, sessionStorage.passwordHash);
+        // let receivedStatusCode2 = response2.statusCode;
+        response2 = response2.response;
+
+        let tempBookmark = [];
+
+        if(typeof response2.resourceName!=="undefined"){
+            if(typeof response2.resourceName.length === "undefined"){
+                tempBookmark.push(response2.resourceName._text)
+            }else{
+                for(let i=0; i<response2.resourceName.length; i++) {
+                    tempBookmark.push(response2.resourceName[i]._text);
+                }
+            }
+        }
+        // console.log(tempBookmark);
+        setBookmarks(tempBookmark);
+    }
+
+    const getBookmarkedResources=()=>{
+        let bookmarkedResources=[];
+        for(let i=0;i<bookmarks.length;i++){
+            for(let j=0;j<allResources.length;j++){
+                if(bookmarks[i]===allResources[j].resourceID){
+                    bookmarkedResources.push(allResources[j]);
+                }
+            }
+        }
+        return bookmarkedResources;
     }
 
     useEffect(()=>{
@@ -41,7 +114,7 @@ export default function Home(){
         <div className="homeCard">
             <div className="homeLeftCol">
                 {!fetchedAll && <CircularProgress className={"loadingProgressBar"} size={24} color="secondary"/>}
-                {fetchedAll && <HomeCard studentProfile={studentProfile}/>}
+                {fetchedAll && <HomeCard studentProfile={studentProfile} bookmarkedResources={getBookmarkedResources()}/>}
             </div>
             {fetchedAll && <div className="homeRightCol">
                 <div id="homeRows">

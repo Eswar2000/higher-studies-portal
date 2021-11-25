@@ -103,6 +103,7 @@
 
 .bookmark-unmarked {
   color:grey;
+  opacity: 0.3;
 }
 
 .bookmark-unmarked:hover {
@@ -854,10 +855,27 @@
   border-radius: 50%;
 }
 
-#bmHome {
+#bmHome1 {
   width: 90%;
   height: 350px;
   margin-left: auto;
   margin-right: auto;
   overflow-y: scroll;
+}
+
+#bmHome2 {
+  width: 90%;
+  height: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bmText1 {
+  font-family: Quicksand;
+  font-weight: 700;
+}
+
+#bmText2 {
+  font-family: Quicksand;
+  font-weight: 600;
 }

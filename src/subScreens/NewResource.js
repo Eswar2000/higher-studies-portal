@@ -46,7 +46,7 @@ export default function NewResource() {
                     };
                     let response = await backendService("POST", "/resource",reqBody, sessionStorage.username, sessionStorage.passwordHash);
                     if(response.statusCode === 200){
-                        history.replace('/home');
+                        history.replace('/home/repository');
                     }}}>
                     Submit
                 </Button>
