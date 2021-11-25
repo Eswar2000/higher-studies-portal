@@ -125,6 +125,7 @@ export default function ProfileScreen() {
 
     useEffect(()=>{
         getProfileInfo();
+        // eslint-disable-next-line
     },[]);
 
 

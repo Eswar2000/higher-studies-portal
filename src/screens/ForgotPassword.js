@@ -1,29 +1,29 @@
 import PasswordForget from '../assets/PasswordForget.svg';
-import {useState, useEffect, Button} from "react";
+import {useState} from "react";
 import CustomInput from "../components/CustomInput";
-import {useRouteMatch} from "react-router";
 import {useHistory} from "react-router";
 import backendService from "../services/backendService";
 import hashString from "../services/hashString";
+import InputValidation from "../services/InputValidation";
 
 export default function ForgotPassword(){
     const history = useHistory();
 
     const [username,setUsername]=useState("");
-    const [sec, setSec] = useState("");
+    // const [sec, setSec] = useState("");
     const [password,setPassword]=useState("");
     const [newPassword,setNewPassword]=useState("");
     const [securityAnswer,setSecurityAnswer]=useState('');
 
     const [securityQuestion, setSecurityQuestion] = useState("Security Question");
-    const [statusCode, setStatusCode] = useState(0);
+    // const [statusCode, setStatusCode] = useState(0);
 
     const handleUsernameChange=(e)=>{
         setUsername(e.target.value);
     }
 
     const handleSecChange=(e)=>{
-        setSec(e.target.value);
+        setSecurityAnswer(e.target.value);
     }
 
     const handlePassChange=(e)=>{
@@ -36,18 +36,16 @@ export default function ForgotPassword(){
 
     const fetchSecurityQuestion = async () => {
         let response = await backendService("GET", "/forgotPassword?username="+username, null, null, null);
-        let receivedStatusCode = response.statusCode;
-        console.log(response)
+        // let receivedStatusCode = response.statusCode;
+        // console.log(response)
         response = response.response._text;
         response = response.trim();
-        console.log(response)
-        if(response.localeCompare("\nNo such user\n") == 0)
+        // console.log(response)
+        if(response.localeCompare("\nNo such user\n") === 0)
             setSecurityQuestion("Security Question Not Found (User does not exist)");
         else
             setSecurityQuestion(response);
-        setSecurityQuestion(response)
-
-        console.log(response);
+        setSecurityQuestion(response);
     }
 
     
@@ -66,7 +64,7 @@ export default function ForgotPassword(){
                         <h2 className="setFont secQs">Username:</h2>
                         <CustomInput type={'text'} value={username} onChange={handleUsernameChange}/>
 
-                        <input type="submit" className="btn btn-secondary btn-sm" value="Set Security Question" onClick={
+                        <input type="submit" className="btn btn-secondary btn-sm" value="Get Security Question" onClick={
                             (e)=> {
                                 e.preventDefault();
                                 fetchSecurityQuestion();
@@ -85,7 +83,12 @@ export default function ForgotPassword(){
                         <input type="submit" className="formButton" value="Submit" onClick = {
                             async (e)=>{
                                 e.preventDefault();
-                                if(password.localeCompare(newPassword)) {
+                                if(!InputValidation.checkPassword(password)){
+                                    alert("Not following password policy");
+                                    return;
+                                }
+
+                                if(password===newPassword) {
                                     let reqBody = {
                                         username: username,
                                         securityAnswer: securityAnswer,
@@ -94,6 +97,8 @@ export default function ForgotPassword(){
                                     let response = await backendService("POST", "/forgotPassword", reqBody, null, null);
                                     if(response.statusCode === 200) {
                                         history.replace("/login");
+                                    }else{
+                                        alert("Security Answer Incorrect");
                                     }
                                 } else {
                                     alert("PASSWORDS DO NOT MATCH");

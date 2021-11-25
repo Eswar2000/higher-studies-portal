@@ -31,6 +31,7 @@ export default function LoginScreen() {
         //Password 8-16, atleast 1 caps, 1 small, 1 num, 1 special character
         if(!InputValidation.checkUsername(username) || !InputValidation.checkPassword(password)){
             setErrorText("Invalid Username or Password");
+            return;
         }
 
         let response=await backendService("POST","/login",null,username,hashString(username,password));

@@ -41,7 +41,7 @@ export default function Home(){
     const fetchAllResources = async() => {
 
         let response = await backendService("GET", "/resource?author=all", null, sessionStorage.username, sessionStorage.passwordHash);
-        let receivedStatusCode = response.statusCode;
+        // let receivedStatusCode = response.statusCode;
         response = response.response;
 
         let tempResource = [];
@@ -107,6 +107,7 @@ export default function Home(){
 
     useEffect(()=>{
         getStudentDetails();
+        // eslint-disable-next-line
     },[]);
 
 

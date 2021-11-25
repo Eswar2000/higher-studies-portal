@@ -66,6 +66,7 @@ export default function CollegePredictorScreen() {
 
     useEffect(()=>{
         fetchUniversities();
+        // eslint-disable-next-line
     },[]);
 
     const handleExamMarkChange=(e)=>{

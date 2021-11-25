@@ -175,6 +175,7 @@ export default function QuizScreen() {
 
     useEffect(()=>{
         getPrevResults();
+        // eslint-disable-next-line
     },[]);
 
     const getQuizQuestionsUI=()=>{

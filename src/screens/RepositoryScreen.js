@@ -3,19 +3,17 @@ import {useRouteMatch} from "react-router";
 import {Link} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import backendService from "../services/backendService";
-import {useHistory} from "react-router";
-import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
+import {BsFillBookmarkFill } from "react-icons/bs";
 
 export default function RepositoryScreen() {
-    const history=useHistory();
+    // const history=useHistory();
     const [resources, setResources] = useState([]);
-    const [statusCode, setStatusCode] = useState(0);
     const [bookmarks, setBookmarks] = useState([])
 
     const fetchResources = async() => {
 
         let response = await backendService("GET", "/resource?author=all", null, sessionStorage.username, sessionStorage.passwordHash);
-        let receivedStatusCode = response.statusCode;
+        // let receivedStatusCode = response.statusCode;
         response = response.response;
 
         let tempResource = [];
@@ -46,7 +44,6 @@ export default function RepositoryScreen() {
         await fetchBookmarks();
 
         setResources(tempResource);
-        setStatusCode(receivedStatusCode);
     }
 
     const fetchBookmarks=async ()=>{
@@ -84,6 +81,7 @@ export default function RepositoryScreen() {
 
     useEffect(()=>{
         fetchResources();
+        // eslint-disable-next-line
     },[]);
 
     return (
@@ -105,7 +103,7 @@ export default function RepositoryScreen() {
                                 <Card.Body>
                                     <Card.Title class='card-title'>{resource.name}</Card.Title>
                                     <Card.Text>{resource.text}</Card.Text>
-                                    <a href={resource.storageLocation} target="_blank"><Button variant="dark" size="sm">View Resource</Button></a>
+                                    <a rel={"noreferrer"} href={resource.storageLocation} target="_blank"><Button variant="dark" size="sm">View Resource</Button></a>
                                     <div>
                                        {    
                                             (bookmarks.includes(resource.resourceID))? (

@@ -18,7 +18,7 @@ import BallotIcon from '@material-ui/icons/Ballot';
 import QuizScreen from "./QuizScreen";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import clsx from "clsx";
 import UniversityTipScreen from "./UniversityTipScreen";
 import Home from "./Home";
@@ -88,6 +88,12 @@ export default function HomeLayout(){
         }
         return null;
     }
+
+    useEffect(()=>{
+        if(!sessionStorage.username || !sessionStorage.passwordHash){
+            history.replace("/login");
+        }
+    })
 
     return (
         

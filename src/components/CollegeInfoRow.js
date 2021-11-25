@@ -39,7 +39,7 @@ export default function CollegeInfoRow ({uniDetails}) {
                 </dl>
             </div>
             <div id="collegeRoutingRow">
-                <a target="_blank" href={uniDetails.uniSiteURL}>
+                <a rel={"noreferrer"} target="_blank" href={uniDetails.uniSiteURL}>
                     <IconButton size={'small'}>
                         <ArrowForwardIcon color={'secondary'}/>
                     </IconButton>
