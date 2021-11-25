@@ -21,8 +21,8 @@ public class ChangePassword extends HttpServlet {
             res.setContentType("application/XML");
 
             XMLDocument passwordChangeRequest = XMLTools.parseXML(req.getInputStream());
-            res.setStatus(200);
             XMLTools.sendXMLResponse(AccountHandler.changePassword(req.getHeader("username"),req.getHeader("authhash"),passwordChangeRequest.getAttributeValue("newHash")),res.getWriter(),"response");
+            res.setStatus(200);
         }catch (Exception e) {
             res.setStatus(500);
             e.printStackTrace();

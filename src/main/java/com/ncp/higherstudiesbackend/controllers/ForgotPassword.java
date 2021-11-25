@@ -18,10 +18,10 @@ public class ForgotPassword extends HttpServlet {
         try{
             res.setContentType("application/xml");
 
-            XMLDocument userResponse = XMLTools.parseXML(req.getInputStream());
+//            XMLDocument userResponse = XMLTools.parseXML(req.getInputStream());
 
             res.setStatus(200);
-            XMLTools.sendXMLResponse(AccountHandler.getSecurityQuestion(userResponse.getAttributeValue("username")), res.getWriter(),"response");
+            XMLTools.sendXMLResponse(AccountHandler.getSecurityQuestion(req.getParameter("username")), res.getWriter(),"response");
 
         }catch (Exception e){
             res.setStatus(500);

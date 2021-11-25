@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class AccountHandler extends Database {
 
 
-    public static StringBuilder changePassword(String username, String hashValue, String newHashValue) throws SQLException, ClassNotFoundException {
+    public static StringBuilder changePassword(String username, String hashValue, String newHashValue) throws Exception {
 
         if(checkCredentials(username,hashValue) == AuthStatus.authenticated){
             if(executeUpdate("update student set passwordHash=\""+newHashValue+"\" where username=\""+username+"\"")>0){
@@ -23,7 +23,7 @@ public class AccountHandler extends Database {
                 return new StringBuilder("An error occurred while changing the password");
             }
         }
-        return new StringBuilder("Incorrect credentials");
+        throw new Exception("Incorrect Credentials");
     }
 
 
@@ -40,7 +40,7 @@ public class AccountHandler extends Database {
     }
 
 
-    public static StringBuilder forgotPasswordSetPassword(String securityAnswer, String username, String newHashValue) throws SQLException, ClassNotFoundException{
+    public static StringBuilder forgotPasswordSetPassword(String securityAnswer, String username, String newHashValue) throws Exception {
         ResultSet resultSet=executeQuery("select secAnswer from student where username=\""+username+"\"");
 
         if(resultSet.next()){
@@ -49,14 +49,14 @@ public class AccountHandler extends Database {
                     return new StringBuilder("Password changed successfully");
                 }
                 else{
-                    return new StringBuilder("error");
+                    throw new Exception("An error has occurred");
                 }
             }
             else{
-                return new StringBuilder("Incorrect Security Answer");
+                throw new Exception("Incorrect Security Answer");
             }
         }
-        return new StringBuilder("No such user");
+        throw new Exception("No such user");
     }
 
     public static AuthStatus checkCredentials(String username, String hashValue) throws SQLException, ClassNotFoundException {
