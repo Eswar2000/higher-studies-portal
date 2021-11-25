@@ -14,6 +14,10 @@ import java.sql.SQLException;
 public class BookmarkedResourceHandler extends Database {
 
     public static boolean createNewBookmarkedResource(String resourceID, String username) throws Exception {
+        ResultSet resultSet=executeQuery("select resourceID, studentUsername from bookmark where resourceID=\""+resourceID+"\" and studentUsername=\""+username+"\"");
+        if(resultSet.next()){
+            return executeUpdate("delete from bookmark where resourceID=\""+resourceID+"\" and studentUsername=\""+username+"\"")>0;
+        }
         return executeUpdate("insert into bookmark (resourceID, studentUsername) values (\""+resourceID+"\", \""+username+"\");")>0;
     }
 
