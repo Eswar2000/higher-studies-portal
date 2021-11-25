@@ -7,7 +7,7 @@ const backendService = async (reqType, endpoint, reqBody, username, authHash) =>
         body:reqType==='GET'?null:`<request>${xmlParser.js2xml(reqBody,{compact:true})}</request>`
     }
 
-    let response= await fetch("http://localhost:6969/higher_studies_backend_war_exploded"+endpoint,reqOptions);
+    let response= await fetch("http://localhost:8080/higher_studies_backend_war_exploded"+endpoint,reqOptions);
 
     let reader = response.body.getReader();
 
