@@ -1,8 +1,12 @@
 import ChangePasswordImage from '../assets/ChangePasswordImage.svg';
 import {useState} from "react";
 import CustomInput from "../components/CustomInput";
+import hashString from "../services/hashString";
+import backendService from "../services/backendService";
+import {useHistory} from "react-router";
 
 export default function ChangePassword(){
+    const history = useHistory();
 
     const [username,setUsername]=useState("");
     const [oldPassword,setOld]=useState("");
@@ -50,7 +54,26 @@ export default function ChangePassword(){
                         <h2 className="setFont secQs">Confirm password:</h2>
                         <CustomInput type={'password'} value={newPassword} onChange={handleNewPassChange}/>
 
-                        <input type="submit" className="formButton" value="Submit"/>
+                        <input type="submit" className="formButton" value="Submit" onClick = {
+                            async (e) => {
+                                e.preventDefault();
+                                if(password.localeCompare(newPassword) == 0) {
+                                    let reqBody = {
+                                        username: username,
+                                        authhash: hashString(username, oldPassword),
+                                        newHash: hashString(username, password)
+                                    };
+                                    console.log(reqBody)
+                                    let response = await backendService("POST", "/changePassword", reqBody, null, null);
+                                    console.log(response);
+                                    if(response.statusCode === 200) {
+                                        history.replace("/login");
+                                    }
+                                } else {
+                                    alert("PASSWORDS DO NOT MATCH");
+                                }
+                            }
+                        }/>
                     </form>
                 </div>
 
