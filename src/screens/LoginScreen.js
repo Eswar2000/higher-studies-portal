@@ -1,5 +1,5 @@
 import BookRead from '../assets/BookRead.svg';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CustomInput from "../components/CustomInput";
 import InputValidation from "../services/InputValidation";
 import {useHistory} from "react-router";
@@ -48,6 +48,10 @@ export default function LoginScreen() {
         }
 
     }
+
+    useEffect(()=>{
+        sessionStorage.username=sessionStorage.passwordHash=undefined;
+    })
 
 
 

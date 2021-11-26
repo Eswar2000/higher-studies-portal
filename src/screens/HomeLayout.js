@@ -90,10 +90,11 @@ export default function HomeLayout(){
     }
 
     useEffect(()=>{
-        if(!sessionStorage.username || !sessionStorage.passwordHash){
+        if(sessionStorage.username==="undefined" || sessionStorage.passwordHash==="undefined"){
+            console.log("Hello");
             history.replace("/login");
         }
-    })
+    },[]);
 
     return (
         
