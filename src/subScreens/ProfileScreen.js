@@ -73,7 +73,7 @@ export default function ProfileScreen() {
         setEmail(response.studentProfile.email._text);
         setPhoneNumber(response.studentProfile.phoneNumber._text==="null"?"Phone Number Not Set":response.studentProfile.phoneNumber._text);
         (typeof user==="undefined") && setSecurityQuestion(response.studentProfile.securityQuestion._text==="null"?"Security Question Not Set":response.studentProfile.securityQuestion._text);
-        (typeof user==="undefined") && setSecurityAnswer(response.studentProfile.securityAnswer._text==="null"?"Security Answer Not Set":response.studentProfile.securityAnswer);
+        (typeof user==="undefined") && setSecurityAnswer(response.studentProfile.securityAnswer._text==="null"?"Security Answer Not Set":response.studentProfile.securityAnswer._text);
         setExamStream(response.studentProfile.examStream._text);
     }
 
