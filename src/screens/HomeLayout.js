@@ -94,6 +94,7 @@ export default function HomeLayout(){
             console.log("Hello");
             history.replace("/login");
         }
+        // eslint-disable-next-line
     },[]);
 
     return (
